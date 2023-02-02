@@ -98,8 +98,41 @@ Instalar @bavel/core, @babel/preset-react e babel-loader
 npm install @babel/core @babel/preset-react babel-loader --save-dev
 ```
 
--Criar o webpack.config.js para configurarmos o babel no webpack
+-Criar o webpack.config.js para configurarmos o babel no webpack.
+
+OBS: nessa conf esta tbm a do css, pois é a proxima a ser mencionada.
 
 @exemplo
 ```bash
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-react'],
+                    },
+                },
+            },
+        ],
+    },
+};
 ```
+# Loaders (css) #
+
+O webpack é instalado com o minimo de pacotes possiveis para funcionar com javascript. Para adicionarmos outras funcionalidades, como a importação de CSS, imagens, SVG e etc, precisamos adicionar loaders especificos para cada situação.
+
+OBS: o exemplo da configuração do arquivo em si, já esta disponivel no topico anterior junto com a do babel, alem do exemplo de como usar o css esta no arquivo App.css caso tenha duvidar é só olhar esse arquivo.
+
+@exemplo
+```bash
+npm install style-loader css-loader --save-dev
+```
+
