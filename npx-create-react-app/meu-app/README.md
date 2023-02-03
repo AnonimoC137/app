@@ -11,3 +11,9 @@ npx create-react-app meu-app
 
 # ambiente do curso #
 Nesse espaço vai ser o  ambiente de testem em geral do curso.
+
+# JSX #
+
+Javascript XML / extension. Estende a sintaxe do Javascript introduzindo elementos como XML que são convertidos em funções de React.
+
+
