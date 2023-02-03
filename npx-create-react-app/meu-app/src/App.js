@@ -2,8 +2,10 @@ import React from 'react'
 
 const App = () => {
   return (
-    <div>Meu App</div>
-  );
+    <div>
+      meu app</div>
+  )
 }
+
 
 export default App;
