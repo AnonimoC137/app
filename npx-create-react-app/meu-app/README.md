@@ -94,4 +94,55 @@ const App = () => {
 };
 ```
 
+# JSX  Expressões #
+
+Voce pode executar qualquer expressão dentro das chaves {}. Se o resultado da expressão for um numero, string ou array de numero/string o resultado ira aparecer na tela. Booleanos (true/false), undefined e null nao irao resultar em nada na tela. Objetos irao retornar um erro.
+
+@exemplo
+```bash
+const App = () => {
+    function meuNome() {
+        return 'andre';
+    }
+
+    function quadrado(x) {
+        return x * x;
+    }
+
+    const carro = {
+        rodas: 4,
+        marca: 'ford',
+    }
+
+    return (
+        <p>{carro.marca}</p>
+        <p>{quadrado(2)}</p>
+        <p>{meuNome()}</p>
+        
+    );
+};
+```
+
+# Style #
+
+O style ira receber um objeto com as propriedades do elemento em camelCase.
+
+@exemplo
+```bash
+const App = () => {
+    const estiloH1 = {
+        color: 'blue',
+        fontSize: '20px',
+        fontFamily: 'Helvetica',
+    };
+
+    return (
+        <div>
+            <h1 style={estiloH1}>Empresa</h1>
+            <p style={{color: 'green'}}>Empresa</p>
+        </div>
+    );
+};
+```
+
 
