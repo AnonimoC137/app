@@ -1,2 +1,2 @@
-# app
+# React
 app em react
