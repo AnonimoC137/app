@@ -35,14 +35,14 @@ const App = () => {
       <div>
       
         <p>Nome: {dados.cliente}</p>
-        <p>idade: {dados.idade}</p>
+        <p>Idade: {dados.idade}</p>
         <p>Situação: {' '}
             <span style={{color: dados.ativa ? 'green' : 'red'}}>
               {dados.ativa ? 'Ativa' : 'Inativa'}
             </span>
 
         </p>
-        <p>gasto:{total} </p>
+        <p>Gasto: R$ {total} </p>
         {total > 10000 && <p>Voce está gastando muito</p>}
 
       </div>
