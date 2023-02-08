@@ -145,4 +145,50 @@ const App = () => {
 };
 ```
 
+# JSX Arrays #
+
+O JSX ira listar cada um dos itens da array. Ele não ira separar ou colocar virgula, é voce que deve modificar a array para o resultado desejado.
+
+@exemplo
+```bash
+const App = () => {
+    const produtos = ['notebook', 'smartphone', 'tablet'];
+
+    return <p>{produtos}</p>
+};
+```
+# Keys # 
+
+O JSX  necessita de uma key unica para cada elemento da array.
+
+@exemplo
+```bash
+const App = () => {
+    const empresas = [<li key="e1">Apple</li>,<li key="e2">Google</li>];
+
+    return <ul>{empresas}</ul>
+};
+```
+# Map #
+
+É comum usarmos o map direto na array como uma expressao, retornando um elemento  para cada item novo da Array.
+
+@EXEMPLO
+```bash
+const App = () => {
+    const filmes = ['before sunrize', 'before senset', 'before mid'];
+
+    return (
+        <ul>
+        {filmes.map((filme) =>(
+            <li key="{filme}">{filme}</li>
+        ))}
+        </ul>
+    );
+};
+```
+
+
+
+
 
