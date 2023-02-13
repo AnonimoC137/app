@@ -188,7 +188,86 @@ const App = () => {
 };
 ```
 
+# desafio com arrays para deixar salvo #
 
+@exemplo
+```bash
+const App = () => {
+const livros = [
+  {nome: 'a game of thrones', ano: 1996},
+  {nome: 'a clash of kings', ano: 1998},
+  {nome: 'a storm of swords', ano: 2000},
+];
+
+return (
+  <ul>
+      {livros
+        .filter(({ ano }) => ano >= 1998)
+        .map(({ nome, ano }) => (
+          <li key={ nome }>
+            { nome }, { ano }
+          </li>
+    ))}
+  </ul>
+);
+}
+
+export default App;
+```
+
+# Desafio com Arrays parte 2 #
+
+@exemplo
+```bash
+import React from 'react';
+
+const produtos = [
+  {
+    id: 1,
+    nome: 'smartphone',
+    preco: 'R$ 2000',
+    cores: ['#29d8d5', '#252a34', '#fc3766'],
+  },
+  {
+    id: 2,
+    nome: 'notbook',
+    preco: 'R$ 3000',
+    cores: ['#ffd045', '#d439ab', '#f37c59'],
+  },
+  {
+    id: 3,
+    nome: 'tablet',
+    preco: 'R$ 1500',
+    cores: ['#365069', '#47c1c8', '#f95786'],
+  },
+]
+
+const App = () => {
+ const dados = produtos.filter(
+  ({preco}) => Number(preco.replace('R$ ', ' ')) > 1500,
+  );
+  
+return (
+  <section>
+    {dados.map(({nome, id, preco, cores}) => (
+      <div key={id}>
+        <h1>{nome}</h1>
+        <p>Preço: {preco}</p>
+        <ul>
+          {cores.map((cor) => (
+            <li style={{backgroundColor: cor, color: 'white'}} key={cor}>{cor}</li>
+          ))}
+        </ul>
+
+      </div>
+      ))}
+    
+  </section>
+);
+}
+
+export default App;
+```
 
 
 
