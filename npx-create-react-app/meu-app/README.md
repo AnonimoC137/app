@@ -331,7 +331,7 @@ const App = () => {
 
 O ideal é dividir o aplicativo em pequenos componentes para facilitar a manutenção do mesmo. Iremos trabalhar durante o curso com os chamados componentes funcionais.
 
-OBS : rafc é um comando atalho da extenção baixada no curso que ja faz a estrutura padrao necessaria, é preciso criar uma estrutura antes para OCORRER.
+OBS :      rafc       é um comando atalho da extenção baixada no curso que ja faz a estrutura padrao necessaria, é preciso criar uma estrutura antes para OCORRER.
 
 @exemplo
 ```bash
@@ -350,6 +350,82 @@ const App = () => {
 }
 
 export default App;
+```
+
+# Interface #
+
+Não existe limite para a composição de componentes, eles podem ser desde componentes gerais como Header e Fotter, até como componentes como input e Button.
+
+@exemplo
+```bash
+import React from 'react';
+import Header from './Button';
+import Footer from './Input';
+
+const Form = () => {
+  return (
+    <form>
+        <p>
+            <label htmlFor='nome'>Nome</label>
+            <Input  />
+        </p>
+        <p>
+            <label htmlFor='email'>Email</label>
+            <Input  />
+        </p>
+
+        <Button />
+    </form>
+  );
+}
+
+export default Form;
+```
+
+# Return # 
+
+Um componente deve sempre retornar algo. O retorno pode ser qualquer tipo de dado pelo JSX (string, array, um elemento JSX, null e etc..)
+
+@exemplo
+```bash
+const teste = () => {
+  const active = true;
+
+  if(active) {
+    return <p>Ativo</p>
+  } else {
+    return null;
+  }
+};
+```
+
+# React.Fragment #
+
+Um componente deve sempre retornar um elemento unico no return. Caso voce deseje retornar mais de um elemento, envolva os mesmos em uma div ou dentro do <React.Fragment></React.Fragment> ou <> </>
+
+@exemplo
+```bash
+const App = () => {
+  return (
+    <React.Fragment>
+        <Header />
+        <Form />
+        <Footer />
+    </React.Fragment>
+  );
+};
+
+// OU
+
+const App = () => {
+  return (
+    <>
+        <Header />
+        <Form />
+        <Footer />
+    </>
+  );
+};
 ```
 
 
