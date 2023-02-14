@@ -327,5 +327,31 @@ const App = () => {
 }
 ```
 
+# Componentes #
+
+O ideal é dividir o aplicativo em pequenos componentes para facilitar a manutenção do mesmo. Iremos trabalhar durante o curso com os chamados componentes funcionais.
+
+OBS : rafc é um comando atalho da extenção baixada no curso que ja faz a estrutura padrao necessaria, é preciso criar uma estrutura antes para OCORRER.
+
+@exemplo
+```bash
+import React from 'react';
+import Header from './Header';
+import Footer from './Footer';
+
+const App = () => {
+  return (
+    <div>
+        <Header />
+        <p>Esse é o meu aplicativo</p>
+        <Footer />
+    </div>
+  );
+}
+
+export default App;
+```
+
+
 
 
