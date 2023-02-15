@@ -560,5 +560,11 @@ const Header = ({logado, nome}) => {
 };
 ```
 
+# DESAFIO DE COMPONENTES #
+
+Esse é o desafio final da parte de componentes, vou deixar ele salvo para poder usalo novamente no futuro ou melhora-lo. ele consiste em criar uma pagina basica com header, home e um titulo com paragrafo, todos eles divididos em varios componentes, em seguida quando clicado em produtos vai aparecer os produtos e a pagina do home some por conta de uma condição if e else usando p {pathname} que acessa a url para fazer essa condição.
+
+
+
 
 

@@ -1,20 +1,21 @@
 import React from 'react';
-import Footer from './Footer';
-import Form from './Form/Form';
 import Header from './Header';
+import Home from './Home';
+import Titulo from './Titulo';
+
 
 
 
 
 
 const App = () => {
+
+
   return (
-    <div>
-      App
-      <Header />
-      <Footer />
-      <Form /> 
-    </div>
+    <>
+     <Header />
+     <Home />
+    </>
 
   );
 }
