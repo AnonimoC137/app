@@ -428,6 +428,137 @@ const App = () => {
 };
 ```
 
+# Propriedades #
+
+Assim como uma função pode receber argumentos, podemos tambem passar argumentos aos componentes. Esses são conhecidos como propriedades ou props
+
+@exemplo
+```bash
+const Titulo = (props) => {
+  return <h1>{props.texto}</h1>
+};
+
+const App = () => {
+  return (
+    <section>
+      <Titulo texto='meu primeiro titulo' />
+      <Titulo texto='meu segundo titulo' />
+    </section>
+  );
+};
+```
+
+# Multiplas Proprieades #
+
+Podemos passar quantas propriedades quisermos
+
+@exemplo
+```bash
+const Titulo = (props) => {
+  return <h1 style={{color: props.cor}}>{props.texto}</h1>
+};
+
+const App = () => {
+  return (
+    <section>
+      <Titulo texto='meu primeiro titulo' cor='blue' />
+      <Titulo texto='meu segundo titulo' cor='red'/>
+    </section>
+  );
+};
+```
+# Desestruturação #
+
+É comum desestruturarmos as propriedades
+
+@exemplo
+```bash
+const Titulo = ({cor, texto}) => {
+  return <h1 style={{color: cor}}>{texto}</h1>
+};
+
+const App = () => {
+  return (
+    <section>
+      <Titulo texto='meu primeiro titulo' cor='blue' />
+      <Titulo texto='meu segundo titulo' cor='red'/>
+    </section>
+  );
+};
+```
+# Children  #
+
+Se utilizarmos o componente abrindo e fechando o mesmo, o conteudo interno deste será acessado atraves da propriedade children.
+
+@exemplo
+```bash
+const Titulo = (props) => {
+  return <h1>{props.children}</h1>
+};
+
+const App = () => {
+  return (
+    <section>
+
+      <Titulo>Meu primeiro titulo</Titulo >
+
+      <Titulo>
+        <p>Titulo 1</p>
+        <p>Titulo 2</p>
+        <p>Titulo 3</p>
+      </Titulo >
+      
+    </section>
+  );
+};
+```
+# Rest e Spread #
+
+Usamos o rest e spread quando não sabemos todas as propriedades que um componente pode receber.
+
+@exemplo
+```bash
+import React from 'react';
+
+const Input = ({label, id, ...props}) => {
+    return (
+      <div>
+        <label htmlFor={id}>{label}</label>
+        <input id={id} type='text' {...props} />
+      </div>
+    );
+};
+
+export default Input;
+```
+
+# Dados #
+
+Podemos passar diferentes tipos de dados e ate outros componentes nas propriedades.
+
+@exemplo
+```bash
+const App = () => {
+  const logado = true;
+  const nome = 'andre';
+
+  return (
+    <section>
+        <Header logado={logado} nome={nome}>
+    </section>
+  );
+};
+
+// OU TBM
+
+const Header = ({logado, nome}) => {
+  if(logado) {
+    return <header>Bem vindo, {nome}</header>
+  } else {
+    return <header>Header</header>
+  }
+};
+```
 
 
 
