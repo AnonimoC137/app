@@ -1,10 +1,11 @@
 import React from 'react'
+import Titulo from './Titulo'
 
 const Produtos = () => {
   return (
-    <div>
-      
-    </div>
+    <section>
+      <Titulo texto='Produtos'/>
+    </section>
   )
 }
 
