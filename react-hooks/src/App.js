@@ -2,9 +2,13 @@ import React from 'react';
 
 
 const App = () => {
-  const ativo = false;
+  const [ativo, setAtivo] = React.useState(true);
 
-  return <button disabled={ativo}>{ativo ? 'ativo' : 'inativo'}</button>
+  return (
+    <button onClick={() => setAtivo(!ativo)}>
+        {ativo ? 'Botao Ativo' : 'Botao Inativo'}
+    </button>
+  );
 }
 
 export default App;
