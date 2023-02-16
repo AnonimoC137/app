@@ -1,4 +1,5 @@
 import React from 'react'
+import Produto from './Produto'
 import Titulo from './Titulo'
 
 const Produtos = () => {
@@ -7,13 +8,19 @@ const Produtos = () => {
         {nome: 'Smartphone', propriedades: ['2gb ram', '128gb']}
     ]
 
-    const dados = produtos.map(({nome}) => (
-    <li>{nome}</li>
-    ))
+    
   return (
     <section>
-      <Titulo texto='Produtos'/>
-      {dados}
+        <Titulo texto='Produtos'/>
+        {produtos.map(({nome, propriedades}) => (
+            <section>
+                    <Produto key={nome} nome={nome} propriedades={propriedades}/>
+                    
+            </section>
+            
+        
+        ))}
+      
     </section>
   )
 }
