@@ -1,6 +1,6 @@
 # create-react-app #
 
-Criar um ambiente de desenvolvimento já configurado e otimizado para a craição de aplicativos com React.
+Criar um ambiente de desenvolvimento já configurado e otimizado para a criação de aplicativos com React.
 
 @exemplo
 ```bash

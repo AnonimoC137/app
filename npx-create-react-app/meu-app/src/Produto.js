@@ -17,4 +17,4 @@ const Produto = ({nome, propriedades}) => {
   )
 }
 
-export default Produto
+export default Produto;

@@ -4,11 +4,6 @@ import Home from './Home';
 import Produtos from './Produtos';
 
 
-
-
-
-
-
 const App = () => {
   //para identificar o final da url 
  const {pathname} = window.location;
