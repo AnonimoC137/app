@@ -85,3 +85,68 @@ const App = () => {
     );
 };
 ```
+
+# exemplo/aula de Modal com o useState #
+
+vou colocar o exemplo do que foi feito na pagina App, ButtonModal e Modal , pois ao longo das aulas sobre hooks vou precisar usar esses arquivos para outros exercicios e aulas.
+
+@exemplo arquivo App.js
+```bash
+import React from 'react';
+import ButtonModal from './ButtonModal';
+import Modal from './Modal';
+
+
+const App = () => {
+  const [modal, setModal] = React.useState(false);
+
+  return (
+    <div>
+      <div>{modal ? 'Modal aberto' : 'Modal Fechado'}</div>
+      <Modal modal={modal} setModal={setModal} />
+      <ButtonModal setModal={setModal} />
+      
+    </div>
+  );
+}
+
+export default App;
+```
+
+@exemplo arquivo ButtonModal.js
+```bash
+import React from 'react'
+
+const ButtonModal = ({setModal}) => {
+  return <button onClick={() => setModal(true)}>Abrir</button> 
+}
+
+export default ButtonModal
+```
+# explicando#
+
+Essa parte vai estar diretamente ligada ao modal do useState que por sua vez vai ser alterado pelo ButtonModal para true/false o Modal vai fazer uma condição caso o modal esteja em true ele vai renderizar na tela a div com o paragrafo e o button para fechar o modal novamente fazendo ele ir para false e assim saindo da condição if .
+
+
+@exemplo arquivo Modal.js
+
+```bash
+import React from 'react'
+
+const Modal = ({modal, setModal}) => {
+    if(modal === true) {
+        return (
+            <div>
+              <p>Esse é um modal</p>
+              <button onClick={() => setModal(false)}>Fechar</button>
+            </div>
+          )
+    }
+
+    return null;
+  
+}
+
+export default Modal
+```
+
