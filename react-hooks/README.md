@@ -149,4 +149,47 @@ const Modal = ({modal, setModal}) => {
 
 export default Modal
 ```
+# Reatividade #
+
+Não modifique o estado diretamente. Utilize sempre a função de atualização do estado, pois ela garante a reatividade dos componentes.
+
+@exemplo
+```bash
+const App = () => {
+const [itens, setItens] = React.useState(['item 1', 'item 2']);
+
+function handleClick() {
+    //Errado. Modifique o estado apenas com função de atualizar
+    itens.push('novo item');
+  }
+
+function handleClickReativo() {
+   setItens([...itens, 'novo item']);
+}
+}
+```
+
+# Callback #
+
+Podemos passar uma função de callback para atualizar o estado. A função de callback recebe um parametro que representa o valor anterior e ira modificar o estado para o valor que for retornado na função.
+
+* Ou seja, voce pode usar uma outra palavra chave para acessar as propriedades do useState usando callbacks
+
+@exemplo
+```bash
+const App = () => {
+  const [ativo, setAtivo] = React.useState(true)
+
+  function handleClick() {
+    // usando callback
+    setAtivo((anterior) => !anterior)
+  }
+
+  return(
+    <button onClick={handleClick}>
+        {ativo ? 'esta ativo' : 'esta inativo'}
+    </button>
+  );
+}
+```
 
