@@ -238,12 +238,15 @@ import Produtos from './Produtos';
 
 const App = () => {
   const [dados, setDados] = React.useState(null);
+  const [carregando, setCarregando] = React.useState(null)
 
     async function handleClick(event) {
+      setCarregando(true)
       const response = await fetch(`https://ranekapi.origamid.dev/json/api/produto/${event.target.innerText}`);
 
       const json = await response.json()
       setDados(json)
+      setCarregando(false)
       console.log(response);
   }
 
@@ -257,8 +260,8 @@ const App = () => {
      <button style={estilo} onClick={handleClick}>Notebook</button>
      <button style={estilo} onClick={handleClick}>smartphone</button>
      <button style={estilo} onClick={handleClick}>tablet</button>
-     
-     {dados && <Produtos dados={dados}/>}
+     {carregando && <p>Carregando...</p>}
+     {!carregando && dados && <Produtos dados={dados}/>}
     </div>
   );
 }
@@ -273,6 +276,10 @@ export default App;
 * Agora que temos a resposta em json vamos colocar no setDados para ela atualizar o dados com os novos valores recebidos.
 
 * Isso tudo acontece no handleClick que é callback do event de click do button, que tambem contem um style pre definido.
+
+* Criamos um useState para o carregar, antes de iniciar o fetch colocamos o setCarregar como true e ao final chamamos denovo ele mas colocando como false.
+
+* Por fim vamos criar condições com && para mostrar o carregando como tambem para enviar os dados ao Produtos, para que ele não tente renderizar nada sem os dados terem sido devidamente recebidos e convertidos em json.
 
 * criamos um componente Produtos para renderizar os dados na tela com o auxilio do useState.
 
