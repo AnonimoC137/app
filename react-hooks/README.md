@@ -194,7 +194,7 @@ const App = () => {
   );
 }
 ```
-* Coloquei junto o exemplo do items.map para lembrar de algo importante, quando for continuar a fazer o metodo, ao inves de fazer a arrow function com {}, lembre que no react na parte do retorno dos elementos que vão ser renderizados na tela essa parte das {} tem que ser feita com () como no exemplo.
+* Coloquei junto o exemplo do items.map para lembrar de algo importante, quando for continuar a fazer o metodo, ao inves de fazer a arrow function com { }, lembre que no react na parte do retorno dos elementos que vão ser renderizados na tela essa parte das { } tem que ser feita com ( ) como no exemplo.
 
 @exemplo 2 
 ```bash
