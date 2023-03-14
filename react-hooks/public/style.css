@@ -13,10 +13,12 @@ html {
     --color-light: #adf;
     --color-dark: #018;
     --radius: 0.2rem;
+    
 }
 
 body {
     margin: 0.2rem;
+   
 }
 
 body,
@@ -25,6 +27,7 @@ textarea,
 button {
     font-size: var(--font-size);
     font-family: var(--font);
+    
 }
 
 h1,
@@ -40,7 +43,8 @@ button {
     background: var(--color);
     color: var(--color-dark);
     padding: 0.8rem 1.6rem;
-}
+    margin: 20px;
+} 
 
 input,
 textarea {
@@ -79,5 +83,6 @@ button:focus {
 
 hr {
     border: 2px solid black;
-    margin: 2rem auto;
+    margin: 2rem auto; 
 }
+

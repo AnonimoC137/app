@@ -1,22 +1,29 @@
 import React from 'react';
+import Button from './Button';
 
 
 
 const App = () => {
-  const [contar, setContar] = React.useState(1);
-  const [items, setItems] = React.useState(['item 1']);
+  const [dados, setDados] = React.useState(null);
 
-  function handleClick() {
-    setContar(contar + 1) 
-    setItems([...items, 'item ' + (contar + 1)])
+    async function handleClick(event) {
+      const response = await fetch(`https://ranekapi.origamid.dev/json/api/produto/${event.target.innerText}`);
+
+      const json = await response.json()
+      setDados(json)
+      console.log(response);
   }
+
+  const estilo = {
+    fontSize: '20px',
+    fontFamily: 'Helvetica',
+};
 
   return (
     <div>
-      {items.map((item) => (
-        <li key={item}>{item}</li>
-      ))}
-     <button onClick={handleClick}>{contar}</button>
+     <button style={estilo} onClick={handleClick}>Notebook</button>
+     <button style={estilo} onClick={handleClick}>smartphone</button>
+     <button style={estilo} onClick={handleClick}>tablet</button>
     </div>
   );
 }
