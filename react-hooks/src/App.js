@@ -7,9 +7,8 @@ const App = () => {
   const [items, setItems] = React.useState(['item 1']);
 
   function handleClick() {
-    setContar((contar) => {
-      return contar + 1
-    })
+    setContar(contar + 1) 
+    setItems([...items, 'item ' + (contar + 1)])
   }
 
   return (
