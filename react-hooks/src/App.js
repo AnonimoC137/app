@@ -1,5 +1,6 @@
 import React from 'react';
-import Button from './Button';
+import Produtos from './Produtos';
+
 
 
 
@@ -14,16 +15,18 @@ const App = () => {
       console.log(response);
   }
 
-  const estilo = {
-    fontSize: '20px',
-    fontFamily: 'Helvetica',
-};
+    const estilo = {
+      fontSize: '20px',
+      fontFamily: 'Helvetica',
+  };
 
   return (
     <div>
      <button style={estilo} onClick={handleClick}>Notebook</button>
      <button style={estilo} onClick={handleClick}>smartphone</button>
      <button style={estilo} onClick={handleClick}>tablet</button>
+     
+     {dados && <Produtos dados={dados}/>}
     </div>
   );
 }
