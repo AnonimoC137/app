@@ -1,9 +1,6 @@
 import React from 'react';
 import Produtos from './Produtos';
 
-
-
-
 const App = () => {
   const [dados, setDados] = React.useState(null);
 
