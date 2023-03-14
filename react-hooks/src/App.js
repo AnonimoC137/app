@@ -1,17 +1,20 @@
 import React from 'react';
-import ButtonModal from './ButtonModal';
-import Modal from './Modal';
+
 
 
 const App = () => {
-  const [modal, setModal] = React.useState(false);
+  const [contar, setContar] = React.useState(1);
+  const [items, setItems] = React.useState(['item 1']);
+
+  function handleClick() {
+    setContar((contar) => {
+      return contar + 1
+    })
+  }
 
   return (
     <div>
-      <div>{modal ? 'Modal aberto' : 'Modal Fechado'}</div>
-      <Modal modal={modal} setModal={setModal} />
-      <ButtonModal setModal={setModal} />
-      
+     <button onClick={handleClick}>{contar}</button>
     </div>
   );
 }

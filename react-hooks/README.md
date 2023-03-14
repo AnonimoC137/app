@@ -175,6 +175,8 @@ Podemos passar uma função de callback para atualizar o estado. A função de c
 
 * Ou seja, voce pode usar uma outra palavra chave para acessar as propriedades do useState usando callbacks
 
+* O callback é uma forma mais facil de acessar o estado sem mudar o valor original dele.
+
 @exemplo
 ```bash
 const App = () => {
@@ -192,4 +194,26 @@ const App = () => {
   );
 }
 ```
+
+@exemplo 2 
+```bash
+const App = () => {
+  const [contar, setContar] = React.useState(1);
+  const [items, setItems] = React.useState(['item 1']);
+
+  function handleClick() {
+    setContar((contar) => {
+      return contar + 1
+    })
+  }
+
+  return (
+    <div>
+     <button onClick={handleClick}>{contar}</button>
+    </div>
+  );
+}
+```
+
+
 
