@@ -231,5 +231,77 @@ const App = () => {
 * Mostre apenas um produto por vez
 * Mostre a mensagem carregando... enquanto o fetch é realizado.
 
+@exemplo app.js
+```bash
+import React from 'react';
+import Produtos from './Produtos';
+
+const App = () => {
+  const [dados, setDados] = React.useState(null);
+
+    async function handleClick(event) {
+      const response = await fetch(`https://ranekapi.origamid.dev/json/api/produto/${event.target.innerText}`);
+
+      const json = await response.json()
+      setDados(json)
+      console.log(response);
+  }
+
+    const estilo = {
+      fontSize: '20px',
+      fontFamily: 'Helvetica',
+  };
+
+  return (
+    <div>
+     <button style={estilo} onClick={handleClick}>Notebook</button>
+     <button style={estilo} onClick={handleClick}>smartphone</button>
+     <button style={estilo} onClick={handleClick}>tablet</button>
+     
+     {dados && <Produtos dados={dados}/>}
+    </div>
+  );
+}
+
+export default App;
+```
+
+### Explicação ###
+
+* Iniciamos criando um React.useState, ele vai servir para atualizarmos o estado dos dados recebidos pelo fetch, o fetch por sua vez vai fazer a requisição para o servidor e vai ser guardada a resposta na const response, criamos uma outra const para json, onde vai ficar guardado a modificação da resposta em formato json.
+
+* Agora que temos a resposta em json vamos colocar no setDados para ela atualizar o dados com os novos valores recebidos.
+
+* Isso tudo acontece no handleClick que é callback do event de click do button, que tambem contem um style pre definido.
+
+* criamos um componente Produtos para renderizar os dados na tela com o auxilio do useState.
+
+@exemplo Produtos.js
+```bash
+import React from 'react'
+
+const Produtos = ({dados}) => {
+
+
+  return (
+    <div>
+      <h1>{dados.nome}</h1>
+      <p>R${dados.preco}</p>
+      <img src={dados.fotos[0].src} alt="/" />
+    </div>
+  )
+}
+
+export default Produtos
+```
+
+### Explicando ###
+
+* No componente Produtos vai ter um h1 puxando o nome recebido pelo fetch que foi transformado em json.
+
+* A mesma coisa vale para o preco e tambem para a img.
+
+* Atenção para como puxamos a img, pode ser importante no futuro.
+
 
 
