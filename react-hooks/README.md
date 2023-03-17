@@ -363,11 +363,43 @@ const App = () => {
 ### outro exemplo ###
 Podemos por exemplo passar no useEffect na array o contar, sempre que ele atualizar podemos mudar o titulo do document para a contagem atual
 
+* IMPORTANTE quando usar um estado dentro do useEffect no caso o contar, é obrigatorio passar no array essa estado, caso contrario o efeito não vai ser atualizado.
+
 @exemplo
 ```bash
 React.useEffect(() => {
     document.title = 'Titulo ' + contar;
   }, [contar]);
+```
+
+# Componente Montou #
+
+O useEffect será especialmente utilizado quando precisamos definir um efeito que deve ocorrer u=uma vez apenas, como o fetch de dados no servidor por exemplo.
+
+@exemplo
+```bash
+const App = () => {
+  const [contar, setContar] = React.useState(0);
+  const [dados, setDados] = React.useState(null);
+
+  React.useEffect(() => {
+    //se o fetch estivesse fora do useEffect, toda vez que o contar
+    //fosse atualizado, o mesmo seria executado
+    fetch('https://ranekapi.origamid.dev/json/api/produto/notebook')
+    .then((response) => response.json())
+    .then((json) => setDados(json));
+  }, [])
+
+  return (
+    <div>
+        {dados && (<div>
+          <h1>{dados.nome}</h1>
+          <p>{dados.preco}</p>
+        </div>)}
+    </div>
+  );
+}
+}
 ```
 
 
