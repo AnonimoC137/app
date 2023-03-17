@@ -427,6 +427,31 @@ const App = () => {
   }, [modal]);
 ```
 
+# Antes de desmontar #
+
+As vezes precisamos executar um efeito sempre que um componente for desmontado. Para isso utilizamos um callback no retorno do callback do efeito.
+
+* Esse codigo pode ter ficado confuso a primeira vista, mas quando usamos evento de scroll mesmo sendo no useEffect toda vez que adicionamos ele ao clicar no botao que ativa nosso Produto ele adiciona novamente novo useEffect que por sua vez adiciona mais um evento de scroll e por ai vai, para que isso não ocorra é colocado como retorno do useEffect uma função anonima que remove o evento toda vez que ele ocorrer.
+
+@ exemplo Produto.js
+```bash
+const Produto = () => {
+  //Utilizamos o useEffect para adicionamos eventos direto ao DOM
+  React.useEffect(() => {
+    function handleScroll(event) {
+      console.log(event)
+    }
+    window.addEventListener('scroll', handleScroll);
+
+    //Limpa o evento quando o elemento é removido do DOM
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  }, [])
+}
+```
+
 
 
 
