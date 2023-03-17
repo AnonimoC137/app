@@ -404,5 +404,29 @@ const App = () => {
 }
 ```
 
+# Multiplos Efeitos #
+
+Podemos ter diversos useEffect no nosso codigo. O ideal é separarmos efeitos diferentes em useEffect diferentes.
+
+* No segundo useEffect do exemplo abaixo, ele tem como efeito sempre que o modal atualizar (for aberto, passando para true) ele vai atualizar o setContar para 0.
+
+@exemplo
+```bash
+const App = () => {
+  const [contar, setContar] = React.useState(0);
+  const [modal, setModal] = React.useState(false);
+
+  
+  React.useEffect(() => {
+   document.title = 'titulo ' + contar;
+  }, [contar]);
+
+
+  React.useEffect(() => {
+   setContar(0)
+  }, [modal]);
+```
+
+
 
 
