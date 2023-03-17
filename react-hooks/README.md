@@ -269,7 +269,7 @@ const App = () => {
 export default App;
 ```
 
-### Explicação ###
+### Explicação  exercicio ###
 
 * Iniciamos criando um React.useState, ele vai servir para atualizarmos o estado dos dados recebidos pelo fetch, o fetch por sua vez vai fazer a requisição para o servidor e vai ser guardada a resposta na const response, criamos uma outra const para json, onde vai ficar guardado a modificação da resposta em formato json.
 
@@ -309,6 +309,56 @@ export default Produtos
 * A mesma coisa vale para o preco e tambem para a img.
 
 * Atenção para como puxamos a img, pode ser importante no futuro.
+
+# useEffect #
+
+Todo componente possui um clico de vide. Os principais momentos acontecem quando o componente é renderizado, atualizado ou destruido. Com o React.useEffect( ) podemos definir um callcack que ira ser executado durante certos momentos do ciclo de vida do componente.
+
+@exemplo
+```bash
+const App = () => {
+  const [contar, setContar] = React.useState(0);
+
+  React.useEffect(() => {
+    console.log('Ocorre ao renderizar e ao atualizar')
+  });
+
+  return (
+    <button onClick={() => setContar(contar + 1)}>{contar}</button>
+  )
+}
+```
+# Array de dependencias #
+
+No useEffect podemos definir dois argumentos, o primeiro é a função de callback que será executada, e o segundo é uma array com uma lista de dependencias. A lista de dependencias serve para informarmos quando o efeito deve ocorrer.
+
+* Uma array vazia indica que o efeito não possui nenhuma dependenciam, assim o mesmo só ira ocorrer quando o componente é renderizado. O efeito ocorre logo após a renderização do mesmo
+
+* caso o array tenha como dependencia o contar ele vai atualizar sempre que o contar for atualizado.
+
+@exemplo
+```bash
+const App = () => {
+  const [contar, setContar] = React.useState(0);
+
+  React.useEffect(() => {
+    console.log('apenas quando renderizar')
+  }, []);
+
+//Antes de renderizar e toda vez que atualizar o componente
+  console.log('Sempre ocorre, mas antes do useEffect');
+
+
+//Agora a dependencia está no estado contar,
+//assim sempre que contar for atualizar o efeito será ativado
+  React.useEffect(() => {
+    console.log('Toda vez que atualizar o contar');
+  }, [contar])
+
+
+  
+}
+```
 
 
 
