@@ -374,7 +374,9 @@ React.useEffect(() => {
 
 # Componente Montou #
 
-O useEffect será especialmente utilizado quando precisamos definir um efeito que deve ocorrer u=uma vez apenas, como o fetch de dados no servidor por exemplo.
+O useEffect será especialmente utilizado quando precisamos definir um efeito que deve ocorrer uma vez apenas, como o fetch de dados no servidor por exemplo.
+
+* IMPORTANTE, sempre lembrar de fazer uma condição com && quando o useState iniciar com null, para que os dados puxados não dem erro ao puxar o null.
 
 @exemplo
 ```bash
