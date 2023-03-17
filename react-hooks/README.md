@@ -336,6 +336,8 @@ No useEffect podemos definir dois argumentos, o primeiro é a função de callba
 
 * caso o array tenha como dependencia o contar ele vai atualizar sempre que o contar for atualizado.
 
+* Podendo ter varios useEffect no arquivo, como o useState tbm faz.
+
 @exemplo
 ```bash
 const App = () => {
@@ -354,10 +356,18 @@ const App = () => {
   React.useEffect(() => {
     console.log('Toda vez que atualizar o contar');
   }, [contar])
-
-
-  
+ 
 }
+```
+
+### outro exemplo ###
+Podemos por exemplo passar no useEffect na array o contar, sempre que ele atualizar podemos mudar o titulo do document para a contagem atual
+
+@exemplo
+```bash
+React.useEffect(() => {
+    document.title = 'Titulo ' + contar;
+  }, [contar]);
 ```
 
 

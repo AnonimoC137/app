@@ -9,6 +9,10 @@ const App = () => {
     console.log('Ocorre ao renderizar e ao atualizar')
   }, [contar]);
 
+  React.useEffect(() => {
+    document.title = 'Titulo ' + contar;
+  }, [contar]);
+
   return (
     <div>
       <button  onClick={() => setContar(contar + 1)}>{contar}</button>
