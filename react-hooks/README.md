@@ -452,6 +452,20 @@ const Produto = () => {
 }
 ```
 
+# Exercico do useEffect #
+
+* Quando o usuario clicar em um dos botoes, faca um fetch do produto clicado usando a api abaixo
+
+* https://ranekapi.origamid.dev/json/produtos/notebook
+
+* https://ranekapi.origamid.dev/json/produtos/smartphone
+
+* Mostre o nome e preco na tela (separe essa informação em um conponente no Produtos.js)
+
+* Defina o produto clicado com uma preferencia do usuario no localStorage
+
+* Quando o usuario entrar no site, se existe um produto no localStorage faça um fetch do produto
+
 
 
 

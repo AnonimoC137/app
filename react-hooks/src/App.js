@@ -2,23 +2,31 @@ import React from 'react';
 import Produtos from './Produtos';
 
 const App = () => {
-  const [contar, setContar] = React.useState(0);
-  const [dados, setDados] = React.useState(null);
+  const [dados, setDados] = React.useState(null)
+     function handleClick({target}) {
+      setDados(target.innerText)
+    }
 
-  
-  React.useEffect(() => {
-    fetch('https://ranekapi.origamid.dev/json/api/produto/notebook')
-    .then((response) => response.json())
-    .then((json) => setDados(json))
-  }, [])
+    React.useEffect(() => {
+      const produtoLocal = window.localStorage.getItem('produto')
+    })
+
+    React.useEffect(() => {
+      if(dados !== null) {
+        window.localStorage.setItem('produto', dados)
+      }
+    }, [dados])
+
+    
+
   
   return (
     <div>
-      {dados && (<div>
-        <h1>{dados.nome}</h1>
-        <p>{dados.preco}</p>
-      </div>)}
-      <button  onClick={() => setContar(contar + 1)}>{contar}</button>
+      <h1>preferencia:{dados} </h1>
+      <button onClick={handleClick}> notebook</button>
+      <button onClick={handleClick}> smartphone</button>
+     
+    
     </div>
   );
 }
