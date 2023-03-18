@@ -469,6 +469,73 @@ const Produto = () => {
 
 # Explicando o exercicio #
 
+@exemplo App.js
+```bash
+import React from 'react';
+import Produtos from './Produtos';
+
+const App = () => {
+  const [produtos, setProdutos] = React.useState(null)
+     
+
+    React.useEffect(() => {
+      const produtoLocal = window.localStorage.getItem('produto')
+      console.log(produtoLocal)
+      if(produtoLocal !== null) {
+        setProdutos(produtoLocal)
+      }
+    },[])
+
+    React.useEffect(() => {
+      if(produtos !== null) {
+        window.localStorage.setItem('produto', produtos)
+      }
+    }, [produtos])
+
+    function handleClick({target}) {
+      setProdutos(target.innerText)
+    }
+
+  
+  return (
+    <div>
+      <h1>preferencia:{produtos} </h1>
+      <button onClick={handleClick}> notebook</button>
+      <button onClick={handleClick}> smartphone</button>
+      <Produtos produtos={produtos}/>
+     
+    
+    </div>
+  );
+}
+```
+
+@exemplo Produtos.js
+```bash
+import React from 'react'
+
+const Produtos = ({produtos}) => {
+  const [dados, setDados] = React.useState(null);
+
+  React.useEffect(() => {
+    if(produtos !== null) {
+      fetch(`https://ranekapi.origamid.dev/json/api/produto/${produtos}`)
+      .then((response) => response.json())
+      .then((json) => setDados(json))
+    }
+  }, [produtos])
+
+  if(dados === null) return null;
+  return (
+    <div>
+     <h1>{dados.nome}</h1>
+     <p>{dados.preco}</p>
+    </div>
+  )
+}
+```
+
+
 
 
 
