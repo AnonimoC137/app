@@ -467,5 +467,9 @@ const Produto = () => {
 * Quando o usuario entrar no site, se existe um produto no localStorage faça um fetch do produto
 
 
+# Explicando o exercicio #
+
+
+
 
 
