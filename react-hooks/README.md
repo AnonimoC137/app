@@ -456,9 +456,9 @@ const Produto = () => {
 
 * Quando o usuario clicar em um dos botoes, faca um fetch do produto clicado usando a api abaixo
 
-* https://ranekapi.origamid.dev/json/produtos/notebook
+* https://ranekapi.origamid.dev/json/api/produto/notebook
 
-* https://ranekapi.origamid.dev/json/produtos/smartphone
+* https://ranekapi.origamid.dev/json/api/produto/smartphone
 
 * Mostre o nome e preco na tela (separe essa informação em um conponente no Produtos.js)
 

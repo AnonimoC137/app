@@ -9,7 +9,11 @@ const App = () => {
 
     React.useEffect(() => {
       const produtoLocal = window.localStorage.getItem('produto')
-    })
+      console.log(produtoLocal)
+      if(produtoLocal !== null) {
+        setDados(produtoLocal)
+      }
+    },[])
 
     React.useEffect(() => {
       if(dados !== null) {
@@ -25,6 +29,7 @@ const App = () => {
       <h1>preferencia:{dados} </h1>
       <button onClick={handleClick}> notebook</button>
       <button onClick={handleClick}> smartphone</button>
+      <Produtos dados={dados}/>
      
     
     </div>
