@@ -550,6 +550,25 @@ const Produtos = ({produtos}) => {
 }
 ```
 
+# useRef #
+
+Retorna um objeto com a propriedade current. Esse objeto pode ser utilizado para guardarmos valores que irão persistir durante todo o ciclo de vida do elemento do DOM, sem precisarmos utilizar o querySelector ou similar.
+
+* Observação, ele e bom ser usado junto com o useEffect pois ele tenta iniciar muito rapido, não dando tempo para o elemento identificar ele, já que o useEffect é startado só depois de toda a inicialização ele formam um bom par.
+
+@exemplo
+```bash
+const App = () => {
+  const video = React.useRef();
+
+  React.useEffect(() => {
+      console.log(video.current)
+  }, [])
+
+  return <video ref={video}/>
+};
+```
+
 
 
 
