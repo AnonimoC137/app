@@ -612,6 +612,38 @@ const App = () => {
   );
 }
 ```
+# Referencia #
+O seu uso não é restrito a elementos do dom. Podemos utilizar tabem para guardamos a referencia de qualquer valor, como de um setTimeout por exemplo.
+
+* Importante, o valor adicionado no useRef não é perdido ou zerado quando a pagina ou o estado atualizam. Por isso ele é bom para guardar como referencia o tempo do setTimeout. como no exemplo abaixo, para que não fique aparecendo varias mensagens de item adicionado por conta da quantidade de itens, somente vai contar a ultima vez que o carrinho foi atualizado.
+
+@exemplo
+```bash
+const App = () => {
+  const [carrinho, setCarrinho] = React.useState(0)
+  const [notificacao, setNotificacao] = React.useState(null)
+  const timeoutRef = React.useRef()
+     
+
+    function handleClick() {
+     setCarrinho(carrinho + 1);
+     setNotificacao('voce adicionou um novo item ao carrinho');
+     clearTimeout(timeoutRef.current)
+     timeoutRef.current = setTimeout(() => {
+      setNotificacao(null)
+     },2000)
+    }
+
+  
+  return (
+    <div>
+    <p>{notificacao}</p>
+    <button onClick={handleClick}>carrinho {carrinho}</button>
+    </div>
+  );
+}
+```
+
 
 
 
