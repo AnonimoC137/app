@@ -519,7 +519,7 @@ const App = () => {
 ### explicando exercicio arquivo Produtos.js ###
 
 * Nesse arquivo desestruturamos os dados passados do estado do arquivo App.js
-* Criamos tambem um estado manupular os dados recebidos pela API.
+* Criamos tambem um estado para  manipular os dados recebidos pela API.
 
 * Criado um use.Effect para fazer a requisição dos dados dos produtos a API, sempre que o estado dos produtos atualizar o use.Effect vai fazer uma nova requisição.
 
