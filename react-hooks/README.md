@@ -569,6 +569,50 @@ const App = () => {
 };
 ```
 
+### um exemplo pratico do useRef ###
+
+Aqui precisamos nos atentar a tres coisas principais.
+
+* Criamos a const inputElement para ativar o useRef
+
+* Colocamos ela como referencia la no elemento input de retorno.
+
+* Agora conseguimos puxar ela com a ajuda do current lá na nossa function responsavel pelo click do button, assim ficando mais facil linkar o input a outros mecanismos no nosso codigo, o .focus() é uma usabilidade do form, e vamos ver isso mais a frente.
+
+@exemplo
+```bash
+const App = () => {
+  const [comentarios, setComentarios] = React.useState([])
+  const [input, setInput] = React.useState(' ')
+  const inputElement = React.useRef()
+     
+
+    function handleClick() {
+      setComentarios([...comentarios, input])
+      setInput(' ')
+      inputElement.current.focus();
+    }
+
+  
+  return (
+    <div>
+    <ul>
+      {comentarios.map((comentario) => (
+        <li key={comentario}>{comentario}</li>
+      ))}
+    </ul>
+    <input
+      type='text'
+      ref={inputElement}
+      value= {input}
+      onChange={({target}) => setInput(target.value)}
+    />
+    <button onClick={handleClick}>Enviar</button>
+    </div>
+  );
+}
+```
+
 
 
 
