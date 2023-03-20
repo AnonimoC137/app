@@ -615,7 +615,9 @@ const App = () => {
 # Referencia #
 O seu uso não é restrito a elementos do dom. Podemos utilizar tambem para guardamos a referencia de qualquer valor, como de um setTimeout por exemplo.
 
-* Importante, o valor adicionado no useRef não é perdido ou zerado quando a pagina ou o estado atualizam. Por isso ele é bom para guardar como referencia o tempo do setTimeout. como no exemplo abaixo, para que não fique aparecendo varias mensagens de item adicionado por conta da quantidade de itens, somente vai contar a ultima vez que o carrinho foi atualizado.
+* Importante, o valor adicionado no useRef não é perdido ou zerado quando a pagina ou o estado atualizam. Por isso ele é bom para guardar como referencia o tempo do setTimeout. 
+
+* Como no exemplo abaixo, para que não fique aparecendo varias mensagens de item adicionado por conta da quantidade de itens, somente vai contar a ultima vez que o carrinho foi atualizado, pois o clearTimeout(timeoutRef.current) vai puxar o ultimo estado do useRef e vai remover ele sempre antes de atualizar um novo item no carrinho.
 
 @exemplo
 ```bash
