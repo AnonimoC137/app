@@ -470,7 +470,7 @@ const Produto = () => {
 ### Explicando o exercicio ###
 
 * Criamos uma const para atualizar o estado, com nome de produtos.
-* Depois criarmos dois use.Effect, o primeiro só vai atualizar uma vez quando a pagina for regarregada, ele vai servir para puxar no localStorage o ultimo produto registrado lá e somente se existir algo lá. o segundo vai atualizar o localStorage sempre que o produto for atualizado.
+* Depois criamos dois use.Effect, o primeiro só vai atualizar uma vez quando a pagina for regarregada, ele vai servir para puxar no localStorage o ultimo produto registrado lá, e somente se existir algo lá. o segundo vai atualizar o localStorage sempre que o produto for atualizado.
 
 * Criado uma function de callback para o evento de onClick do button, essa função captura o texto do button e atualiza o estado.
 
