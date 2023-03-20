@@ -469,6 +469,13 @@ const Produto = () => {
 
 ### Explicando o exercicio ###
 
+* Criamos uma const para atualizar o estado, com nome de produtos.
+* Depois criarmos dois use.Effect, o primeiro só vai atualizar uma vez quando a pagina for regarregada, ele vai servir para puxar no localStorage o ultimo produto registrado lá e somente se existir algo lá. o segundo vai atualizar o localStorage sempre que o produto for atualizado.
+
+* Criado uma function de callback para o evento de onClick do button, essa função captura o texto do button e atualiza o estado.
+
+* Por ultimo nesse arquivo invocamos o componente que chamamos de produtos passando para ele as informações do estado.
+
 @exemplo App.js
 ```bash
 import React from 'react';
@@ -509,6 +516,14 @@ const App = () => {
   );
 }
 ```
+### explicando exercicio arquivo Produtos.js ###
+
+* Nesse arquivo desestruturamos os dados passados do estado do arquivo App.js
+* Criamos tambem um estado manupular os dados recebidos pela API.
+
+* Criado um use.Effect para fazer a requisição dos dados dos produtos a API, sempre que o estado dos produtos atualizar o use.Effect vai fazer uma nova requisição.
+
+* Por fim como retorno vamos passar o nome e o preco recebidos dos dados da requisição em JSON para a parte do front-end.
 
 @exemplo Produtos.js
 ```bash
