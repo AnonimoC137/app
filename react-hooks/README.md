@@ -802,6 +802,61 @@ const global = React.useContext(GlobalContext)
 export default Produtos
 ```
 
+### Exemplo de como repassar estados e functions ###
+
+Podemos incluir dentro do GlobalStorage estados e funstions ja prontas e passar isso no value para ser usado lá em Produtos.js
+
+@exemplo GlobalContext.js
+```bash
+import React from 'react';
+
+export const GlobalContext = React.createContext();
+
+
+export const GlobalStorage = ({children}) => {
+    const [contar, setContar] = React.useState(0)
+
+    function adicionarUm() {
+        setContar((contar) => (contar +1))
+    }
+
+    function adicionarDois() {
+        setContar((contar) => (contar +2))
+    }
+    return (
+        <GlobalContext.Provider value={{contar, adicionarUm, adicionarDois}}>
+            {children}
+        </GlobalContext.Provider>
+    ) 
+}
+```
+
+* Agora vamos ver como ficou lá em Produtos.js
+
+* Para acessarmos os valores passados que nesse caso estao na const chamada global, usamos global.contar ou global.adicionarUm() (que é nossa function).
+
+* Assim quando o button for clicado o evento de click vai ocorrer e ativar a function que está la no nosso arquivo GlocalContext, não sendo mais necessario poluir nosso arquivo Produtos.js.
+
+@exemplo Produtos.js
+```bash
+import React from 'react'
+import { GlobalContext } from './GlobalContext'
+
+
+const Produtos = () => {
+const global = React.useContext(GlobalContext)
+
+  return (
+    <div>
+      Produto: {global.contar}
+      <button onClick={() => global.adicionarUm()}>Adicionar</button>
+    </div>
+  )
+}
+
+export default Produtos
+```
+
 
 
 

@@ -7,7 +7,8 @@ const global = React.useContext(GlobalContext)
 
   return (
     <div>
-      {global.nome}
+      Produto: {global.contar}
+      <button onClick={() => global.adicionarUm()}>Adicionar</button>
     </div>
   )
 }
