@@ -804,7 +804,7 @@ export default Produtos
 
 ### Exemplo de como repassar estados e functions ###
 
-Podemos incluir dentro do GlobalStorage estados e funstions ja prontas e passar isso no value para ser usado lá em Produtos.js
+Podemos incluir dentro do GlobalStorage estados e functions ja prontas e passar isso no value para ser usado lá em Produtos.js
 
 @exemplo GlobalContext.js
 ```bash
