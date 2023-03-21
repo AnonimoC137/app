@@ -713,7 +713,7 @@ import React from 'react'
 import UserContext from './UserContext'
 
 const Produtos = () => {
-const dados = React.UseContext(UserContext)
+const dados = React.useContext(UserContext)
 console.log(dados)
 
   return (
