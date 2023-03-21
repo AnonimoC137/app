@@ -703,7 +703,7 @@ const App = () => {
   )
 }
 ```
-* Agora dentro da pasta produtos criamos uma const para dados e passamos o React.UseContext e dentro dele passamos o hook que tambem se chama UseContext para acessar aquele valor que deixamos definido lá no App.js
+* Agora dentro da pasta Produtos.js criamos uma const para dados e passamos o React.UseContext e dentro dele passamos o hook que tambem se chama UseContext para acessar aquele valor que deixamos definido lá no App.js
 
 * MUITO CUIDADO, o nome correto para acessar o caminho é React.useContext, foi criado um arquivo chamado UserContext, varialvel com nome UserContext, a tag que esta inglobaldo o retorno do App.js se chama tambem UserContext, MAAAS o caminho é sem o R no use.
 
