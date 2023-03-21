@@ -681,7 +681,7 @@ const UserContext = React.createContext();
 
 export default UserContext;
 ```
-* Agora como é configurado no arquivo App, o UseContext ingloba as tags que são de retorno, usando um metodo provider (prover) podemos colocar um value com qualquer coisa quue queremos passar a diante nos nosso componentes.
+* Agora como é configurado no arquivo App, o UserContext ingloba as tags que são de retorno, usando um metodo provider (prover) podemos colocar um value com qualquer coisa quue queremos passar a diante nos nosso componentes.
 
 @exemplo App.js
 ```bash
