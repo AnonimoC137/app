@@ -669,6 +669,19 @@ const App = () => {
 }
 ```
 
+# createContext #
+
+O contexto ira permitir passarmos dados/estado a  todos os componentes, sem necessidade de utilizar propriedades. Serve principalmente para dados/estados globais como por exemplo dados do usuario logado.
+
+@exemplo UserContext.js
+```bash
+import React from 'react'
+
+const UserContext = React.createContext();
+
+export default UserContext;
+```
+
 
 
 
