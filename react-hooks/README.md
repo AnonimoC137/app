@@ -724,6 +724,28 @@ console.log(dados)
 }
 ```
 
+# GlobalContext #
+
+Essa forma de organizar o Context em um arquivo mais completo, para que as informações sejam melhor visualizadas por quem for mexer no codigo.
+
+* A const GlobalStorage esta desestruturando o children que vai ser todo elemento que na pagina App.js estiver entre as tags GlobalStorage.
+
+* Essas const's estão sendo exportadas uma a uma por isso na hora de importar vamos desestruturar elas no arquivo App.js.
+
+* Tambem é possivel nesse arquivo já passar o .Provider e o value, que nos exemplos anteriores passamos direto no arquivo App.js, assim deixando-o mais organizado
+
+@exemplo GlobalContext.js
+```bash
+import React from 'react';
+
+export const GlobalContext = React.createContext();
+
+export const GlobalStorage = ({children}) => {
+    return <GlobalContext.Provider>{children}</GlobalContext.Provider>
+}
+```
+
+
 
 
 
