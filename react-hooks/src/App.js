@@ -2,27 +2,17 @@ import React from 'react';
 
 
 const App = () => {
-  const [carrinho, setCarrinho] = React.useState(0)
-  const [notificacao, setNotificacao] = React.useState(null)
-  const timeoutRef = React.useRef()
-     
-
-    function handleClick() {
-     setCarrinho(carrinho + 1);
-     setNotificacao('voce adicionou um novo item ao carrinho');
-     clearTimeout(timeoutRef.current)
-     timeoutRef.current = setTimeout(() => {
-      setNotificacao(null)
-     },2000)
-    }
-
-  
+  const [contar, setContar] = React.useState(0)
+  const valor = React.useMemo(() => {
+    const localStorageItem = window.localStorage.getItem('produto')
+    // só será executado uma vez
+    console.log('teste');
+    return localStorageItem;
+  }, [])
+  console.log(valor)
   return (
-    <div>
-    <p>{notificacao}</p>
-    <button onClick={handleClick}>carrinho {carrinho}</button>
-    </div>
-  );
+    <button onClick={() => setContar(contar + 1)}>{contar}</button>
+  )
 }
 
 export default App;
