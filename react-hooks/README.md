@@ -681,6 +681,46 @@ const UserContext = React.createContext();
 
 export default UserContext;
 ```
+* Agora como é configurado no arquivo App, o UseContext ingloba as tags que são de retorno, usando um metodo provider (prover) podemos colocar um value com qualquer coisa quue queremos passar a diante nos nosso componentes.
+
+@exemplo App.js
+```bash
+import React from 'react';
+import Produtos from './Produtos';
+import UserContext from './UserContext';
+
+
+const App = () => {
+  
+  return (
+    <UserContext.Provider value={{nome: 'alexandre'}}>
+      <div>
+          <Produtos/>
+      </div>
+    </UserContext.Provider>
+  )
+}
+```
+* Agora dentro da pasta produtos criamos uma const para dados e passamos o React.UseContext e dentro dele passamos o hook que tambem se chama UseContext para acessar aquele valor que deixamos definido lá no App.js
+
+* MUITO CUIDADO, o nome correto para acessar o caminho é React.useContext, foi criado um arquivo chamado UserContext, varialvel com nome UserContext, a tag que esta inglobaldo o retorno do App.js se chama tambem UserContext, MAAAS o caminho é sem o R no use.
+
+@exemplo
+```bash
+import React from 'react'
+import UserContext from './UserContext'
+
+const Produtos = () => {
+const dados = React.UseContext(UserContext)
+console.log(dados)
+
+  return (
+    <div>
+      {dados.nome}
+    </div>
+  )
+}
+```
 
 
 
