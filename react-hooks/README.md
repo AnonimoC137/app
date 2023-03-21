@@ -742,7 +742,7 @@ export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({children}) => {
     return (
-        <GlobalContext.Provider>
+        <GlobalContext.Provider value={{nome: 'alexandre'}}>
             {children}
         </GlobalContext.Provider>
     ) 
