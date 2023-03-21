@@ -748,6 +748,59 @@ export const GlobalStorage = ({children}) => {
     ) 
 }
 ```
+### GlobalStorage no App.js ###
+
+Agora passamos o GlobalStorage para o App.js, pois ele é a estrutura base criada para ser renderizada, entao todo nosso conteudo que vai ser mostrado ou tratado tem que estar entre essas tags para receber os dados.
+
+* Lembrando novamente que, o GlobalStorage foi passado sendo desestruturado pois ele foi exportado unicamente.
+
+@exemplo App.js
+```bash
+import React from 'react';
+import Produtos from './Produtos';
+import { GlobalStorage } from './GlobalContext';
+
+
+
+const App = () => {
+  
+  return (
+    <GlobalStorage>
+
+       <Produtos/>
+       
+    </GlobalStorage>
+  ) 
+      
+}
+
+export default App;
+```
+
+### GlobalContext no Produtos.js ###
+
+Agora em Produtos.js, vamos importar e passar o caminho de GlobalContext pois ele é o responsavel por criar e dar vida de fato a estrutura que criamos para ele no GlobalStorage, sendo o Produtos que vai ser mostrado na tela, ele fica com a propriedade GlobalContext.
+
+* Criamos um caminho React.useContext(GlobalContext) na const chamada global, ai podemos acessar as configurações que fizemos lá no GlobalStorage.
+
+@exemplo Produtos.js
+```bash
+import React from 'react'
+import { GlobalContext } from './GlobalContext'
+
+
+const Produtos = () => {
+const global = React.useContext(GlobalContext)
+
+  return (
+    <div>
+      {global.nome}
+    </div>
+  )
+}
+
+export default Produtos
+```
 
 
 
