@@ -12,3 +12,21 @@
 ```bash
 npm install react-icons
 ```
+
+* Depois de instalada é só importar exemplo: 
+
+@exemplo
+```bash
+import {FiSearch} from 'react-icons/fi'
+```
+* Detalhe pelo visto só funciona passando o nome desestruturado.
+
+* Lá no button que criamos vamos colocar esse FiSearch como se voce um componente criado por nos, com size e color.
+
+@exemplo
+```bash
+<button className="buttonSearch">
+         <FiSearch size={25} color='#000'/>
+</button>
+```
+

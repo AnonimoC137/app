@@ -1,4 +1,5 @@
 import React from "react";
+import {FiSearch} from 'react-icons/fi'
 
 function App() {
   return (
@@ -9,6 +10,9 @@ function App() {
            type="text"
             placeholder="Digite seu cep"
            />
+           <button className="buttonSearch">
+            <FiSearch size={25} color='#000'/>
+           </button>
       </div>
     </div>
     
