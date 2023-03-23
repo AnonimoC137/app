@@ -1,0 +1,80 @@
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(#a101fd, #2a023a);
+}
+
+.title {
+    font-size: 2.5rem;
+    color: #fff;
+    animation: flipTitle 2s ;
+    
+}
+
+.containerInput {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+input {
+    padding: .8rem;
+    border-radius: 20px;
+}
+
+button {
+margin-left: .5rem;
+margin-top: 1rem;
+padding: .2rem;
+cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    width: 50%;
+    padding: .2rem;
+    border-radius: 10px;
+    border: solid 2px black;
+    box-shadow: 2px 4px 0 #fff;
+}
+
+main:hover {
+    transform: scale(1.1);
+}
+label {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    
+
+ }
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+span {
+    margin-bottom: .3rem;
+}
+
+@keyframes flipTitle {
+    from{
+        transform: rotateX(90deg);
+    }
+    to {
+        transform: rotateX(0deg);
+    }
+}

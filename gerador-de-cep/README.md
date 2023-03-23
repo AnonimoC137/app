@@ -29,4 +29,13 @@ import {FiSearch} from 'react-icons/fi'
          <FiSearch size={25} color='#000'/>
 </button>
 ```
+* Criado uma tag main para colocar todos os dados de CEP, rua, complemento, bairro, e estado, para depois alimentar isso com os dados da API.
+
+* criamos o arquivo style.css, e importamos para o App.js para fazer a estilização da pagina.
+
+* Agora para dar continuação ao nosso codigo, vamos criar um estado com o useState.
+
+* colocado dentro do input o onChange, que captura um evento de "digitar" e dentro dele é possivel passar uma função anonima para atualizar o estado com o setInput.
+
+*
 
