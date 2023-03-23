@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/app/gerador-de-cep/public/index.html/static/css/main.c945f8a3.css",
-    "main.js": "/app/gerador-de-cep/public/index.html/static/js/main.f4a77140.js",
-    "index.html": "/app/gerador-de-cep/public/index.html/index.html",
-    "main.c945f8a3.css.map": "/app/gerador-de-cep/public/index.html/static/css/main.c945f8a3.css.map",
-    "main.f4a77140.js.map": "/app/gerador-de-cep/public/index.html/static/js/main.f4a77140.js.map"
+    "main.css": "/app/gerador-de-cep/static/css/main.c945f8a3.css",
+    "main.js": "/app/gerador-de-cep/static/js/main.f4a77140.js",
+    "index.html": "/app/gerador-de-cep/index.html",
+    "main.c945f8a3.css.map": "/app/gerador-de-cep/static/css/main.c945f8a3.css.map",
+    "main.f4a77140.js.map": "/app/gerador-de-cep/static/js/main.f4a77140.js.map"
   },
   "entrypoints": [
     "static/css/main.c945f8a3.css",
