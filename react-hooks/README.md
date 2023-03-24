@@ -918,7 +918,6 @@ const global = React.useContext(GlobalContext)
 }
 
 export default Produtos
-
 ```
 
 * Por ultimo no App.js sempre verificar se a tag criada no arquivo do createContext , a tag que é o "corpo" a mesma na qual desestruturamos o children que representa o conteudo que vai ficar entre as tags que configuramos está correta.
