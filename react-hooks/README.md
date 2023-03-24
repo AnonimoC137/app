@@ -961,6 +961,51 @@ export default App;
 
 * E exponha essa função no contexto global
 
+### Exemplo do arquivo GlobalContext ###
+
+* Nesse aquivo criamos um estado, que vai servir para receber a resposta a API.
+
+* Alem de ser usado no callback limparDados e atualizarResultado, um vai retornar o estado para null, para que as informações sumam, o outro vai fazer um novo fetch para voltar a aparecer os resultados na tela.
+
+* Por ultimo um retorno com o corpo da tag configurada passando os dados do estado e as funções.
+
+@exemplo GlobalContext 
+```bash
+import React from 'react';
+
+export const GlobalContext = React.createContext();
+
+
+export const GlobalStorage = ({children}) => {
+  const [dados, setDados] = React.useState(null);
+  
+
+  React.useEffect(() => {
+    fetch('http://ranekapi.origamid.dev/json/api/produto/')
+    .then(response => response.json())
+    .then(json => setDados(json))
+  },[])
+
+  function limparDados() {
+    setDados(null)
+  }
+
+  function atualizaResultado() {
+    fetch('http://ranekapi.origamid.dev/json/api/produto/')
+    .then(response => response.json())
+    .then(json => setDados(json))
+  }
+
+     return (
+            <GlobalContext.Provider value={{dados, limparDados, atualizaResultado}}>
+                {children}
+            </GlobalContext.Provider>
+
+       
+    ) 
+}
+```
+
 
 
 

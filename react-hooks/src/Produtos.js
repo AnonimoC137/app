@@ -3,19 +3,14 @@ import { GlobalContext } from './GlobalContext'
 
 
 const Produtos = () => {
-const global = React.useContext(GlobalContext)
+const {dados} = React.useContext(GlobalContext)
+
+if(dados === null) return null
 
   return (
     <div>
-      <li>Produto: {global.dados.nome}</li>
-      <li>Preço: {global.dados.preco}</li>
-      <li>Descrição: {global.dados.descricao}</li>
-                    
-      <input type="text"
-        onChange={(event) => global.setValorInput(event.target.value)}
-      />
-      <button onClick={() => global.handleClick()}>Procurar</button>
-      
+      Produto: {dados.map(produtos => <li key={produtos.id}>{produtos.nome}</li>)}
+
     </div>
   )
 }
