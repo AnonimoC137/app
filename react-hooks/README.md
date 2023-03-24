@@ -856,7 +856,6 @@ const global = React.useContext(GlobalContext)
 
 export default Produtos
 ```
-
 # exercicio pessoal para praticar #
 
 Fiz um desafio passoal, para treinar esse novo uso do useContext, junto com as outras atividades anteriores, com o uso do useState, onChange do input e onClick.
