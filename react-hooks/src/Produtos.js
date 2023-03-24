@@ -7,8 +7,15 @@ const global = React.useContext(GlobalContext)
 
   return (
     <div>
-      Produto: {global.contar}
-      <button onClick={() => global.adicionarUm()}>Adicionar</button>
+      <li>Produto: {global.dados.nome}</li>
+      <li>Preço: {global.dados.preco}</li>
+      <li>Descrição: {global.dados.descricao}</li>
+                    
+      <input type="text"
+        onChange={(event) => global.setValorInput(event.target.value)}
+      />
+      <button onClick={() => global.handleClick()}>Procurar</button>
+      
     </div>
   )
 }

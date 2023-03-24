@@ -4,19 +4,24 @@ export const GlobalContext = React.createContext();
 
 
 export const GlobalStorage = ({children}) => {
-    const [contar, setContar] = React.useState(0)
+    const [dados, setDados] =  React.useState(true)
+    const [valorInput, setValorInput] = React.useState(true)
 
-    function adicionarUm() {
-        setContar((contar) => (contar +1))
+ 
+    async function handleClick()  {
+        const resposta = await fetch(`http://ranekapi.origamid.dev/json/api/produto/${valorInput}`);
+        const json = await resposta.json()
+        setDados(json)
     }
 
-    function adicionarDois() {
-        setContar((contar) => (contar +2))
-    }
+    
+   
     return (
-        <GlobalContext.Provider value={{contar, adicionarUm, adicionarDois}}>
-            {children}
-        </GlobalContext.Provider>
+            <GlobalContext.Provider value={{dados, handleClick,setValorInput}}>
+                {children}
+            </GlobalContext.Provider>
+
+       
     ) 
 }
 

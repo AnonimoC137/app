@@ -857,6 +857,112 @@ const global = React.useContext(GlobalContext)
 export default Produtos
 ```
 
+# exercicio pessoal para praticar #
+
+Fiz um desafio passoal, para treinar esse novo uso do useContext, junto com as outras atividades anteriores, com o uso do useState, onChange do input e onClick.
+
+* O  que voce escrever no input o evento de onChangr vai capiturar, o button pesquisar vai fazer o fetch com o que voce procurou.
+
+* Lembrando que as funções e os estados estão sendo passados pelo novo metodo useContext.
+
+@exemplo GlobalContext.js
+```bash
+import React from 'react';
+
+export const GlobalContext = React.createContext();
+
+export const GlobalStorage = ({children}) => {
+    const [dados, setDados] =  React.useState(true)
+    const [valorInput, setValorInput] = React.useState(true)
+
+    async function handleClick()  {
+        const resposta = await fetch(`http://ranekapi.origamid.dev/json/api/produto/${valorInput}`);
+        const json = await resposta.json()
+        setDados(json)
+    }
+
+    return (
+            <GlobalContext.Provider value={{dados, handleClick,setValorInput}}>
+                {children}
+            </GlobalContext.Provider>
+    ) 
+}
+```
+* Importante lembrar que é preciso usar a const na qual voce guardou toda a configuração do createContext e deu corpo, nesse caso foi guardado na const  "global".
+
+* Para acessar as funções é preciso passar essa const "global", assim como para puxar os estados.
+
+* Não esqueça de fazer a importação correta do arquivo que foi guardado o createContext, nesse caso é o GlobalContext.
+
+@exemplo - Produtos.js
+```bash
+import React from 'react'
+import { GlobalContext } from './GlobalContext'
+
+const Produtos = () => {
+const global = React.useContext(GlobalContext)
+
+  return (
+    <div>
+      <li>Produto: {global.dados.nome}</li>
+      <li>Preço: {global.dados.preco}</li>
+      <li>Descrição: {global.dados.descricao}</li>
+                    
+      <input type="text"
+        onChange={(event) => global.setValorInput(event.target.value)}
+      />
+      <button onClick={() => global.handleClick()}>Procurar</button>
+      
+    </div>
+  )
+}
+
+export default Produtos
+
+```
+
+* Por ultimo no App.js sempre verificar se a tag criada no arquivo do createContext , a tag que é o "corpo" a mesma na qual desestruturamos o children que representa o conteudo que vai ficar entre as tags que configuramos está correta.
+
+* Lembrando o elemento que vai ser renderizado na tela tem que focar entre essas tags, que no caso se chama "GlobalStorange".
+
+@exemplo App.js
+```bash
+import React from 'react';
+import Produtos from './Produtos';
+import { GlobalStorage } from './GlobalContext';
+
+
+
+const App = () => {
+  
+  return (
+    <GlobalStorage>
+
+       <Produtos/>
+       
+    </GlobalStorage>
+  ) 
+      
+}
+
+export default App;
+```
+
+
+# Exercicios de useContex #
+
+* Utilize o globalContext do exemplo anterior para puxar os dados da api abaixo: 
+
+*http://ranekapi.origamid.dev/json/api/produto/
+
+* Assim que o usuario acessar o app.
+
+* Coloque os dados da API no context global, dando acesso aos dados da mesma.
+
+* Defina uma função chamada limparDados que é responsavel por zerar os dados de produto.
+
+* E exponha essa função no contexto global
+
 
 
 
