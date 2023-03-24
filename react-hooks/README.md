@@ -1005,6 +1005,64 @@ export const GlobalStorage = ({children}) => {
     ) 
 }
 ```
+### Exemplo do arquivo Produtos ###
+
+* Nesse arquivo, passamos desestruturando o GlobalContext para poder puxar direto o nome das propriedades(dados) assim tornando o codigo mais legivel.
+
+* Fazemos uma condição com if para caso os dados virem como null fazer um retorno null.
+
+* Ai fazemos um map com os dados desestruturados para retornar uma nova array (dados esta vindo em forma de array), fazendo eles virem dentro de uma lista e passando uma chave (key) com o id (que tambem vem na array de resposta).
+
+@exemplo
+```bash
+import React from 'react'
+import { GlobalContext } from './GlobalContext'
+
+
+const Produtos = () => {
+const {dados} = React.useContext(GlobalContext)
+
+if(dados === null) return null
+
+  return (
+    <div>
+      Produto: {dados.map(produtos => <li key={produtos.id}>{produtos.nome}</li>)}
+
+    </div>
+  )
+}
+
+export default Produtos
+
+```
+
+### Exemplo do arquivo Limpar.js ###
+
+* Esse arquivo vai ser o componente que vai renderizar os buttons, nele nos importamos o GlogalContext (que contem o createContext).
+
+* Desestruturamos duas const's, que são referentes as duas funções que criamos no outro arquivo.
+
+* Criamos dois buttuns, fazemos o evento de click em ambos e adicionamos as funções passadas no context para cada um.
+
+@exemplo
+```bash
+import React from 'react'
+import { GlobalContext } from './GlobalContext'
+const Limpar = () => {
+    const {limparDados} = React.useContext(GlobalContext)
+    const {atualizaResultado} = React.useContext(GlobalContext)
+
+  return (
+    <div>
+            <button onClick={limparDados}>Limpar</button>
+            <button onClick={atualizaResultado}>Nova Busca</button>
+    </div>
+  )
+}
+
+export default Limpar
+```
+
 
 
 
