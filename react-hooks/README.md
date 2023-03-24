@@ -1042,7 +1042,7 @@ export default Produtos
 
 * Desestruturamos duas const's, que são referentes as duas funções que criamos no outro arquivo.
 
-* Criamos dois buttuns, fazemos o evento de click em ambos e adicionamos as funções passadas no context para cada um.
+* Criamos dois buttons, fazemos o evento de click em ambos e adicionamos as funções passadas no context para cada um.
 
 @exemplo
 ```bash
