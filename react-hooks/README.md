@@ -1063,6 +1063,58 @@ const Limpar = () => {
 
 export default Limpar
 ```
+# use LocalStorage #
+
+Podemos criar nossos proprios hooks, assim evitamos a repeti;'ao de cpdigo. Todo custom hook deve começar com a palavra use.
+ Exemplo: useNameDoHook. Podemos retornar o que quisermos do hook, seja um valor unico, uma array ou um object.
+
+ @exemplo
+ ```bash
+ const useLocalStorage = (key, inicial) => {
+  const [state, setState] = React.useState(() => {
+    const local = window.localStorage.getItem(key);
+    return local ? local : inicial;
+  });
+
+  React.useEffect(() => {
+    window.localStorage.setItem(key, state);
+  },[key, state]);
+
+  return [state, setState]
+ }
+ ```
+
+ * Agora um vamos ver como podemos conectar isso lá no nosso arquivo App.js
+
+ * Criamos um estado que utiliza nosso hook, passamos a "key" como primeiro parametro, e o segundo parametro vai ser o valor contido dentro da "key", que chamamos de inicial.
+
+ * Com a ajuda do evento de click, capturamos o target.innerText du button e etualizamos o estado.
+
+ * Quando atualizamos o estado, ele entra novamente lá no nosso hook, atualizando o estado, fazendo que que o useEffect tambem atualize e por sua vez coloque lá dentro do localStorage os valor valores.
+ 
+
+ @exemplo
+```bash
+import React from 'react';
+import useLocalStorage from './useLocalStorage'
+
+const App = () => {
+  const [produto, setProduto] = useLocalStorage('produto', 'caneta')
+  function handleClick({target}) {
+    setProduto(target.innerText);
+    
+  }
+  return (
+    <div>
+      <button onClick={handleClick}>notebook</button>
+      <button onClick={handleClick}>smartphone</button>
+    </div>
+  ) 
+      
+}
+
+export default App;
+```
 
 
 
