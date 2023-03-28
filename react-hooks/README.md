@@ -1145,7 +1145,7 @@ const useFetch = () => {
 
     async function request(url, options) {
         try{
-            const response = await fetch('http://ranekapi.origamid.dev/json/api/produto/')
+            const response = await fetch(url, options)
             const json = response.json()
             setData(json)
         }
@@ -1169,7 +1169,14 @@ const {request, data} = useFetch()
 ```
 * Atraves dele vamos poder usar nossa função e manipular os dados dentro de data.
 
-*
+* Criamos um useEffect, que vai receber o request( ) com a nossa url para nosso hook fazer o fetch.
+
+@exemplo
+```bash
+React.useEffect(() => {
+    request('http://ranekapi.origamid.dev/json/api/produto/')
+  },[])
+```
 
 
 

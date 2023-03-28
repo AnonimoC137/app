@@ -5,6 +5,10 @@ import useFetch from './useFetch';
 
 const App = () => {
   const {request, data} = useFetch()
+
+  React.useEffect(() => {
+    request('http://ranekapi.origamid.dev/json/api/produto/')
+  },[])
     
   return (
     <div>

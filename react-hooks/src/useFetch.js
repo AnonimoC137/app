@@ -7,7 +7,7 @@ const useFetch = () => {
 
     async function request(url, options) {
         try{
-            const response = await fetch('http://ranekapi.origamid.dev/json/api/produto/')
+            const response = await fetch(url, options)
             const json = response.json()
             setData(json)
         }
