@@ -1151,7 +1151,7 @@ const useFetch = () => {
             setData(json)
         }
         catch(error) {
-
+            setError(erro)
         }
     }
     return {data, loading, error, request}
@@ -1159,6 +1159,29 @@ const useFetch = () => {
 ```
 
 * Dentro do try, tambem colocamos como true o setLoading, para que lá no App.js com o auxilio do if, criaremos uma condição onde se o loading for true vai retornar uma <p>Carregando</p>
+
+* Dentro do catch vamos colocar o setError(erro) para apontar o erro caso ocorra.
+
+### finally ###
+junto com o try e o catch podemos colocar tambem o "finally", essa propriedade faz com que tudo que estiver dentro dela aconteça no final.
+
+* vamos utilizar ele para atualizar no fim o setLoading(false) para que ele pare de carregar e mostre as informações recebidas da url que passamos no App.js
+```bash
+async function request(url, options) {
+        try{
+            setLoading(true)
+            const response = await fetch(url, options)
+            const json = await response.json()
+            setData(json)
+        }
+        catch(error) {
+            setError(error)
+        }
+        finally {
+            setLoading(false)
+        }
+    }
+```
 
 ### No arquivo App.js ###
 
