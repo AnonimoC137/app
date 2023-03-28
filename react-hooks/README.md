@@ -1063,9 +1063,9 @@ const Limpar = () => {
 
 export default Limpar
 ```
-# use LocalStorage #
+# Custom Hooks #
 
-Podemos criar nossos proprios hooks, assim evitamos a repeti;'ao de cpdigo. Todo custom hook deve começar com a palavra use.
+Podemos criar nossos proprios hooks, assim evitamos a repetição de codigo. Todo custom hook deve começar com a palavra use.
  Exemplo: useNameDoHook. Podemos retornar o que quisermos do hook, seja um valor unico, uma array ou um object.
 
  @exemplo
@@ -1088,7 +1088,7 @@ Podemos criar nossos proprios hooks, assim evitamos a repeti;'ao de cpdigo. Todo
 
  * Criamos um estado que utiliza nosso hook, passamos a "key" como primeiro parametro, e o segundo parametro vai ser o valor contido dentro da "key", que chamamos de inicial.
 
- * Com a ajuda do evento de click, capturamos o target.innerText du button e etualizamos o estado.
+ * Com a ajuda do evento de click, capturamos o target.innerText do button e atualizamos o estado.
 
  * Quando atualizamos o estado, ele entra novamente lá no nosso hook, atualizando o estado, fazendo que que o useEffect tambem atualize e por sua vez coloque lá dentro do localStorage os valor valores.
  
