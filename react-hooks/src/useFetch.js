@@ -5,7 +5,7 @@ const useFetch = () => {
     const [loading, setLoading] = React.useState(null)
     const [error, setError] = React.useState(null)
 
-    async function resquest(url, options) {
+    async function request(url, options) {
         try{
             const response = await fetch('http://ranekapi.origamid.dev/json/api/produto/')
             const json = response.json()
@@ -16,5 +16,7 @@ const useFetch = () => {
         }
     }
 
-    return {data, loading, error}
+    return {data, loading, error, request}
 }
+
+export default useFetch;

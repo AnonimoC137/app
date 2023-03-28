@@ -1123,7 +1123,10 @@ Aqui o useCallback é necessario para evitar um render infinito.
 @exemplo
 ```bash
 ```
-* Criamos o hook useFetch, e dentro dele 3 estados, para data(dados), o erro(error) e o carregar(loading).
+
+### no arquivo useFetch ###
+
+* Criamos o hook useFetch, e dentro dele 3 estados, para data(dados), o erro(error) , carregar(loading) e a função request.
 
 * No final desse hook vamos retornar esses 3 estados para podermos utilizarmos eles no App.js
 
@@ -1131,7 +1134,44 @@ Aqui o useCallback é necessario para evitar um render infinito.
 
 * Nessa function request, colocamos o fetch dentro do try, para ele verificar se está tudo ok, assim como o catch se ouver algum erro, além de passar a response para json e colocar dentro do setData para atualizar o data.
 
+@exemplo
+```bash
+import React from 'react';
+
+const useFetch = () => {
+    const [data, setData] = React.useState(null)
+    const [loading, setLoading] = React.useState(null)
+    const [error, setError] = React.useState(null)
+
+    async function request(url, options) {
+        try{
+            const response = await fetch('http://ranekapi.origamid.dev/json/api/produto/')
+            const json = response.json()
+            setData(json)
+        }
+        catch(error) {
+
+        }
+    }
+    return {data, loading, error, request}
+}
+```
+
 *
+
+### No arquivo App.js ###
+
+Iniciamos desestruturando {request, data} utilizando nosso hook useFetch.
+
+@exemplo
+```bash
+const {request, data} = useFetch()
+```
+* Atraves dele vamos poder usar nossa função e manipular os dados dentro de data.
+
+*
+
+
 
 
 

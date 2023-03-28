@@ -1,9 +1,10 @@
 import React from 'react';
+import useFetch from './useFetch';
 
 
 
 const App = () => {
-  
+  const {request, data} = useFetch()
     
   return (
     <div>
