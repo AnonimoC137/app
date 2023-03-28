@@ -1116,6 +1116,24 @@ const App = () => {
 export default App;
 ```
 
+# useFetch - Custom hook #
+
+Aqui o useCallback é necessario para evitar um render infinito.
+
+@exemplo
+```bash
+```
+* Criamos o hook useFetch, e dentro dele 3 estados, para data(dados), o erro(error) e o carregar(loading).
+
+* No final desse hook vamos retornar esses 3 estados para podermos utilizarmos eles no App.js
+
+* Criamos uma função async chamada de request, com dois parametros, url e options, pois ela vai receber a url e tambem podemos passar algumas opcoes para tratar esses dados.
+
+* Nessa function request, colocamos o fetch dentro do try, para ele verificar se está tudo ok, assim como o catch se ouver algum erro, além de passar a response para json e colocar dentro do setData para atualizar o data.
+
+*
+
+
 
 
 
