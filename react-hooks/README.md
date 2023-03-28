@@ -1178,6 +1178,12 @@ React.useEffect(() => {
   },[])
 ```
 
+* Precisamos fazer uma condição com if para caso os nossos dados inicialmente venham com num
+
+```bash
+if(data === null) return null
+```
+
 
 
 

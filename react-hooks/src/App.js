@@ -9,7 +9,8 @@ const App = () => {
   React.useEffect(() => {
     request('http://ranekapi.origamid.dev/json/api/produto/')
   },[])
-    
+    console.log(data)
+  if(data === null) return null
   return (
     <div>
      <a href="https://www.origamid.com" title="Site Origamid">

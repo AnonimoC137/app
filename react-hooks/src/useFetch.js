@@ -8,7 +8,7 @@ const useFetch = () => {
     async function request(url, options) {
         try{
             const response = await fetch(url, options)
-            const json = response.json()
+            const json = await response.json()
             setData(json)
         }
         catch(error) {
