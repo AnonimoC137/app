@@ -1145,6 +1145,7 @@ const useFetch = () => {
 
     async function request(url, options) {
         try{
+            setLoading(true)
             const response = await fetch(url, options)
             const json = response.json()
             setData(json)
@@ -1157,7 +1158,7 @@ const useFetch = () => {
 }
 ```
 
-*
+* Dentro do try, tambem colocamos como true o setLoading, para que lá no App.js com o auxilio do if, criaremos uma condição onde se o loading for true vai retornar uma <p>Carregando</p>
 
 ### No arquivo App.js ###
 
@@ -1178,11 +1179,19 @@ React.useEffect(() => {
   },[])
 ```
 
-* Precisamos fazer uma condição com if para caso os nossos dados inicialmente venham com num
+* Precisamos fazer uma condição com if para caso os nossos dados inicialmente venham com null o codigo não dar continuidade e esperar o resultado ser diferente de null para dar continuidade.
 
 ```bash
 if(data === null) return null
 ```
+* Além desse if vamos ter um para o loading, para que quando ele estiver true, retorne uma div que mostra carregando.
+```bash
+if(loading === true) return <p>Carregando</p>
+```
+
+* Isso para quando nos formar fazer um "map" de data, o valor não esteja como null, nesse caso criamos um map returnando a lista de produtos em um <p>.
+
+*
 
 
 

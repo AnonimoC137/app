@@ -4,18 +4,19 @@ import useFetch from './useFetch';
 
 
 const App = () => {
-  const {request, data} = useFetch()
+  const {request, data, loading} = useFetch()
 
   React.useEffect(() => {
     request('http://ranekapi.origamid.dev/json/api/produto/')
   },[])
     console.log(data)
   if(data === null) return null
+  if(loading === true) return <p>Carregando</p>
   return (
     <div>
-     <a href="https://www.origamid.com" title="Site Origamid">
-        Origamid
-        </a>
+     {data.map((produtos) => (
+      <p key={produtos.id}>{produtos.nome}</p>
+     ))}
     </div>
   )      
 }
