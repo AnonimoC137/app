@@ -1178,20 +1178,31 @@ React.useEffect(() => {
     request('http://ranekapi.origamid.dev/json/api/produto/')
   },[])
 ```
-
-* Precisamos fazer uma condição com if para caso os nossos dados inicialmente venham com null o codigo não dar continuidade e esperar o resultado ser diferente de null para dar continuidade.
-
-```bash
-if(data === null) return null
-```
-* Além desse if vamos ter um para o loading, para que quando ele estiver true, retorne uma div que mostra carregando.
+* Vamos fazer um if para que se a pagina se encontre carregando mostre na tela carrengando
 ```bash
 if(loading === true) return <p>Carregando</p>
 ```
 
+* Precisamos fazer uma condição com if para caso os nossos dados forem true, ai o codigo dá prosseguimento e o return vai ser renderizado na tela.
+```bash
+if(data) 
+```
+
 * Isso para quando nos formar fazer um "map" de data, o valor não esteja como null, nesse caso criamos um map returnando a lista de produtos em um <p>.
 
-*
+* Caso contrario, se nem a condição de loading, nem de data forem true, colocamos um else return null no final do codigo, para ele retornar um valor null.
+```bash
+if(loading === true) return <p>Carregando</p>
+  if(data) 
+    return (
+      <div>
+      {data.map((produtos) => (
+        <p key={produtos.id}>{produtos.nome}</p>
+      ))}
+      </div>
+    )      
+  else return null
+```
 
 
 

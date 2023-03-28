@@ -10,15 +10,16 @@ const App = () => {
     request('http://ranekapi.origamid.dev/json/api/produto/')
   },[])
     console.log(data)
-  if(data === null) return null
   if(loading === true) return <p>Carregando</p>
-  return (
-    <div>
-     {data.map((produtos) => (
-      <p key={produtos.id}>{produtos.nome}</p>
-     ))}
-    </div>
-  )      
+  if(data) 
+    return (
+      <div>
+      {data.map((produtos) => (
+        <p key={produtos.id}>{produtos.nome}</p>
+      ))}
+      </div>
+    )      
+  else return null
 }
 
 export default App;
