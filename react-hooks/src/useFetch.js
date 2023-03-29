@@ -6,11 +6,13 @@ const useFetch = () => {
     const [error, setError] = React.useState(null)
 
     async function request(url, options) {
+        let response;
+        let json;
         try{
             setError(null)
             setLoading(true)
-            const response = await fetch(url, options)
-            const json = await response.json()
+             response = await fetch(url, options)
+             json = await response.json()
             setData(json)
         }
         catch(error) {
@@ -18,6 +20,7 @@ const useFetch = () => {
         }
         finally {
             setLoading(false)
+            return {response, json}
         }
     }
 

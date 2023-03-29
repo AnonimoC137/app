@@ -7,7 +7,11 @@ const App = () => {
   const {request, data, loading, error} = useFetch()
 
   React.useEffect(() => {
-    request('http://ranekapi.origamid.dev/json/api/produto/')
+    async function fetchData() {
+      const {response, json} = await request('http://ranekapi.origamid.dev/json/api/produto/')
+    }
+    fetchData()
+    
   },[])
     console.log(data)
   if(error) return <p>{error}</p>

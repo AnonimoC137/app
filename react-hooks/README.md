@@ -1166,42 +1166,6 @@ const useFetch = () => {
 junto com o try e o catch podemos colocar tambem o "finally", essa propriedade faz com que tudo que estiver dentro dela aconteça no final.
 
 * vamos utilizar ele para atualizar no fim o setLoading(false) para que ele pare de carregar e mostre as informações recebidas da url que passamos no App.js
-```bash
-async function request(url, options) {
-        try{
-            setLoading(true)
-            const response = await fetch(url, options)
-            const json = await response.json()
-            setData(json)
-        }
-        catch(error) {
-            setError(error)
-        }
-        finally {
-            setLoading(false)
-        }
-    }
-```
-
-### No arquivo App.js ###
-
-Iniciamos desestruturando {request, data} utilizando nosso hook useFetch.
-
-* Atraves dele vamos poder usar nossa função e manipular os dados dentro de data.
-
-* Criamos um useEffect, que vai receber o request( ) com a nossa url para nosso hook fazer o fetch.
-
-* Precisamos fazer um if para fazer uma condição de caso ocorra um error, ele retornar um <p>{error}</p> que configuramos lá em nosso hook no catch. 
-
-* Além disso colocamos o setError(null) logo no começo do nosso try, pois caso tenha dado erro e o usuario tente novamente, mesmo que não haja mais erro ele vai apontar que sim, entao isso vai ser resolvido mudando para null logo no inicio do try.
-
-* Vamos fazer um if para que se a pagina se encontre carregando mostre na tela carrengando
-
-* Precisamos fazer uma condição com if para caso os nossos dados forem true, ai o codigo dá prosseguimento e o return vai ser renderizado na tela.
-
-* Isso para quando nos formar fazer um "map" de data, o valor não esteja como null, nesse caso criamos um map returnando a lista de produtos em um <p>.
-
-* Caso contrario, se nem a condição de loading, nem de data forem true, colocamos um else return null no final do codigo, para ele retornar um valor null.
 
 @exemplo
 ```bash
@@ -1233,6 +1197,102 @@ const useFetch = () => {
 
 export default useFetch;
 ```
+## Podemos melhorar o useFetch ##
+No caso de respostas de API, podemos mostrar para o usuario a response e o json, pois pode ser feito inumeras coisas com isso, no codigo acima só estava sendo mostrado os dados da API já tratados, agora vamos fazer o usuario tambem ter acesso a response/json.
+
+* Criamos let response e let json para que o try e o finally tenham acesso a essas varieveis, uma vez que o "finally' é sempre executado ele pode servir como retorno da função, ai desestruturamos o response e json lá no "finally" para usarmos no nosso arquivo App.js
+
+@exemplo
+```bash
+import React from 'react';
+
+const useFetch = () => {
+    const [data, setData] = React.useState(null)
+    const [loading, setLoading] = React.useState(null)
+    const [error, setError] = React.useState(null)
+
+    async function request(url, options) {
+        let response;
+        let json;
+        try{
+            setError(null)
+            setLoading(true)
+             response = await fetch(url, options)
+             json = await response.json()
+            setData(json)
+        }
+        catch(error) {
+            setError('Erro')
+        }
+        finally {
+            setLoading(false)
+            return {response, json}
+        }
+    }
+
+    return {data, loading, error, request}
+}
+
+export default useFetch;
+```
+* IMPORTANTE, o exemplo do arquivo App.js já em sua melhor versão para que o usuario tenha acesso ao response e ao json vai estar logo abaixo juntos com as demais explicações sobre o App.js
+
+
+### No arquivo App.js ###
+
+Iniciamos desestruturando {request, data, error, loading} utilizando nosso hook useFetch.
+
+* Atraves dele vamos poder usar nossa função e manipular os dados dentro de data.
+
+* Criamos um useEffect, que vai receber o request( ) com a nossa url para nosso hook fazer o fetch. Criamos uma function async para podermos desestruturar o response e json, precisamos sempre passar o await antes para que a req não seja uma promisse, agora é possivel acessarmos o response e o json direto em nosso App.js, IMPORTANTE lembrar que nesse caso precisamos ativar a function que criamos para pegar a response e o json, ativamos dentro do proprio useEffect.
+
+* Precisamos fazer um if para fazer uma condição de caso ocorra um error, ele retornar um <p>{error}</p> que configuramos lá em nosso hook no catch. 
+
+* Além disso colocamos o setError(null) logo no começo do nosso try, pois caso tenha dado erro e o usuario tente novamente, mesmo que não haja mais erro ele vai apontar que sim, entao isso vai ser resolvido mudando para null logo no inicio do try.
+
+* Vamos fazer um if para que se a pagina se encontre carregando mostre na tela carrengando
+
+* Precisamos fazer uma condição com if para caso os nossos dados forem true, ai o codigo dá prosseguimento e o return vai ser renderizado na tela.
+
+* Isso para quando nos formar fazer um "map" de data, o valor não esteja como null, nesse caso criamos um map returnando a lista de produtos em um <p>.
+
+* Caso contrario, se nem a condição de loading, nem de data forem true, colocamos um else return null no final do codigo, para ele retornar um valor null.
+
+@exemplo
+```bash
+import React from 'react';
+import useFetch from './useFetch';
+
+
+
+const App = () => {
+  const {request, data, loading, error} = useFetch()
+
+  React.useEffect(() => {
+    async function fetchData() {
+      const {response, json} = await request('http://ranekapi.origamid.dev/json/api/produto/')
+    }
+    fetchData()
+    
+  },[])
+    console.log(data)
+  if(error) return <p>{error}</p>
+  if(loading === true) return <p>Carregando</p>
+  if(data) 
+    return (
+      <div>
+      {data.map((produtos) => (
+        <p key={produtos.id}>{produtos.nome}</p>
+      ))}
+      </div>
+    )      
+  else return null
+}
+
+export default App;
+```
+
+
 
 
 
