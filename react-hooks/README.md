@@ -1296,6 +1296,34 @@ const App = () => {
 
 export default App;
 ```
+# Regras - Top level #
+
+Não utilize os hooks dentro de funções ou condicionais.
+
+@exemplo
+```bash
+const App= () => {
+  // Correto
+  React.useEffect(() => {
+    document.title = 'titulo novo'
+  },[])
+
+  let condicao = true;
+  if(condicao) {
+    // Errado
+    React.useEffect(() => {
+    document.title = 'titulo novo'
+  },[])
+  }
+
+  function mudarTitulo() {
+    // Errado
+     React.useEffect(() => {
+    document.title = 'titulo novo'
+  },[])
+  }
+}
+```
 
 
 
