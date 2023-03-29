@@ -1182,12 +1182,13 @@ const useFetch = () => {
             setLoading(true)
             const response = await fetch(url, options)
             const json = await response.json()
-            setData(json)
+            
         }
         catch(error) {
             setError('Erro')
         }
         finally {
+            setData(json)
             setLoading(false)
         }
     }
@@ -1202,6 +1203,10 @@ No caso de respostas de API, podemos mostrar para o usuario a response e o json,
 
 * Criamos let response e let json para que o try e o finally tenham acesso a essas varieveis, uma vez que o "finally' é sempre executado ele pode servir como retorno da função, ai desestruturamos o response e json lá no "finally" para usarmos no nosso arquivo App.js
 
+* Podemos tambem definir o setData(json) no finally para que mesmo que ocorra algum erro ele vai ser em formato json, e o catch recebe json = null, para ele retornar a seu estado original.
+
+* IMPORTANTE, por fim tornamos a function request em uma const request e passamos para ela o useCallback, fazendo que que quando o request seja atualizado varias vezes ele seja consideredo uma unica função, para que lá no App.js ele não fique em um loop infinito, pois lá precisamos passar na [ ] do useEffect o request como array de dependencia.
+
 @exemplo
 ```bash
 import React from 'react';
@@ -1211,7 +1216,7 @@ const useFetch = () => {
     const [loading, setLoading] = React.useState(null)
     const [error, setError] = React.useState(null)
 
-    async function request(url, options) {
+    const request = React.useCallback(async (url, options) => {
         let response;
         let json;
         try{
@@ -1228,7 +1233,7 @@ const useFetch = () => {
             setLoading(false)
             return {response, json}
         }
-    }
+    },[])
 
     return {data, loading, error, request}
 }

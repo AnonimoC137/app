@@ -12,7 +12,7 @@ const App = () => {
     }
     fetchData()
     
-  },[])
+  },[request])
     console.log(data)
   if(error) return <p>{error}</p>
   if(loading === true) return <p>Carregando</p>
