@@ -1187,45 +1187,53 @@ async function request(url, options) {
 
 Iniciamos desestruturando {request, data} utilizando nosso hook useFetch.
 
-@exemplo
-```bash
-const {request, data} = useFetch()
-```
 * Atraves dele vamos poder usar nossa função e manipular os dados dentro de data.
 
 * Criamos um useEffect, que vai receber o request( ) com a nossa url para nosso hook fazer o fetch.
 
-@exemplo
-```bash
-React.useEffect(() => {
-    request('http://ranekapi.origamid.dev/json/api/produto/')
-  },[])
-```
+* Precisamos fazer um if para fazer uma condição de caso ocorra um error, ele retornar um <p>{error}</p> que configuramos lá em nosso hook no catch. 
+
+* Além disso colocamos o setError(null) logo no começo do nosso try, pois caso tenha dado erro e o usuario tente novamente, mesmo que não haja mais erro ele vai apontar que sim, entao isso vai ser resolvido mudando para null logo no inicio do try.
+
 * Vamos fazer um if para que se a pagina se encontre carregando mostre na tela carrengando
-```bash
-if(loading === true) return <p>Carregando</p>
-```
 
 * Precisamos fazer uma condição com if para caso os nossos dados forem true, ai o codigo dá prosseguimento e o return vai ser renderizado na tela.
-```bash
-if(data) 
-```
 
 * Isso para quando nos formar fazer um "map" de data, o valor não esteja como null, nesse caso criamos um map returnando a lista de produtos em um <p>.
 
 * Caso contrario, se nem a condição de loading, nem de data forem true, colocamos um else return null no final do codigo, para ele retornar um valor null.
+
+@exemplo
 ```bash
-if(loading === true) return <p>Carregando</p>
-  if(data) 
-    return (
-      <div>
-      {data.map((produtos) => (
-        <p key={produtos.id}>{produtos.nome}</p>
-      ))}
-      </div>
-    )      
-  else return null
+import React from 'react';
+
+const useFetch = () => {
+    const [data, setData] = React.useState(null)
+    const [loading, setLoading] = React.useState(null)
+    const [error, setError] = React.useState(null)
+
+    async function request(url, options) {
+        try{
+            setError(null)
+            setLoading(true)
+            const response = await fetch(url, options)
+            const json = await response.json()
+            setData(json)
+        }
+        catch(error) {
+            setError('Erro')
+        }
+        finally {
+            setLoading(false)
+        }
+    }
+
+    return {data, loading, error, request}
+}
+
+export default useFetch;
 ```
+
 
 
 

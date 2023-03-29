@@ -4,12 +4,13 @@ import useFetch from './useFetch';
 
 
 const App = () => {
-  const {request, data, loading} = useFetch()
+  const {request, data, loading, error} = useFetch()
 
   React.useEffect(() => {
     request('http://ranekapi.origamid.dev/json/api/produto/')
   },[])
     console.log(data)
+  if(error) return <p>{error}</p>
   if(loading === true) return <p>Carregando</p>
   if(data) 
     return (
