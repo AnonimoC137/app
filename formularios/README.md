@@ -165,3 +165,170 @@ fetch('https://ranekapi.origamid.dev/json/api/usuario', {
   },
   body: JSON.stringify(form)
 })
+
+* Foi criado uma array com  objeto dentro, com todas as propriedades que vamos utilizar no formulario, assim tornando mais facil criarmos varios campos.
+
+* Com a array criada, fazemos um map usando essa array, e eese map retorna uma div com label e input, utilizando da desestruturação das propriedades que estão no objeto.
+
+* Em nosso estado tambem criamos um objeto, passando todos os valores que vamos precisar para fazer o fetch.
+
+* Utilizamos essa estado que criamos chamado form, para atualizar os valores usando o callback do onChange, que captura os dados do input.
+
+* Criamos tambem um callback para o onSubmit, dentro dele previnimos o padrão, e efetuamos o fetch, pegamos sua resposta e passamos para outro estado que criamos chamado de dados.
+
+* Esse estado dados vai ser utilizado para fazer uma condição, quando a condição for true ele vai retornar na tela uma msg para o usuario, informando que tu do correu corretamente.
+
+@exemplo
+```bash
+const arrayForm = [
+  {
+    id: 'nome',
+    label: 'nome',
+    type: 'text',
+  },
+  {
+    id: 'email',
+    label: 'email',
+    type: 'email',
+  },
+  {
+    id: 'senha',
+    label: 'senha',
+    type: 'password',
+  },
+  {
+    id: 'cep',
+    label: 'cep',
+    type: 'number',
+  },
+  {
+    id: 'rua',
+    label: 'rua',
+    type: 'text',
+  },
+  {
+    id: 'numero',
+    label: 'numero',
+    type: 'number',
+  },
+  {
+    id: 'bairro',
+    label: 'bairro',
+    type: 'text',
+  },
+  {
+    id: 'cidade',
+    label: 'cidade',
+    type: 'text',
+  },
+  {
+    id: 'estado',
+    label: 'estado',
+    type: 'text',
+  },
+]
+
+const  App = () => {
+  const [dados, setDados] = React.useState(null)
+    const [form, setForm] = React.useState({
+      nome: ' ',
+      email: ' ' ,
+      senha: ' ',
+      cep: ' ',
+      rua: ' ',
+      numero: ' ',
+      bairro: ' ',
+      cidade: ' ',
+      estado: ' ',
+      
+  });
+
+
+    
+  function handleSubmit(event) {
+      event.preventDefault();
+      fetch('https://ranekapi.origamid.dev/json/api/usuario', {
+         method: 'POST',
+          headers: {
+             'Content-Type' : 'application/json',  
+         },
+         body: JSON.stringify(form),
+      }).then((response) => setDados(response))
+     
+  }
+
+  function handleChange({target}) {
+      const {id, value} = target;
+      setForm({...form, [id] : value})
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      {arrayForm.map(({id, label, type}) => (
+        <div key={id}>
+            <label htmlFor={id}>{label}</label>
+            <input 
+              type={type}
+              id={id}
+              value={form[id]}
+              onChange={handleChange}
+            />
+        </div>
+      ))}
+      
+        <button>enviar</button>
+        {dados && dados.ok && <p>usuario cadrastrado</p>} 
+    </form>
+  )
+}
+```
+# Textarea #
+
+No React o textarea é utilizando como um input, uma tag unica sem abertura/fechamento e com o value para definir o seu valor interno.
+
+@exemplo
+```bash
+const App () => {
+  const [mensagem, setMensagem] = React.useState(' ');
+
+  return (
+    <form>
+    <textarea
+      id="mensagem"
+      value={mensagem}
+      rows="5"
+      onChange={({target}) => setMensagem(target.value)}
+    />
+    <p>{mensagem}</p>
+    </form>
+  );
+}
+```
+# Select no React #
+O value e onChange são definidos no select. Para definir um  valor inicial, coloque o mesmo no useState.
+
+* O primeiro options ele vai ser desabled, pois ele vai estar desabilitado e sem valor, para forçar o usuario a selecionar algo.
+
+@exemplo
+```bash
+const App () => {
+  const [select, setSelect] = React.useState(' ');
+
+  return (
+    <form>
+    <select 
+      value={select}
+      id="produtos"
+      onChange={({target}) => setSelect(target.value)}
+    >
+
+    <option disabled value="">Selecione</option>
+    <option value="notebook">Notebook</option>
+    <option value="smartphone">Smartphone</option>
+    <option value="tablet">Tablet</option>
+
+    </select>
+    </form>
+  );
+}
+```
