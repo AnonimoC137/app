@@ -5,6 +5,7 @@ const  App = () => {
   const [nome, setNome] = React.useState(' ');
 
   function handleSubmit(event) {
+    event.preventDefault()
     console.log(event)
   }
 
