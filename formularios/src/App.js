@@ -1,6 +1,8 @@
 import React from 'react'
 import './App.css';
 
+const coresArray = ['azul', 'roxo','laranja', 'verde', 'vermelho', 'cinza' ]
+
 const App = () => {
   const [cores, setCores] = React.useState(['vermelho']);
 
@@ -16,24 +18,22 @@ const App = () => {
 
   return(
     <form>
-      <label>
-        <input 
-            type="checkbox"
-            value="azul"
-            checked={cores.includes('azul')}
-            onChange={handleChange}
-        /> 
-        Azul
-      </label>
-      <label>
-        <input 
-            type="checkbox"
-            value="vermelho"
-            checked={cores.includes('vermelho')}
-            onChange={handleChange}
-        /> 
-        Vermelho
-      </label>
+      {coresArray.map((cor) => (
+        <div key={cor}>
+          <label>
+              <input 
+                  type="checkbox"
+                  value={cor}
+                  checked={cores.includes(cor)}
+                  onChange={handleChange}
+              /> 
+              {cor}
+            </label>
+        </div>
+        
+      ))}
+      
+      
     </form>
   );
 }
