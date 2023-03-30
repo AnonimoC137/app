@@ -1,110 +1,41 @@
 import React from 'react'
 import './App.css';
 
-const arrayForm = [
-  {
-    id: 'nome',
-    label: 'nome',
-    type: 'text',
-  },
-  {
-    id: 'email',
-    label: 'email',
-    type: 'email',
-  },
-  {
-    id: 'senha',
-    label: 'senha',
-    type: 'password',
-  },
-  {
-    id: 'cep',
-    label: 'cep',
-    type: 'number',
-  },
-  {
-    id: 'rua',
-    label: 'rua',
-    type: 'text',
-  },
-  {
-    id: 'numero',
-    label: 'numero',
-    type: 'number',
-  },
-  {
-    id: 'bairro',
-    label: 'bairro',
-    type: 'text',
-  },
-  {
-    id: 'cidade',
-    label: 'cidade',
-    type: 'text',
-  },
-  {
-    id: 'estado',
-    label: 'estado',
-    type: 'text',
-  },
-]
-
-const  App = () => {
-  const [dados, setDados] = React.useState(null)
-    const [form, setForm] = React.useState({
-      nome: ' ',
-      email: ' ' ,
-      senha: ' ',
-      cep: ' ',
-      rua: ' ',
-      numero: ' ',
-      bairro: ' ',
-      cidade: ' ',
-      estado: ' ',
-      
-  });
-
-
-    
-  function handleSubmit(event) {
-      event.preventDefault();
-      fetch('https://ranekapi.origamid.dev/json/api/usuario', {
-         method: 'POST',
-          headers: {
-             'Content-Type' : 'application/json',  
-         },
-         body: JSON.stringify(form),
-      }).then((response) => setDados(response))
-     
-  }
+const App = () => {
+  const [cores, setCores] = React.useState(['vermelho']);
 
   function handleChange({target}) {
-      const {id, value} = target;
-      setForm({...form, [id] : value})
+    if( target.checked) {
+        setCores([...cores, target.value])
+    } else {
+      setCores(
+        cores.filter((cor) =>  cor !== target.value)
+      )
+    }
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      {arrayForm.map(({id, label, type}) => (
-        <div key={id}>
-            <label htmlFor={id}>{label}</label>
-            <input 
-              type={type}
-              id={id}
-              value={form[id]}
-              onChange={handleChange}
-            />
-        </div>
-      ))}
-      
-        <button>enviar</button>
-        {dados && dados.ok && <p>usuario cadrastrado</p>}
-      
-          
-        
-        
+  return(
+    <form>
+      <label>
+        <input 
+            type="checkbox"
+            value="azul"
+            checked={cores.includes('azul')}
+            onChange={handleChange}
+        /> 
+        Azul
+      </label>
+      <label>
+        <input 
+            type="checkbox"
+            value="vermelho"
+            checked={cores.includes('vermelho')}
+            onChange={handleChange}
+        /> 
+        Vermelho
+      </label>
     </form>
-  )
+  );
 }
 
 export default App;

@@ -370,4 +370,82 @@ const App = () => {
   );
 }
 ```
+# Checkbox # 
+O estado do checkbox está relacionado ao checked.
 
+@exemplo
+```bash
+const App = () => {
+  const [termo, settermo] = React.useState(false);
+
+  return(
+    <form>
+        {termos && <p>Aceitou os termos</p>}
+      <label>
+        <input 
+            type="checkbox"
+            value="termos"
+            checked={termo}
+            onChange={({target}) => setTermos(target.checked)}
+        /> 
+        Aceito os termos .
+      </label>
+    </form>
+  );
+}
+```
+# Multiplos checkeds # 
+
+Podemos definir um estado para cada item ou uma array que ira conter todos os itens selecionados.
+
+* Nesse modo criamos um estado chamado cor, ele iniciamente vai ser uma array vazia.
+
+* Criamos o handleChange e passamos o target desestruturado, dentro dele vamos fazer um if para verificar se a cor esta com o checkbox selecionado, utilizando o target.checked.
+
+* Caso seja true, vamos atualizar o cores colocando dentro dele uma array com os valores anteriores de cores(caso tenha) + o target.value que seria nossa cor marcada.
+
+* o else vai servir para retirar as cores da array caso ela não esteve mais marcada, para isso vamos utilizar o filter  ele vai retornar a cor que e diferente do target.value, porque nesse caso o target.value vai ser a cor que voce esta desmarcando entao voce quer que ele retorne só o restante das cores, (que no caso vao ser as que estão marcadas).
+
+* No checked de cada input podemos passar o nosso estado (cores) junto com o includes(metodo de array) já que nosso estado é uma array, ai podemos colocar sua respectiva cor, caso o usuario tenha alguma preferencia salva por exemplo no localStorage e que nossa aplicação puxe isso para nosso estado, fazendo com que se ele tiver esse preferencia de cor, a cor já seja selecionada logo no inicio.
+
+@exemplo
+```bash
+const App = () => {
+  const [cores, setCores] = React.useState([ ]);
+
+  function handleChange({target}) {
+    if( target.checked) {
+        setCores([...cores, target.value])
+    } else {
+      setCores(
+        cores.filter((cor) => {
+          return cor !== target.value
+        })
+      )
+    }
+  }
+
+  return(
+    <form>
+      <label>
+        <input 
+            type="checkbox"
+            value="azul"
+            checked={cores.includes('azul')}
+            onChange={handleChange}
+        /> 
+        Azul
+      </label>
+      <label>
+        <input 
+            type="checkbox"
+            value="vermelho"
+            checked={cores.includes('vermelho')}
+            onChange={hendleChange}
+        /> 
+        Vermelho
+      </label>
+    </form>
+  );
+}
+```
