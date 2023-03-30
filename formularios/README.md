@@ -106,7 +106,7 @@ Podemos definir um objeto que ira conter todos os valores dos campos do formular
 
 * Precisamos passar dentro do setForm um objeto, pois estamos trabalhando com objeto dentro do estado, ai dentro do estado criamos um objeto e colocamos o que já existe(caso existir) e passamos o id([id]: value) para pegar esses respectivos valores.
 
-* No input para finalizar, precisamos passar dentro do value o {form.nome} ou {form.email} justamente por se tratar de um objeto precisamos criar ele com uma propriedade (nome , email).
+* No input para finalizar, precisamos passar dentro do value o {form.nome} ou {form.email} justamente por se tratar de um objeto precisamos passar ele com uma propriedade (nome , email).
 
 @exemplo
 ```bash
