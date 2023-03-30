@@ -457,6 +457,8 @@ const App = () => {
 
 * const coresArray = ['azul', 'roxo','laranja', 'verde', 'vermelho', 'cinza' ]
 
+* Observação IMPORTANTE, quando houver itens repitidos na array, na hora de colocar a key, podemos acrescentar no map um segundo parametro que seria o index, ai passando na key o index.
+
 @exemplo
 ```bash
 const coresArray = ['azul', 'roxo','laranja', 'verde', 'vermelho', 'cinza' ]
