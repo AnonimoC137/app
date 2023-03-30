@@ -96,3 +96,32 @@ const  App = () => {
   );
 }
 ```
+# Objeto - outra forma de lidar com multiplos campos #
+
+Podemos definir um objeto que ira conter todos os valores dos campos do formulario.
+
+@exemplo
+```bash
+const App = () => {
+    const [form, setForm] = React.useState({
+        nome: ' ',
+        email: ,
+    });
+
+    function handleSubmit(event) {
+        event.preventDeafault();
+        console.log(form)
+    }
+
+    function handleChange({target}) {
+        const {id, value} = target;
+        setForm({...form, [id] : value})
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+        
+        </form>
+    );
+}
+```
