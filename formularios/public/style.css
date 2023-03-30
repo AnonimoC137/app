@@ -1,0 +1,88 @@
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+html {
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen;
+    --font-size: 1.2rem;
+    --font-title: Georgia, Times;
+    --color: #19f;
+    --color-light: #adf;
+    --color-dark: #018;
+    --radius: 0.2rem;
+    
+}
+
+body {
+    margin: 0.2rem;
+   
+}
+
+body,
+input,
+textarea,
+button {
+    font-size: var(--font-size);
+    font-family: var(--font);
+    
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-title);
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: var(--radius);
+    background: var(--color);
+    color: var(--color-dark);
+    padding: 0.8rem 1.6rem;
+    margin: 20px;
+} 
+
+input,
+textarea {
+    display: block;
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: var(--radius);
+    background: #eee;
+    transition: 0.2s;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+li {
+    margin-bottom: 0.25rem;
+}
+
+button:active {
+    box-shadow: 0 0 0 3px var(--color), 0 0 0 4px var(--color);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+
+button:hover,
+button:focus {
+    background: var(--color);
+    box-shadow: 0 0 0 3px var(--color-light), 0 0 0 4px var(--color);
+}
+
+hr {
+    border: 2px solid black;
+    margin: 2rem auto; 
+}
+
