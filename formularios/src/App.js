@@ -1,16 +1,81 @@
 import React from 'react'
 import './App.css';
 
+const arrayForm = [
+  {
+    id: 'nome',
+    label: 'nome',
+    type: 'text',
+  },
+  {
+    id: 'email',
+    label: 'email',
+    type: 'email',
+  },
+  {
+    id: 'senha',
+    label: 'senha',
+    type: 'password',
+  },
+  {
+    id: 'cep',
+    label: 'cep',
+    type: 'number',
+  },
+  {
+    id: 'rua',
+    label: 'rua',
+    type: 'text',
+  },
+  {
+    id: 'numero',
+    label: 'numero',
+    type: 'number',
+  },
+  {
+    id: 'bairro',
+    label: 'bairro',
+    type: 'text',
+  },
+  {
+    id: 'cidade',
+    label: 'cidade',
+    type: 'text',
+  },
+  {
+    id: 'estado',
+    label: 'estado',
+    type: 'text',
+  },
+]
+
 const  App = () => {
- 
+  const [dados, setDados] = React.useState(null)
     const [form, setForm] = React.useState({
       nome: ' ',
-      email: ' ' 
+      email: ' ' ,
+      senha: ' ',
+      cep: ' ',
+      rua: ' ',
+      numero: ' ',
+      bairro: ' ',
+      cidade: ' ',
+      estado: ' ',
+      
   });
 
+
+    
   function handleSubmit(event) {
-      event.preventDeafault();
-      console.log(form)
+      event.preventDefault();
+      fetch('https://ranekapi.origamid.dev/json/api/usuario', {
+         method: 'POST',
+          headers: {
+             'Content-Type' : 'application/json',  
+         },
+         body: JSON.stringify(form),
+      }).then((response) => setDados(response))
+     
   }
 
   function handleChange({target}) {
@@ -20,24 +85,24 @@ const  App = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="nome">Nome</label>
-      <input 
-        type="text"
-        id='nome'
-        name='nome'
-        value={form.nome}
-        onChange={handleChange}
-       />
-
-        <label htmlFor="email">Email</label>
-        <input 
-          type="email"
-          id='email'
-          name='email'
-          value={form.email}
-          onChange={handleChange}
-        />
+      {arrayForm.map(({id, label, type}) => (
+        <div key={id}>
+            <label htmlFor={id}>{label}</label>
+            <input 
+              type={type}
+              id={id}
+              value={form[id]}
+              onChange={handleChange}
+            />
+        </div>
+      ))}
+      
         <button>enviar</button>
+        {dados && dados.ok && <p>usuario cadrastrado</p>}
+      
+          
+        
+        
     </form>
   )
 }

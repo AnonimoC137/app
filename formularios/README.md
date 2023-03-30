@@ -151,3 +151,17 @@ const  App = () => {
   )
 }
 ```
+
+# Exercicios #
+// Faça um fetch (post) para a API abaixo
+// Para a criação ser aceita é necessario enviar dados de: 
+// nome, email, senha, cep, rua, numero, bairro, cidade e estado
+// Essa é a função utilizado para realizar o POST
+
+fetch('https://ranekapi.origamid.dev/json/api/usuario', {
+  method: 'POST',
+  headers: {
+    'Content-Type' : 'application/json',  
+  },
+  body: JSON.stringify(form)
+})
