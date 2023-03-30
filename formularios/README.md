@@ -100,28 +100,54 @@ const  App = () => {
 
 Podemos definir um objeto que ira conter todos os valores dos campos do formulario.
 
+* Em nossa function handleChange, vamos desestruturar o target do evento, para podermos puxar o id e value, que tambem passamos desestruturando, para podermos usa-las no setForm.
+
+* Lembrando que o id vai ser o nome que consta na label (nome ou email nesse caso) e o value é o que vai ser escrito no input.
+
+* Precisamos passar dentro do setForm um objeto, pois estamos trabalhando com objeto dentro do estado, ai dentro do estado criamos um objeto e colocamos o que já existe(caso existir) e passamos o id([id]: value) para pegar esses respectivos valores.
+
+* No input para finalizar, precisamos passar dentro do value o {form.nome} ou {form.email} justamente por se tratar de um objeto precisamos criar ele com uma propriedade (nome , email).
+
 @exemplo
 ```bash
-const App = () => {
+const  App = () => {
+ 
     const [form, setForm] = React.useState({
-        nome: ' ',
-        email: ,
-    });
+      nome: ' ',
+      email: ' ' ,
+  });
 
-    function handleSubmit(event) {
-        event.preventDeafault();
-        console.log(form)
-    }
+  function handleSubmit(event) {
+      event.preventDeafault();
+      console.log(form)
+  }
 
-    function handleChange({target}) {
-        const {id, value} = target;
-        setForm({...form, [id] : value})
-    }
+  function handleChange({target}) {
+      const {id, value} = target;
+      setForm({...form, [id] : value})
+  }
 
-    return (
-        <form onSubmit={handleSubmit}>
-        
-        </form>
-    );
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="nome">Nome</label>
+      <input 
+        type="text"
+        id='nome'
+        name='nome'
+        value={form.nome}
+        onChange={handleChange}
+       />
+
+        <label htmlFor="email">Email</label>
+        <input 
+          type="email"
+          id='email'
+          name='email'
+          value={form.email}
+          onChange={handleChange}
+        />
+        <button>enviar</button>
+    </form>
+  )
 }
 ```

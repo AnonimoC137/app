@@ -5,7 +5,7 @@ const  App = () => {
  
     const [form, setForm] = React.useState({
       nome: ' ',
-      email: ,
+      email: ' ' 
   });
 
   function handleSubmit(event) {
@@ -19,7 +19,26 @@ const  App = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}></form>
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="nome">Nome</label>
+      <input 
+        type="text"
+        id='nome'
+        name='nome'
+        value={form.nome}
+        onChange={handleChange}
+       />
+
+        <label htmlFor="email">Email</label>
+        <input 
+          type="email"
+          id='email'
+          name='email'
+          value={form.email}
+          onChange={handleChange}
+        />
+        <button>enviar</button>
+    </form>
   )
 }
 
