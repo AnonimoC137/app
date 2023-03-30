@@ -316,19 +316,58 @@ const App () => {
 
   return (
     <form>
-    <select 
-      value={select}
-      id="produtos"
-      onChange={({target}) => setSelect(target.value)}
-    >
+      <select 
+        value={select}
+        id="produtos"
+        onChange={({target}) => setSelect(target.value)}
+      >
 
-    <option disabled value="">Selecione</option>
-    <option value="notebook">Notebook</option>
-    <option value="smartphone">Smartphone</option>
-    <option value="tablet">Tablet</option>
+        <option disabled value="">Selecione</option>
+        <option value="notebook">Notebook</option>
+        <option value="smartphone">Smartphone</option>
+        <option value="tablet">Tablet</option>
 
-    </select>
+        </select>
     </form>
   );
 }
 ```
+
+# Radio no React #
+
+No radio comparamos o valor selecionado com o valor do input, dentro do atributo checked, O que retorna true ira marcar o botão.
+
+@exemplo
+```bash
+const App = () => {
+  const [radio, setRadio] = React.useState(' ');
+
+  function handleChange({target}) {
+    setRadio(target.value)
+  }
+
+  return(
+    <form>
+      <label>
+        <input 
+            type="radio"
+            value="notebook"
+            checked={radio === 'notebook'}
+            onChange={handleChange}
+        />
+        Notebook
+      </label>
+      <label>
+        <input 
+            type="radio"
+            value="smartphone"
+            checked={radio === 'smartphone'}
+            onChange={handleChange}
+        />
+        Smartphone
+      </label>
+    </form>
+  );
+}
+```
+
