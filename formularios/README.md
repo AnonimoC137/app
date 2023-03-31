@@ -509,13 +509,15 @@ const Input = ({id, label, setValue, ...props}) => {
         id={id}
         name={id}
         onChange={({target}) => setValue(target.value)}
-        {props}
+        {...props}
       />
     </>
   );
 }
 ```
 * Lá em nosso arquivo App.js podemos invocar o componente que criamos e passar para ele o id, label, value, setValue( essa opção é passada para o componente ter acesso a função atualizadora do estado já que ele se encontra em outro arquivo)
+
+* Passamos tambem o ...props , pois não sabemos quantas propriedades mais vamos receber lá no input, entao já deixamos essa opção definida.
 
 @exemplo
 ```bash
@@ -524,7 +526,7 @@ const App = () => {
   const [email, setEmail] = React.useState(' ');
   return (
     <form>
-      <Input id="nome" label="Nome" value={nome} setValue={setNome} />
+      <Input id="nome" label="Nome" value={nome} setValue={setNome} required/>
       <Input id="email" label="Email" value={email} setValue={setEmail} />
     </form>
   );
