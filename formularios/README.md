@@ -540,9 +540,41 @@ Vamos criar nosso componente, vamos passar para ele o options, que vai ser passa
 
 * Dentro dele tambem vai ter o onChange que vai capturar o target.value (o que o usuario selecionou) e vai colocar em nossa função atualizadora do estado.
 
-* Por fim vamos criar um map no options(array de itens que vai ser recebido la no App) para criar por automação as demais opções, passando key e value.
+* Vamos criar um map no options(array de itens que vai ser recebido la no App) para criar por automação as demais opções, passando key e value.
+
+* Por fim vamos tambem passar como ...props e colocar dentro de select para caso tenham mais parametros no futuro que não possamos prever.
+
+@exemplo Select.js
+```bash
+const Select = ({options, value, setValue, ...props}) => {
+  return (
+    <select value={value} onChange={({target}) => setValue(target.value) {...props}}>
+        <option value="" disabled>Selecione</option>
+        {options.map((option) => (
+            <option  key={option} value={option}>
+                {option}
+            </option>
+        ))}
+    </select>    
+  )
+}
+```
+### Exemplo do componente Select em uso no App ###
+
+Vamos passar dentro de options uma array de strings, vamos passar tambem o value com o nosso estado criado para atualizar o Select, e vamos passar o setValue para tambem passar a função atualizadora do estado.
 
 @exemplo
 ```bash
+import Select from './Form/Select';
 
+
+const App = () => {
+ const [select, setSelect] = React.useState('');
+
+  return(
+   <form >
+      <Select options={['smartphone', 'notebook', 'tablet'] } value={select} setValue={setSelect}/>
+   </form>
+  );
+}
 ```
