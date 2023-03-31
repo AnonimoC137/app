@@ -567,7 +567,6 @@ Vamos passar dentro de options uma array de strings, vamos passar tambem o value
 ```bash
 import Select from './Form/Select';
 
-
 const App = () => {
  const [select, setSelect] = React.useState('');
 
