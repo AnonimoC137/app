@@ -495,3 +495,38 @@ const App = () => {
   );
 }
 ```
+# Componentes - input #
+
+Podemos definir componente para cada tipo de campo de formulario, assim evitamos criar codigo repetido.
+
+@exemplo Input.js
+```bash
+const Input = ({id, label, setValue, ...props}) => {
+  return (
+    <>
+      <label htmlFor={id}> {label} </label>
+      <input
+        id={id}
+        name={id}
+        onChange={({target}) => setValue(target.value)}
+        {props}
+      />
+    </>
+  );
+}
+```
+* Lá em nosso arquivo App.js podemos invocar o componente que criamos e passar para ele o id, label, value, setValue( essa opção é passada para o componente ter acesso a função atualizadora do estado já que ele se encontra em outro arquivo)
+
+@exemplo
+```bash
+const App = () => {
+  const [nome, setNome] = React.useState(' ');
+  const [email, setEmail] = React.useState(' ');
+  return (
+    <form>
+      <Input id="nome" label="Nome" value={nome} setValue={setNome} />
+      <Input id="email" label="Email" value={email} setValue={setEmail} />
+    </form>
+  );
+}
+```
