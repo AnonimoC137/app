@@ -532,3 +532,17 @@ const App = () => {
   );
 }
 ```
+# Componente - Select #
+
+Vamos criar nosso componente, vamos passar para ele o options, que vai ser passado lá no App como uma array de itens, value que vai ser passado com o valor do estado, e o setValue que vai ser passado com o metodo atualizador do nosso estado.
+
+* Criamos um select com o value={value} que contem o valor inicial do nosso estado, ele vai servir para selecionar a opção (option) que contem o mesmo valor inicial, para já deixar selecionado. Nesse caso é o "selecione" que definimos para obrigar o usuario a selecionar algo.
+
+* Dentro dele tambem vai ter o onChange que vai capturar o target.value (o que o usuario selecionou) e vai colocar em nossa função atualizadora do estado.
+
+* Por fim vamos criar um map no options(array de itens que vai ser recebido la no App) para criar por automação as demais opções, passando key e value.
+
+@exemplo
+```bash
+
+```
