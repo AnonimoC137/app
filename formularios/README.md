@@ -620,7 +620,7 @@ A criação do componente para checkbox é um pouco mais complexa que os anterio
 
 * Vamos tambem colocar dentro do nosso input o checked, vamos utilizar junto com o value(onde esta o valor do nosso estado) o includes e passar o option, ai ele verifica se dentro do nosdso estado tem o item que esta sendo passado, caso aja ele vai deixar marcado em nossa tela.
 
-* Novamente não foi colocar o exemplo do App.js, pois continua sendo igual a exemplo do select e do input, unica coisa que muda é
+* Novamente não foi colocar o exemplo do App.js, pois continua sendo igual a exemplo do select e do input, unica coisa que muda é que em nosso estado vamos passar um valor inicial de uma array vazia.
 
 @exemplo
 ```bash
