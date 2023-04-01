@@ -610,3 +610,46 @@ const Radio = ({options, value, setValue, ...props}) => {
   )
 }
 ```
+# Componenste - Checkbox #
+
+A criação do componente para checkbox é um pouco mais complexa que os anteriores, porem continua ainda muito semelhante
+
+* Uma das diferenças é a criação de uma função para o onChange, fazendo uma verificação do target.checked, caso o item esteja checado, vamos atualizar nosso estado com o set colocando ...value para distribuir os itens já existentes em nossa array(nosso estado começou como uma array vazia, distribuimos os valores anteriores para evitar erros pois em algum casos podem já haver valores dentro da array)
+
+* No caso de desmarcamos uma opção criamos o else, ele vai ser responsavel por pegar nosso estado fazer um filter(filter vai retornar uma nova array com os parametro que definirmos) vamos definir que queremos retornar somente os itens que forem diferentes do item que estamos desmarcando( que nesse caso o item desmarcado esta como target.value pois foi o ultimo item clicado)
+
+* Vamos tambem colocar dentro do nosso input o checked, vamos utilizar junto com o value(onde esta o valor do nosso estado) o includes e passar o option, ai ele verifica se dentro do nosdso estado tem o item que esta sendo passado, caso aja ele vai deixar marcado em nossa tela.
+
+* Novamente não foi colocar o exemplo do App.js, pois continua sendo igual a exemplo do select e do input, unica coisa que muda é
+
+@exemplo
+```bash
+const Checkbox = ({options, value, setValue, ...props}) => {
+
+    function handleChange({target}) {
+        if(target.checked) {
+            setValue([...value, target.value])
+        } else {
+            setValue(value.filter((item) => item !== target.value))
+        }
+    }
+
+  return (
+    <>
+    {options.map((option) => (
+        <label key={option}>
+            <input
+                type="checkbox"
+                value={option}
+                checked={value.includes(option)}
+                onChange={handleChange}
+                {...props}
+            />
+            {option}
+        </label>
+    ))}
+      
+    </>
+  )
+}
+```
