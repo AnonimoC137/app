@@ -577,3 +577,36 @@ const App = () => {
   );
 }
 ```
+# Componentes - Radio #
+
+Vamos criar a estrutura no arquivo Radio.js, essa estrutura vai ser quase igual as anteriores.
+
+* Tambem vamos passar desestruturando os mesmos parametros, options, value, setValue e ...props .
+
+* A diferença esta no input, o checked faz uma comparação se o value e igual ao otion passado, serve para ter controle sobre qual item esta marcado.
+
+* Lembrando que a reatividade desse componente esta ligada ao checked
+
+* Não vou passar o exemplo de como colocar no App.js, pois é exatamente igual ao select do exemplo anterior, passando options como uma array, e criando um estado expecifico para o radio.
+
+@exemplo
+```bash
+const Radio = ({options, value, setValue, ...props}) => {
+  return (
+    <>
+      {options.map((option) => (
+        <label key={option}>
+            <input
+                type="radio" 
+                value={option}
+                checked={value === option}
+                onChange={({target}) => setValue(target.value)}
+                {...props}
+             />
+            {option}
+        </label>
+      ))}
+    </>
+  )
+}
+```
