@@ -648,7 +648,6 @@ const Checkbox = ({options, value, setValue, ...props}) => {
             {option}
         </label>
     ))}
-      
     </>
   )
 }
