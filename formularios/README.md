@@ -662,7 +662,71 @@ O onBlur é ativado sempre que o campo fica fora de foco, momento perfeito para 
 
 * Vamos validar de 3 formas esse cep, com o onBlur, onSubmit e onChange
 
+* Iniciamos criando dois estados, um é o "cep" para atualizarmos em conjunto com o onChange, e outro que vai ser o "erro" que vai estar trabalhando em conjunto com nosso nossos 3 metodos falados acima.
+
+* Criamos a function validaCep, nela vamos receber o value que vai vim quando o input perder o foco (onBlur), quando o input ter um evento de escrita(onChange) e quando o formulario for enviado (onSubmit) dentro dele vai conter um if (que verifica o tamanho do value, se for igual a 0 ) se o if for true, ele vai atualizar o nosso estado "erro" mostrando uma mansagem na tela, a mesma coisa vale para o else if, e o else vai ser quando não ouver erro, o if retorna false, else if retorna false e else retorna true, alem do else atualizar o erro para null, mostrando que não existe erro, esses retornos em cada um servem para que o erro seja ou não mostrado na tela.
+
+* Criamos nossa function handleBlur, ela vai servir para capturar o valor do target sempre que o input perder o foco, invocamos nossa validaCep com esse valor do target para ser validado.
+
+* Criamos a function handleChange, ela vai mostrar o erro somente enquanto ele for true, depois que o formato estiver correto o erro não vai mais aparecer, alem de atualizar o nosso estado "cep", pois vamos precisar que ele esteja atualizado para usa-lo no onSubmit.
+
+* Criamos a function onSubmit, ela vai tratar o padrao do envio com o metodo de prevent, alem de fazer a validação pois vamos tambem invocar nossa validaCep nele, e passar nosso estado "cep" a ela, pois ela não tem acesso ao valor do target do input, por isso o estado "cep" precisa estar atualizado.
+
+* Ultima coisa IMPORTANTE, ao inves de passar no input o setValue, contendo a função atualizadora do nosso estado, vamos passar para ele o onChange, e lá dentro do input no onChange vamos passar nosso callback para nossa função, hnaldeChange, pois vamos tratar dela no mesmo arquivo das demais validações.
+
 @exemplo
 ```bash
+const App = () => {
+ const [cep, setCep] = React.useState(' ');
+ const [erro, setErro] = React.useState(null)
 
+
+   function validaCep(value) {
+      if(value.length === 0) {
+         setErro('Preeencha um valor');
+         return false;
+      } else if (!/^\d{5}-?\d{3}$/.test(value)) {
+         setErro('preencha um CEP valido');
+         return false;
+
+      } else {
+         setErro(null)
+         return true;
+      }
+   }
+
+ function handleBlur({target}) {
+  validaCep(target.value);
+
+ }
+
+ function handleChange({target}) {
+   if(erro) validaCep(target.value)
+   setCep(target.value)
+ }
+
+ function handleSubmit(event) {
+   event.preventDefault()
+   if(validaCep(cep)) {
+      console.log('Enviar');
+   } else {
+      console.log('Não enviar');
+   }
+ }
+
+  return(
+   <form onSubmit={handleSubmit}>
+      <Input 
+         type="text"
+         label ="CEP"
+         id='cep'
+         value={cep}
+         onChange={handleChange} 
+         onBlur={handleBlur}
+         placeholder='00000-000'
+      />
+      {erro && <p>{erro}</p>}
+   </form>
+  );
+}
 ```
