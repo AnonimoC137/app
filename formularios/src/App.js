@@ -1,26 +1,59 @@
 import React from 'react'
 import './App.css';
 import Input from './Form/Input';
-import Select from './Form/Select';
-import Radio from './Form/Radio';
-import Checkbox from './Form/Checkbox';
+
 
 
 const App = () => {
- const [nome, setNome] = React.useState(' ');
- const [email, setEmail] = React.useState(' ');
- const [select, setSelect] = React.useState('');
- const [radio, setRadio] = React.useState('');
- const [checkbox, setCheckbox] = React.useState([]);
+ const [cep, setCep] = React.useState(' ');
+ const [erro, setErro] = React.useState(null)
+
+
+   function validaCep(value) {
+      if(value.length === 0) {
+         setErro('Preeencha um valor');
+         return false;
+      } else if (!/^\d{5}-?\d{3}$/.test(value)) {
+         setErro('preencha um CEP valido');
+         return false;
+
+      } else {
+         setErro(null)
+         return true;
+      }
+   }
+
+ function handleBlur({target}) {
+  validaCep(target.value);
+
+ }
+
+ function handleChange({target}) {
+   if(erro) validaCep(target.value)
+   setCep(target.value)
+ }
+
+ function handleSubmit(event) {
+   event.preventDefault()
+   if(validaCep(cep)) {
+      console.log('Enviar');
+   } else {
+      console.log('Não enviar');
+   }
+ }
 
   return(
-   <form >
-      <Checkbox options={['javascript', 'java', 'python']} value={checkbox} setValue={setCheckbox}/>
-      <Radio options={['smartphone', 'notebook']} value={radio} setValue={setRadio}/>
-      <Select options={['smartphone', 'notebook', 'tablet'] } value={select} setValue={setSelect}/>
-      <Input id="nome" label='nome' value={nome} setValue={setNome} required />
-      <Input id="email" label='Email' value={email} setValue={setEmail}/>
-      <button>Enviar</button>
+   <form onSubmit={handleSubmit}>
+      <Input 
+         type="text"
+         label ="CEP"
+         id='cep'
+         value={cep}
+         onChange={handleChange} 
+         onBlur={handleBlur}
+         placeholder='00000-000'
+      />
+      {erro && <p>{erro}</p>}
    </form>
   );
 }

@@ -652,3 +652,17 @@ const Checkbox = ({options, value, setValue, ...props}) => {
   )
 }
 ```
+# Validando formulario #
+
+### onBlur ###
+
+O onBlur é ativado sempre que o campo fica fora de foco, momento perfeito para validarmos o dado do campo. A validação pode ser feita com JavaScript utilizando REGEX.
+
+* Nessa etapa vamos aprender o basico de validação, vamos ver um modo de usar hooks para facilitar, porem é importante ver esse passo a passo.
+
+* Vamos validar de 3 formas esse cep, com o onBlur, onSubmit e onChange
+
+@exemplo
+```bash
+
+```
