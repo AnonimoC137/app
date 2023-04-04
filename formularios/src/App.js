@@ -6,19 +6,13 @@ import useForm from './Hooks/useForm';
 
 
 const App = () => {
- const {value,
-   setValue,
-   erro,
-   setErro,
-   validar,
-   onChange,
-   onBlur
-   } = useForm('cep');
+ const cep = useForm('cep');
+ 
 
 
  function handleSubmit(event) {
    event.preventDefault()
-   if(validar(value)) {
+   if(cep.validar()) {
       console.log('Enviar');
    } else {
       console.log('Não enviar');
@@ -30,12 +24,11 @@ const App = () => {
       <Input 
          type="text"
          label ="CEP"
-         id='cep'
-         value={value}
-         onChange={onChange} 
+         id='cep' 
          placeholder='00000-000'
+         {...cep}
       />
-      {erro && <p>{erro}</p>}
+      
    </form>
   );
 }

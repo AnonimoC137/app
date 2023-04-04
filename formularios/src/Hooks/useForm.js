@@ -3,7 +3,11 @@ import React from 'react'
 const types = {
   cep: {
     regex: /^\d{5}-?\d{3}$/,
-    messagem: "Cep Invalido"
+    message: "Cep Invalido"
+  },
+  email: {
+    regex: /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i,
+    message: 'email invalido'
   }
 
 }
@@ -16,7 +20,7 @@ const useForm = (type) => {
     if(value.length === 0) {
        setErro('Preeencha um valor');
        return false;
-    } else if (types[type].regex.test(value)) {
+    } else if (!types[type].regex.test(value)) {
        setErro('preencha um CEP valido');
        return false;
 
@@ -38,7 +42,8 @@ const useForm = (type) => {
     setErro,
     validar,
     onChange,
-    onBlur: () => validar(value)}
+    onBlur: () => validar(value),
+    validar: () => validar(value)}
   )
 }
 
