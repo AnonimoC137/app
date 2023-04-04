@@ -7,7 +7,7 @@ const types = {
   },
   email: {
     regex: /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i,
-    message: 'email invalido'
+    message: 'Email invalido'
   }
 
 }
@@ -20,8 +20,8 @@ const useForm = (type) => {
     if(value.length === 0) {
        setErro('Preeencha um valor');
        return false;
-    } else if (!types[type].regex.test(value)) {
-       setErro('preencha um CEP valido');
+    } else if (types[type] && !types[type].regex.test(value)) {
+       setErro(types[type].message);
        return false;
 
     } else {

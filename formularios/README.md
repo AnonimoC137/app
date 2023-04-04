@@ -730,9 +730,74 @@ const App = () => {
   );
 }
 ```
-# Validação de form usando Custom Hook #
+# Validação de form usando Custom Hook useForm #
+
+* Criamos um objeto chamo types, ele vai ser utilizado em nossa função de validar, tanto para usar o regex dele como a message.
+
+* Criamos o useForm (nosso hook) passando nele o type (valor que vai ser passado em nosso arquivo App)
+
+* Criamos dois estados, um para o value (valor que vair ser digitado e capturado pelo target.value) e o outro e o estado para atualizar o erro (caso haja um)
+
+* Criamos a função para validar o que vai ser digitado pelo usuario, sendo que no primeiro if vai ser para quando nçao for digitado nada, o else if vai primeiro verificar se types[type] existe ([type] é o modo que puxamos o parametro que esta sendo colocado em noos hook lá dentro do App.js nesse caso cep ou email outra forma de usar serie types.cep ou types.email, porem desse forma fica mais limpo) caso exista essas propriedades ele vai entrar dentro do objeto vai acessar o regex pois passamos depois disso .regex.test(value) assim verificando se o valor digitado combina com o padrao que estipulamos, o else é para quando não existe erro, assim colocando o erro como null, detalhe cada uma retorna true ou false, isso serve para mostrar o erro na tela pois em nosso inout ele vai usar o true e false para mostrar ou não.
+
+* Criamos a função onChange, ela serve para quando digitado errado mostrar na tela o erro, pois sempre que erro for true ele manda para a nossa função de validar, caso não exista erro ela paga essa valor e poem em nosso estado "value", para podemos utilizar esse valor depois.
+
+* Por ultimo retornamos todos os estados e funções que vamos utilizar em outro arquivo(App.js), alem de passar o validar já ativado e o onBlur, para que eles já façam suas funçoes, pois eles usam o value para fazer isso e em outro arquivo ficaria complicado de acessar esse estado.
+
 
 @exemplo
 ```bash
+import React from 'react'
 
+const types = {
+  cep: {
+    regex: /^\d{5}-?\d{3}$/,
+    message: "Cep Invalido"
+  },
+  email: {
+    regex: /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i,
+    message: 'Email invalido'
+  }
+
+}
+
+const useForm = (type) => {
+  const [value, setValue] = React.useState(' ');
+  const [erro, setErro] = React.useState(null);
+
+  function validar(value) {
+    if(value.length === 0) {
+       setErro('Preeencha um valor');
+       return false;
+    } else if (types[type] && !types[type].regex.test(value)) {
+       setErro(types[type].message);
+       return false;
+
+    } else {
+       setErro(null)
+       return true;
+    }
+ }
+
+ function onChange({target}) {
+  if(erro) validar(target.value)
+  setValue(target.value)
+ }
+
+  return (
+    {value,
+    setValue,
+    erro,
+    setErro,
+    validar,
+    onChange,
+    onBlur: () => validar(value),
+    validar: () => validar(value)}
+  )
+}
+
+export default useForm
 ```
+### Validando formulario com Custom hook App.js###
+
+@exemplo - App.js
