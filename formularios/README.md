@@ -800,4 +800,78 @@ export default useForm
 ```
 ### Validando formulario com Custom hook App.js###
 
+* Apos importarmos o nosso custom hook vamos invocar ele em uma const chamada cep, e colocamos o parametro (que vai ser chamado dentro e nosso hook de type) de cep, criamos um tambem para email.
+
+* Criamos tambem uma função para o handleSubmit, ele não pode estar dentro de nosso hook pois ele precisa permanecer no mesmo arquivo onde ele esta sendo utilizado no formulario, dentro dele existe um if fazendo a validação quando acontecer o onSubmit (quando os dados são enviados apertando enter ou o button), puxando nossa função de validar que foi passada sendo ativada, podemos puxar ela passando o nome da const que puxa o hook, nesse caso chamada de cep(mesma coisa vale para o email)  e tambem dentro dele vamos previnir o padrao do evento.
+
+* Por ultima vamos passar desestruturando o {...cep} ou {...email} para passar ao input todos os itens que estamos retornando em nosso hook, value, validar, erro etc...
+
+
 @exemplo - App.js
+```bash
+import React from 'react'
+import './App.css';
+import Input from './Form/Input';
+import useForm from './Hooks/useForm';
+
+const App = () => {
+ const cep= useForm('cep');
+ const email= useForm('email');
+  
+ function handleSubmit(event) {
+   event.preventDefault()
+   if(cep.validar()) {
+      console.log('Enviar');
+   } else {
+      console.log('Não enviar');
+   }
+ }
+
+  return(
+   <form onSubmit={handleSubmit}>
+      <Input 
+         type="text"
+         label ="CEP"
+         id='cep' 
+         placeholder='00000-000'
+         {...cep}
+      />
+      <Input 
+         type="email"
+         label ="Email"
+         id='email' 
+         placeholder='email@email.com'
+         {...email}
+      />
+      <button>Enviar</button>
+   </form>
+  );
+}
+```
+
+### Por fim dentro do input ###
+
+* Apenas para mostrar as configurações finais de como ficou o input utilizando nosso hook.
+
+* Para eveitar error passamos desestruturando cada metodo, estado etc.. alem de que é no input que vamos passar no final uma condição para ser mostrada da tela o erro (caso exista).
+
+@exemplo
+```bash
+const Input = ({id, label, value, onChange, onBlur, type, erro}) => {
+  return (
+      <>
+      <label htmlFor={id}> {label} </label>
+      <input
+        id={id}
+        name={id}
+        onChange={onChange}
+        onBlur={onBlur}
+        value={value}
+        type={type}
+      />
+      {erro && <p>{erro}</p> }
+    </>
+    
+  )
+}
+```
