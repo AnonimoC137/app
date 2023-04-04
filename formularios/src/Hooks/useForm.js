@@ -12,11 +12,11 @@ const useForm = (type) => {
   const [value, setValue] = React.useState(' ');
   const [erro, setErro] = React.useState(null);
 
-  function validaCep(value) {
+  function validar(value) {
     if(value.length === 0) {
        setErro('Preeencha um valor');
        return false;
-    } else if (!/^\d{5}-?\d{3}$/.test(value)) {
+    } else if (types[type].regex.test(value)) {
        setErro('preencha um CEP valido');
        return false;
 
@@ -26,10 +26,19 @@ const useForm = (type) => {
     }
  }
 
+ function onChange({target}) {
+  if(erro) validar(target.value)
+  setValue(target.value)
+ }
+
   return (
-    <div>
-      
-    </div>
+    {value,
+    setValue,
+    erro,
+    setErro,
+    validar,
+    onChange,
+    onBlur: () => validar(value)}
   )
 }
 
