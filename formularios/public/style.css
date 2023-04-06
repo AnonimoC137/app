@@ -58,15 +58,16 @@ textarea {
     margin: 0;
 }
 input[type="radio"] {
-    width: 70%;
+    width: 6%;
     display: flex;
   }
 
 label {
     display: flex;
-    flex-flow: row-reverse nowrap;
-    justify-content: space-between;
+    flex-flow: row;
+    
     margin-bottom: 0.25rem;
+    
 }
 
 li {

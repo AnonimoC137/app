@@ -10,7 +10,7 @@ const Radio = ({pergunta, options, id, onChange, value, active}) => {
         {options.map((option) => (
           <label 
             key={option} 
-            style={{display: 'flex', flexFlow: 'row-reverse nowrap', alignItems: 'center'}}
+            
           >
               <input 
                 type="radio" 

@@ -41,7 +41,7 @@ const perguntas = [
 
 const App = () => {
  
- const [resposta, setResposta] = React.useState({
+ const [respostas, setRespostas] = React.useState({
    p1: ' ',
    p2: ' ',
    p3: ' ',
@@ -49,15 +49,30 @@ const App = () => {
 
  })
  const [mostrar, setMostrar] = React.useState(0)
+ const [resultadoFinal, setResultadoFinal] = React.useState(null)
 
  function handleChange({target}) {
-   setResposta({...resposta, [target.id]: target.value})
+   setRespostas({...respostas, [target.id]: target.value})
+ }
+
+ function resultado() {
+   console.log('final')
+   const corretas = perguntas.filter(({id, resposta}) => {
+      return respostas[id] === resposta
+   })
+   console.log(corretas)
+   setResultadoFinal(`voce acertou ${corretas.length} de ${perguntas.length}`)
  }
 
  function handleClick() {
-   if (mostrar < perguntas)
-   setMostrar( mostrar + 1)
- }
+   if (mostrar < perguntas.length -1) {
+      setMostrar( mostrar + 1)
+   } else {
+      setMostrar( mostrar + 1)
+      resultado()
+    }
+   
+ } 
  
 
  return(
@@ -67,13 +82,13 @@ const App = () => {
             active={mostrar === index}
             key={pergunta.id}
             onChange={handleChange} 
-            value={resposta[pergunta.id]}
-            setValue={setResposta}
+            value={respostas[pergunta.id]}
+            setValue={setRespostas}
             {...pergunta} 
           />
       ))}
+         {resultadoFinal ? <p>{resultadoFinal}</p> : <button onClick={handleClick}>Proximo</button>}
          
-         <button onClick={handleClick}>Proximo</button>
    </form>
    
   );
