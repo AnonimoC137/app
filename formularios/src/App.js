@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css';
 import Radio from './Form/Radio';
 
-const pergunta = [
+const perguntas = [
    {
      pergunta: 'Qual método é utilizado para criar componentes?',
      options: [
@@ -55,13 +55,14 @@ const App = () => {
  }
 
  function handleClick() {
+   if (mostrar < perguntas)
    setMostrar( mostrar + 1)
  }
  
 
  return(
    <form onSubmit={(event) => event.preventDefault()}>
-      {pergunta.map((pergunta,index) => (
+      {perguntas.map((pergunta,index) => (
          <Radio 
             active={mostrar === index}
             key={pergunta.id}
