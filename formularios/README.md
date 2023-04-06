@@ -877,8 +877,8 @@ const Input = ({id, label, value, onChange, onBlur, type, erro}) => {
 ```
 # Desafio de formulario #
  Precisamos criar um tela onde apareça as perguntas e voce possa selecionar a correta, toda vez que voce selecionar uma a proxima pergunta vira, no final vai ter o resultado de quantas voce acertou.
- 
-@exemplo
+
+@exemplo do que esta pedindo para usar
 ```bash
 const pergunta = [
   {
@@ -916,4 +916,113 @@ const pergunta = [
   },
   
 ]
+```
+
+### desafio pronto ###
+
+* Primeiro vamos colocar a array de objetos proprosto no desafio.
+
+* Criamos o estado respostas, nele criamos um objeto que vai receber as respostas.
+
+* Criamos o estado mostrar, sua função vai ser fazer uma comparação com o index dos elementos renderizados na tela, pois caso seja false eles não vão ser mostrados, assim fazendo com que somente uma pergunta/opções apareçam na tela.
+
+* Criamos o estado resultadoFinal, para conseguirmos mostrar para o usuario quantas perguntas ele acertou.
+
+* Criamos a função handleChange, ela vai atualizar o estado respostas, colocando nele todas as respostas anteriores(caso exista) e vai capturar o [target.id] que são os p1, p2, p2 do nosso estado respostas e colocar o target.value dentro do deu respectivo lugar (ele sabem onde é pois o input captura isso usando a propriedade id).
+
+*
+
+@exemplo
+```bash
+const perguntas = [
+   {
+     pergunta: 'Qual método é utilizado para criar componentes?',
+     options: [
+       'React.makeComponent()',
+       'React.createComponent()',
+       'React.createElement()',
+ 
+     ],
+     resposta: 'React.createElement()',
+     id: 'p1',
+   },
+   {
+     pergunta: 'Como importamos um componente externo?',
+     options: [
+       'import Component from "./Component"',
+       'require("./Component")',
+       'import "./Component"',
+     ],
+     resposta: 'import Component from "./Component"',
+     id: 'p2',
+   },
+   {
+     pergunta: 'Qual hook não é nativo?',
+     options: ['useEffect()', 'useFetch()', 'useCallback()'],
+     resposta: 'useFetch()',
+     id: 'p3',
+   },
+   {
+     pergunta: 'Qual palavra deve ser utilizada para criamos um hook?',
+     options: ['set', 'get', 'use'],
+     resposta: 'use',
+     id: 'p4',
+   },
+   
+ ]
+
+const App = () => {
+ 
+ const [respostas, setRespostas] = React.useState({
+   p1: ' ',
+   p2: ' ',
+   p3: ' ',
+   p4: ' ',
+
+ })
+ const [mostrar, setMostrar] = React.useState(0)
+ const [resultadoFinal, setResultadoFinal] = React.useState(null)
+
+ function handleChange({target}) {
+   setRespostas({...respostas, [target.id]: target.value})
+ }
+
+ function resultado() {
+   console.log('final')
+   const corretas = perguntas.filter(({id, resposta}) => {
+      return respostas[id] === resposta
+   })
+   console.log(corretas)
+   setResultadoFinal(`voce acertou ${corretas.length} de ${perguntas.length}`)
+ }
+
+ function handleClick() {
+   if (mostrar < perguntas.length -1) {
+      setMostrar( mostrar + 1)
+   } else {
+      setMostrar( mostrar + 1)
+      resultado()
+    }
+   
+ } 
+ 
+
+ return(
+   <form onSubmit={(event) => event.preventDefault()}>
+      {perguntas.map((pergunta,index) => (
+         <Radio 
+            active={mostrar === index}
+            key={pergunta.id}
+            onChange={handleChange} 
+            value={respostas[pergunta.id]}
+            setValue={setRespostas}
+            {...pergunta} 
+          />
+      ))}
+         {resultadoFinal ? <p>{resultadoFinal}</p> : <button onClick={handleClick}>Proximo</button>}
+         
+   </form>
+   
+  );
+ }
 ```
