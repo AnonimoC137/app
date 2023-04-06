@@ -876,7 +876,8 @@ const Input = ({id, label, value, onChange, onBlur, type, erro}) => {
 }
 ```
 # Desafio de formulario #
-
+ Precisamos criar um tela onde apareça as perguntas e voce possa selecionar a correta, toda vez que voce selecionar uma a proxima pergunta vira, no final vai ter o resultado de quantas voce acertou.
+ 
 @exemplo
 ```bash
 const pergunta = [

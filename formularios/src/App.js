@@ -49,14 +49,18 @@ const App = () => {
 
  })
  const [mostrar, setMostrar] = React.useState(0)
+
  function handleChange({target}) {
    setResposta({...resposta, [target.id]: target.value})
-  
+ }
+
+ function handleClick() {
+   setMostrar( mostrar + 1)
  }
  
 
  return(
-   <form >
+   <form onSubmit={(event) => event.preventDefault()}>
       {pergunta.map((pergunta,index) => (
          <Radio 
             active={mostrar === index}
@@ -68,7 +72,7 @@ const App = () => {
           />
       ))}
          
-         <button>Proximo</button>
+         <button onClick={handleClick}>Proximo</button>
    </form>
    
   );

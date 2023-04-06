@@ -58,11 +58,14 @@ textarea {
     margin: 0;
 }
 input[type="radio"] {
-    vertical-align: middle;
+    width: 70%;
+    display: flex;
   }
 
 label {
-    display: block;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    justify-content: space-between;
     margin-bottom: 0.25rem;
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Radio = ({pergunta, options, id, onChange, value, active}) => {
-  
+
   if(active === false) return null
   return (
     <>
@@ -10,7 +10,7 @@ const Radio = ({pergunta, options, id, onChange, value, active}) => {
         {options.map((option) => (
           <label 
             key={option} 
-            style={{display: 'inline-block', marginLeft: '3rem'}}
+            style={{display: 'flex', flexFlow: 'row-reverse nowrap', alignItems: 'center'}}
           >
               <input 
                 type="radio" 
