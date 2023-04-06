@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Input = ({id, label, value, onChange, onBlur, type, erro}) => {
+const Input = ({id, label, value, onChange, onBlur, type, erro, options}) => {
   return (
       <>
       <label htmlFor={id}> {label} </label>
@@ -11,6 +11,7 @@ const Input = ({id, label, value, onChange, onBlur, type, erro}) => {
         onBlur={onBlur}
         value={value}
         type={type}
+        options={options}
       />
       {erro && <p>{erro}</p> }
     </>

@@ -875,3 +875,44 @@ const Input = ({id, label, value, onChange, onBlur, type, erro}) => {
   )
 }
 ```
+# Desafio de formulario #
+
+@exemplo
+```bash
+const pergunta = [
+  {
+    pergunda: 'Qual método é utilizado para criar componentes?'
+    options: [
+      'React.makeComponent()',
+      'React.createComponent()',
+      'React.createElement()',
+
+    ],
+    resposta: 'React.createElement()',
+    id: 'p1',
+  },
+  {
+    pergunda: 'Como importamos um componente externo?'
+    options: [
+      'import Component from "./Component"',
+      'require("./Component")',
+      'import "./Component"',
+    ],
+    resposta: 'import Component from "./Component"',
+    id: 'p2',
+  },
+  {
+    pergunda: 'Qual hook não é nativo?'
+    options: ['useEffect()', 'useFetch()', 'useCallback()'],
+    resposta: 'useFetch()',
+    id: 'p3',
+  },
+  {
+    pergunda: 'Qual palavra deve ser utilizada para criamos um hook?'
+    options: ['set', 'get', 'use'],
+    resposta: 'use',
+    id: 'p4',
+  },
+  
+]
+```

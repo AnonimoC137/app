@@ -55,7 +55,11 @@ textarea {
     border-radius: var(--radius);
     background: #eee;
     transition: 0.2s;
+    margin: 0;
 }
+input[type="radio"] {
+    vertical-align: middle;
+  }
 
 label {
     display: block;
