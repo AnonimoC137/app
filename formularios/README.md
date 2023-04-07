@@ -930,9 +930,17 @@ const pergunta = [
 
 * Criamos a função handleChange, ela vai atualizar o estado respostas, colocando nele todas as respostas anteriores(caso exista) e vai capturar o [target.id] que são os p1, p2, p2 do nosso estado respostas e colocar o target.value dentro do deu respectivo lugar (ele sabem onde é pois o input captura isso usando a propriedade id).
 
-*
+* Criamos a função resultado, nela vamos criar uma const corretas, que vai pegar as perguntas (array de objetos) e fazer um filter, no filter vamos passar desestruturando o valor do id e respostas para que possamos fazer uma comparação da resposta do usuario com a resposta correta que esta contida dentro de cada um de nossos objetos, apos isso atualizamos o nosso estado resultadoFinal passando uma template string dentro ${corretas.length} pois o filter vai retornar somente as true, dando o valor de quantas true(corretas) foram e ${perguntas.length} vai mostrar quantas perguntas no total existiam . exemplo 2 de 4.
 
-@exemplo
+* Criamos a função handleClick, ela vai ser importante para inclementar nosso estado mostrar, pois ele é usado para fazer uma comparação com o index de cada elemento renderizado(perguntas/options) e só vai ser mostrada na tela o index correto, por isso vamos inclementando o estado para que as proximas perguntas apareçam assim que clicarmos no button, quando o estado por maior que o numero de perguntas ele vai ir para o else que vai fazer uma ultima adição ao estado assim tirando a ultima pergunta da tela, e por fim ativando nossa função resultado citada acima.
+
+* Dentro do nosso return, vamos ter o form com o onSubmit sendo ativado e já previnindo o comportamento padrao do formulario que seria enviar sempre que clicarmos no button.
+
+* Criamos um map em nosso array de objetos "pergunta", nesse map é retornado nosso componente Radio, que vai receber ainda do map as propriedades, pergunta e index, passamos {...pergunta} dentro de nosso componente para de forma mais facil passarmos todas as propriedades contidas em pergunta de nosso objeto.
+
+* Por ultimo, vamos fazer uma condição com o ternario , se o nosso estado resultadoFinal for verdadeiro(ou seja conter os resultados) vamos mostrar na tela um paragrafo contendo o resultado e removendo o button.
+
+@exemplo App.js
 ```bash
 const perguntas = [
    {
@@ -1006,7 +1014,6 @@ const App = () => {
    
  } 
  
-
  return(
    <form onSubmit={(event) => event.preventDefault()}>
       {perguntas.map((pergunta,index) => (
@@ -1022,7 +1029,48 @@ const App = () => {
          {resultadoFinal ? <p>{resultadoFinal}</p> : <button onClick={handleClick}>Proximo</button>}
          
    </form>
-   
   );
  }
+```
+
+### exemplo desafio arquivo componente Radio #
+
+Nessa parte vou explicar o que foi feito dentro de nosso componente Radio.
+
+* Vamos passar desestruturando todas as propriedades que vamos receber lá de nosso arquivo App.js
+
+* Criamos um if para comparar a propriedade active que vai conter "true" ou "false" dependendo do index do nosso arquivo App.js, nesse caso noss condição vai retornar "null" para todas as perguntas com o index com retorno "false", assim só mostrando na tela o index que testar "true".
+
+*
+
+@exemplo
+```bash
+import React from 'react'
+
+const Radio = ({pergunta, options, id, onChange, value, active}) => {
+
+  if(active === false) return null
+  return (
+    <>
+     <fieldset>
+        <legend style={{fontWeight: 'bold'}}>{pergunta}</legend>
+        {options.map((option) => (
+          <label 
+            key={option} 
+            
+          >
+              <input 
+                type="radio" 
+                id={id}
+                checked={value === option}
+                value={option} 
+                onChange={onChange} 
+              />
+              {option}
+          </label>
+        ))}
+     </fieldset>
+    </>
+  )
+}
 ```
