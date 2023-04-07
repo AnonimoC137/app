@@ -1041,7 +1041,13 @@ Nessa parte vou explicar o que foi feito dentro de nosso componente Radio.
 
 * Criamos um if para comparar a propriedade active que vai conter "true" ou "false" dependendo do index do nosso arquivo App.js, nesse caso noss condição vai retornar "null" para todas as perguntas com o index com retorno "false", assim só mostrando na tela o index que testar "true".
 
-*
+* Criamos nossa estrutura que vai ser renderizada na tela em cima da tag fieldset que agrupa formularios e na tag legend vamos passar a pergunta que recebemos como propriedade.
+
+* Para as opções vamos tambem criar um map, que vai retornar uma label com input e vai mostrar dentro da label cada opção, marcamos o input como radio para podermos selecionar uma das opções usando o checked, que vai comparar se o value e igual ao options fazendo com que possamos apenas escolher uma
+
+* Alem de passar para o label uma key de identificação(processo necessario para o react) e passarmos o onChange nele para ter ligação direta com nossa função handleChange em nosso arquivo App.js.
+
+* NÃO podemos esquecer do nosso id={id}, ele vai ser um elemento muito importante para podemor capturar os ids das perguntas e respostas.
 
 @exemplo
 ```bash
@@ -1056,8 +1062,7 @@ const Radio = ({pergunta, options, id, onChange, value, active}) => {
         <legend style={{fontWeight: 'bold'}}>{pergunta}</legend>
         {options.map((option) => (
           <label 
-            key={option} 
-            
+            key={option}  
           >
               <input 
                 type="radio" 
