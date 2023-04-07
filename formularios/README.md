@@ -928,7 +928,7 @@ const pergunta = [
 
 * Criamos o estado resultadoFinal, para conseguirmos mostrar para o usuario quantas perguntas ele acertou.
 
-* Criamos a função handleChange, ela vai atualizar o estado respostas, colocando nele todas as respostas anteriores(caso exista) e vai capturar o [target.id] que são os p1, p2, p2 do nosso estado respostas e colocar o target.value dentro do deu respectivo lugar (ele sabem onde é pois o input captura isso usando a propriedade id).
+* Criamos a função handleChange, ela vai atualizar o estado respostas, colocando nele todas as respostas anteriores(caso exista) e vai capturar o [target.id] que são os p1, p2, p2 do nosso estado respostas e colocar o target.value dentro do seu respectivo lugar (ele sabem onde é pois o input captura isso usando a propriedade id).
 
 * Criamos a função resultado, nela vamos criar uma const corretas, que vai pegar as perguntas (array de objetos) e fazer um filter, no filter vamos passar desestruturando o valor do id e respostas para que possamos fazer uma comparação da resposta do usuario com a resposta correta que esta contida dentro de cada um de nossos objetos, apos isso atualizamos o nosso estado resultadoFinal passando uma template string dentro ${corretas.length} pois o filter vai retornar somente as true, dando o valor de quantas true(corretas) foram e ${perguntas.length} vai mostrar quantas perguntas no total existiam . exemplo 2 de 4.
 
