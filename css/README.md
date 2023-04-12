@@ -46,4 +46,109 @@ Utilize camelCase "tituloPrincipal", já que o nome da classe se transformara em
 
 @exemplo
 ```bash
+.tituloPrincipal {
+    color: blue;
+}
+```
+# Style Components #
+
+Permite escrevermos o CSS diretamente no javascript. Ao inves de ckasses, criamos com um estilo unico.
+
+@exemplo
+```bash
+import styled from 'styled-components'
+
+const Ttile = styled.h1`
+font-size: 1.5rem;
+color: tomato;
+`
+const App = () => {
+    return (
+        <div>
+            <Title>Titulo principal</Title>
+        </div>
+    );
+}
+```
+### instalação ###
+
+@exemplo
+```bash
+npm install styled-components
+
+++ plugin do VScode
+
+vscode-styled-components
+```
+### styled ###
+O styled é um objeto com diferentes metodos que representam as tags de html.
+
+@exemplo
+```bash
+const ProdutosContainer = styled.div`
+    display: flex;
+`
+const Produto= styled.div`
+    flex: 1;
+`
+const Titulo = styled.h1`
+    font-size: 2rem;
+`
+```
+### Props ###
+
+Podemos passar propriedades  como em um componente de react.
+
+@exemplo
+```bash
+const Preco= styled.p`
+   background: ${(props) =>props.cor};
+   color: white;
+   display: inline-block;
+   padding: 0.5rem
+`
+const App = () => {
+return (
+    <Preco cor="#53d956">R$2999</Preco>
+);
+}
+```
+### Estado ###
+Podemos passar o estado como uma propriedade e modificarmos certos estilos com base no mesmo.
+
+@exemplo
+```bash
+import styled from 'styled-components'
+
+const Button = styled.button`
+background: ${({ativo}) => (ativo ? '#53d956' : '#000')}
+border: 1px solid black;
+font-size: 1rem;
+color: white;
+cursor: pointer;
+`
+
+const App = () => {
+    const [ativo, setAtivo] = React.useState(false);
+
+    return (
+        <Button ativo={ativo} onClick={() => setAtivo(!ativo)}>R$3000</Button>
+    );
+}
+```
+
+### Pseudo elemento ###
+Podemos definir o estado de :hover ou criar elementos com o ::after ou ::before utilizando & na frente do elemento.
+
+@exemplo
+```bash
+const Comprar = styled.button`
+font-size: 1.5rem;
+padding: 0.5rem;
+cursor: pointer;
+&:hover {
+    background: black;
+    color: white;
+}
+`
 ```
