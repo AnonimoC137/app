@@ -2,6 +2,7 @@ import React from 'react'
 import styles from "./Slide.module.css"
 
 const Slide = ({slides}) => {
+    const [active, setActive] = React.useState(0)
   return (
     <section className={styles.container}>
         <div className={styles.content}>

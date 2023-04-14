@@ -9,11 +9,12 @@ button {
     border: none;
     padding: .5rem;
     text-decoration: none;
-    margin: .2rem;
+    margin: 1rem .2rem;
     border-radius: .4rem;
     color: white;
     font-size: 1.2rem;
     cursor: pointer;
+   
 }
 
 .container {
@@ -28,5 +29,17 @@ button {
 .item {
     /* serve para ele nao comprimir meu item deixando ele ocupar os 80% definidos */
     flex-shrink: 0;
+    width: 80%;
+    margin: 0 10%;
+    padding: 10rem 0;
+    background: #dfdddd;
+    border-radius: .4rem;
+    text-align: center;
+}
+
+.nav {
+    display: flex;
+    margin:  2rem auto;
+    justify-content: space-between;
     width: 80%;
 }
