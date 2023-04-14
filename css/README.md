@@ -161,6 +161,7 @@ Anime a entrada de elementos utilizando a propriedade "animation".
 .animeLeft {
     opacity: 0;
     transform: translateX(-20px);
+    animation: animeLeft .3s forwards;
 }
 
 @keyframes animeLeft {
@@ -174,5 +175,23 @@ Anime a entrada de elementos utilizando a propriedade "animation".
 
 @exemplo - App.js & Produtos.js
 ```bash
+const App = () => {
+    const [ativar, setAtivar] = React.useState(false);
 
+    return(
+        <button onClick={() => setAtivar(!ativar)}>Ativar</button>
+        {ativar && <Produto/>}
+    );
+}
+
+// Agora em Produto.js
+
+const Produto = () => {
+    return(
+        <div className='animeLeft'>
+            <h1>Produto</h1>
+            <p>meu produto</p>
+        </div>
+    );
+}
 ```
