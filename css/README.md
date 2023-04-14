@@ -152,3 +152,27 @@ cursor: pointer;
 }
 `
 ```
+
+### Animações com css/react ###
+Anime a entrada de elementos utilizando a propriedade "animation".
+
+@exemplo - App.css
+```bash
+.animeLeft {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+@keyframes animeLeft {
+    to {
+        opacity: 1;
+        transform: initial;
+    }
+}
+```
+* em nosso arquivo App.js e no Produtos.js vamos criar um button que vai mudar o estado de false para true, sempre que for true o conteudo vai aparecer na tela por conta de nossa condicional.
+
+@exemplo - App.js & Produtos.js
+```bash
+
+```
