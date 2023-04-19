@@ -274,3 +274,29 @@ const Slide = ({slides}) => {
   )
 }
 ```
+
+# Imagens #
+
+Podemos incluir imagens de algumas formas, por exemplo~
+
+* diretamente na tag img, importanto a imagem dando um nova a ela e invocando-a.
+
+* Passando ela como um background no css.
+
+* E a forma mais eficaz é passar ela como um componente, assim tento mais liberdade para trabalhar ela, isso inclui as imagens SVG, que podem ser manipuladas com javascript para ter animações.
+
+@exemplo
+```bash
+import foto from './img/foto.jpg';
+import DogSvg from './DogSvg';
+
+const App () => {
+    const [olho, setOlho] = React.useState(0);
+
+
+    return (
+        <DogSvg color="#84e" olho={olho}/>
+        <img src={foto} alt="Cachorro"/>
+    );
+}
+```
