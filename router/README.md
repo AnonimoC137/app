@@ -90,4 +90,57 @@ const Login = () = > {
 ```
 # Rota dinamica #
 
-O uso de :nome ira definir uma rota dinamica, onde o nome podera ser utilizado como variavel dentro do componente. Seve para buscarmos rotas dinamicas como produto/notebook ou produto/smartphone
+O uso de :nome ira definir uma rota dinamica, onde o nome podera ser utilizado como variavel dentro do componente. Seve para buscarmos rotas dinamicas como produto/notebook ou produto/smartphone.
+
+@exemplo
+```bash
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Home from './Home'
+import Sobre from './Sobre'
+import Header from './Header'
+import Produto from './Produto';
+
+const  App = () =>  {
+  return (
+        <BrowserRouter>
+            <Header/>
+            <Routes>
+                <Route path="/" element={<Home />}/>
+                <Route path="sobre" element={<Sobre />}/>
+                <Route path="produto/:id" element={<Produto />}/>
+            </Routes>
+        </BrowserRouter>
+  );
+}
+```
+### useParams ###
+* Podemos usar o link em conjunto com o useParams para ele poder capturar o id que estamos passando na URL assim podendo usa-lo para diversas finalidades.
+
+@exemplo
+```bash
+import { useParams } from 'react-router-dom'
+
+const Produto = () => {
+    const params = useParams();
+  return (
+    <div>
+      <h1>Produto: {params.id}</h1>
+    </div>
+  )
+}
+```
+### useLocation ###
+
+Podemos usar esse hook para pegar o caminho inteiro que esta sendo usado, muito util para ferramentas de analise para ver em qual paginas o usuario esta navegando.
+
+@exemplo
+```bash
+const Header = () => {
+    const location = useLocation();
+
+    React.useEffect(() => {
+        console.log('mudou de rota');
+
+    }, [location])
+}
+```
