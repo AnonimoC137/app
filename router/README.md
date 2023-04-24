@@ -49,3 +49,16 @@ const Header = () => {
     );
 }
 ```
+
+* Podemos tambem usar o "NavLink" com ele sabemos exatamente onde estamos na pagina pois ele coloca um active na pagina onde esta selecionada, essa forma é a mais comum de ser usada.
+
+* Quando usamos essa opção no NavLink do home que passamos no to="/" precisamos tambem colocar o "end", para ele entender que esse é o caminho completo.
+
+@exemplo
+```bash
+        <nav>
+            <NavLink to="/" end>Home</NavLink>
+            <NavLink to="sobre">Sobre</NavLink>
+            <NavLink to="contato">Contato</NavLink>
+        </nav>
+```
