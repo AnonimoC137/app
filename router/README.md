@@ -49,7 +49,7 @@ const Header = () => {
     );
 }
 ```
-
+### NavLink ###
 * Podemos tambem usar o "NavLink" com ele sabemos exatamente onde estamos na pagina pois ele coloca um active na pagina onde esta selecionada, essa forma é a mais comum de ser usada.
 
 * Quando usamos essa opção no NavLink do home que passamos no to="/" precisamos tambem colocar o "end", para ele entender que esse é o caminho completo.
@@ -61,4 +61,30 @@ const Header = () => {
             <NavLink to="sobre">Sobre</NavLink>
             <NavLink to="contato">Contato</NavLink>
         </nav>
+```
+# useNavigate #
+
+O hook useNavigate permite navegarmos programaticamente entre as rotas, Por exemplo, pode ser utilizado quando o usuario faz um login bem sucedido e enviamos o mesmo a pagina de sua conta.
+
+* Podemos colocar esse hook em uma const e utilizar ela como uma função, passando dentro dela o caminho inteiro na qual o usurario vai ser encaminhado.
+
+@exemplo
+```bash
+import {useNavigate} from 'react-router-dom';
+
+const Login = () = > {
+    const natigate = useNavigate();
+
+    function handleClick() {
+        console.log('login feito com sucesso');
+        navigate('/sobre')
+    }
+
+    return (
+        <div>
+            <h1>Faça seu login</h1>
+            <button onClick={handleClick}>Login</button>
+        </div>
+    );
+}
 ```
