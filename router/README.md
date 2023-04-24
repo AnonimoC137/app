@@ -24,8 +24,8 @@ const App = () => {
         <BrowserRouter>
             <Header/>
             <Routes>
-                <Route path="/" element={<Home />}>
-                <Route path="sobre" element={<Sobre />}>
+                <Route path="/" element={<Home />}/>
+                <Route path="sobre" element={<Sobre />}/>
             </Routes>
         </BrowserRouter>
     );
@@ -88,3 +88,6 @@ const Login = () = > {
     );
 }
 ```
+# Rota dinamica #
+
+O uso de :nome ira definir uma rota dinamica, onde o nome podera ser utilizado como variavel dentro do componente. Seve para buscarmos rotas dinamicas como produto/notebook ou produto/smartphone
