@@ -31,3 +31,21 @@ const App = () => {
     );
 }
 ```
+# Link #
+
+O link ira  modificar a rota e rendenrizar o novo componente sem recarregar a pagina.
+
+@exemplo
+```bash
+import {Link} from 'react-router-dom';
+
+const Header = () => {
+    return (
+        <nav>
+            <Link to="/">Home</Link>
+            <Link to="sobre">Sobre</Link>
+            <Link to="contato">Contato</Link>
+        </nav>
+    );
+}
+```
