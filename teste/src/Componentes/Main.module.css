@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+   display: flex;
+   flex-direction: column;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.campoImg {
+    display: flex;
+    align-items: center;
+    background: #bdb8b8;
+    padding: 2rem;
+    margin: 1rem;
+    box-shadow: 0 3px 3px black;
+    border-radius: 1rem;
+}
+
+.tituloPrincipal {
+    display: flex;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    padding: 2rem;
+}
+
+.narutoPequeno {
+    max-width: 30%;
+   padding: 1rem;
+   
+}
+
+.nomePersonagem {
+    padding: 0 1rem;
+    background: #ec850e;
+    width: 30%;
+    margin: 1rem;
+}
+
+.texto { 
+    font-size: 1.5rem;
+}
