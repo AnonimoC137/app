@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Slackey&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -64,6 +64,7 @@
 
 .texto { 
     font-size: 1.5rem;
+    font-family: 'Bebas Neue', cursive;
 }
 
 .punho {
