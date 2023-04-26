@@ -1,34 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Slackey&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+   
 }
+
+
+   
 
 .container {
    display: flex;
    flex-direction: column;
+   
 }
 
 .content {
     display: flex;
     flex-direction: column;
+   
+    
 }
 
 .campoImg {
     display: flex;
     align-items: center;
-    background: #bdb8b8;
+    background: #d60d0d;
     padding: 2rem;
     margin: 1rem;
     box-shadow: 0 3px 3px black;
     border-radius: 1rem;
+    color: #fff;
+    position: relative;
 }
 
 .tituloPrincipal {
     display: flex;
-    margin: 0 auto;
-    font-size: 1.5rem;
+    margin: .5rem auto;
+    font-size: 1.8rem;
     padding: 2rem;
+    background: #ec850e;
+    box-shadow: 3px 0px 3px #c76e08, 5px 5px 5px black;
+    border: 2px solid black;
+    border-radius: 25%;
+    font-family: 'Righteous', cursive;
 }
 
 .narutoPequeno {
@@ -41,9 +57,60 @@
     padding: 0 1rem;
     background: #ec850e;
     width: 30%;
-    margin: 1rem;
+    margin: 2rem;
 }
 
 .texto { 
     font-size: 1.5rem;
+}
+
+.punho {
+    width: 7%;
+    position: absolute;
+    bottom: 10px;
+    right: 62%;
+}
+
+.raio {
+    width: 7%;
+    position: absolute;
+    bottom: 10px;
+    right: 47%;
+}
+
+.escudo {
+    width: 10%;
+    position: absolute;
+    bottom: -6px;
+    right: 25%;
+}
+    
+
+
+.spanForca {
+    width: 10%;
+    position: absolute;
+    bottom: 10px;
+    right: 52%;
+    font-size: 1.5rem;
+}
+
+.spanRaio {
+    width: 10%;
+    position: absolute;
+    bottom: 10px;
+    right: 39%;
+    font-size: 1.5rem;
+}
+
+.spanEscudo {
+    width: 10%;
+    position: absolute;
+    bottom: 10px;
+    right: 16%;
+    font-size: 1.5rem;
+}
+
+.contentEmoji {
+    display: flex;
 }
