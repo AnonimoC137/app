@@ -35,12 +35,24 @@ const personagens = [
 ]
 
 const Main = () => {
+  const [mudar, setMudar] = React.useState(personagens);
+  const [ativa, setAtiva] = React.useState(true)
+  
+  function handleClick() {
+    setAtiva(!true)
+    if(ativa){
+      setMudar(mudar[0].img = '../img/naruto-transformado2.webp', mudar[1].img = '../img/escudo5.png' )
+    }
+    
+     
+  }
   return (
     <div className={styles.container}>
         <h1 className={styles.tituloPrincipal}>A historia de cada personagem de Naruto</h1>
-        {personagens.map(({nome, texto, img, id, punho, forca, raio,velocidade,escudo,defesa}) => (
+        {personagens.map(({nome, texto, img, id, punho, forca, raio,velocidade,escudo,defesa }) => (
             <div className={styles.content} key={id}>
               <h1 className={styles.nomePersonagem}>{nome}</h1>
+              <button  className={styles.buttonTransformar}onClick={handleClick}>Transformar Todos</button>
               <div className={styles.campoImg}>
                   <img className={styles.narutoPequeno} src={img} />
                   <p className={styles.texto}>{texto}</p>
@@ -51,8 +63,6 @@ const Main = () => {
                     <span className={styles.spanRaio}>Velocidade:{velocidade} </span>
                     <img className={styles.escudo} src={escudo} alt="raio" title='raio' />
                     <span className={styles.spanEscudo}>Defesa:{defesa} </span>
-                    
-                    
                   </div>
               </div>
               

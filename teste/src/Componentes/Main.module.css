@@ -49,6 +49,10 @@
     font-family: 'Righteous', cursive;
 }
 
+.tituloPrincipal:hover {
+    color: #fff;
+}
+
 .narutoPequeno {
     max-width: 30%;
    padding: 1rem;
@@ -61,6 +65,10 @@
     width: 30%;
     margin: 2rem;
     font-family: 'Slackey', cursive;
+}
+
+.nomePersonagem:hover {
+    color: #fff;
 }
 
 .texto { 
@@ -123,4 +131,23 @@
 
 .contentEmoji {
     display: flex;
+}
+
+.buttonTransformar {
+    position: absolute;
+    top: 38%;
+    right: 9%;
+    background: #d60d0d;
+    border: none;
+    padding: .6rem;
+    color: #fff;
+    font-weight: bold;
+    border-radius: .3rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.buttonTransformar:hover {
+    color: yellow;
+    padding: 1.2rem;
 }
