@@ -13,6 +13,7 @@ const personagens = [
     nome: 'Naruto Classico',
     img: '../img/naruto-pequeno.jpg',
     texto: 'O naruto quando nasceu rescebeu o espirito da raposa demonia de nova causas.',
+    texto2: 'Naruto ganha um manto protetor da raposa de nove caudas, aumentando muito seu poder e sua velocidade',
     id: 1,
     punho: '../img/punho2.png',
     forca: 50,
@@ -45,6 +46,7 @@ const Main = () => {
     if(ativa){
       setMudar(mudar[0].img = '../img/naruto-transformado2.webp', mudar[1].img = '../img/sasuke-transformado.jpg' )
       setMudar(mudar[0].forca = 100, mudar[1].forca = 110  )
+      setMudar(mudar[0].texto =  mudar[0].texto2)
     }
     
      
@@ -61,7 +63,7 @@ const Main = () => {
                           height={50}
                           width={50}
                           radius={2}
-                          color="#ec850e"
+                          color="#fff"
                           ariaLabel="ball-triangle-loading"
                           wrapperClass={{}}
                           wrapperStyle=""
