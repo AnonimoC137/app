@@ -148,7 +148,39 @@ const Header = () => {
 
 Utilizamos nested routes quando precisamos de rotas dentro de rotas. Como por exemplo: perfil/editar e perfil/certificados e etc... Utilie o \* para definir que existem outras rotas dentro.
 
-@exemplo - App.js
-```bash
+* No exemplo a seguir criamos 3 componentes, ProdutoDescricao. ProdutoAvaliacao, ProdutoCustomizado, com eles vamos criar 3 rotas diretas em produto.
 
+* Vamos usar as rotas passando o path de cada uma e o elemento vai conter os componentes citados acima.
+
+* Criamos tambem um nav contendo um NavLink que nos da acesso as rotas que criamos.
+
+* IMPORTANTE lembrar que,  path="produto/:id/*"  precisa ser passado assim para que ele aceite outras rotas depois do nosso id, se não vai dar pagina não encontrada pois ele vai parar de capturar o caminho quando pegar o id.
+
+@exemplo - Produto.js
+```bash
+import React from 'react'
+import { NavLink, Route, Routes, useParams } from 'react-router-dom'
+import ProdutoDescricao from './ProdutoDescricao';
+import ProdutoAvaliacao from './ProdutoAvaliacao';
+import ProdutoCustomizado from './ProdutoCustomizado';
+
+const Produto = () => {
+    const params = useParams();
+    console.log(params)
+  return (
+    <div>
+      <h1>Produto: {params.id}</h1>
+      <nav>
+        <NavLink to=''>Descrição</NavLink>
+        <NavLink to='avaliacao'>Avaliação</NavLink>
+        <NavLink to='customizado'>Customizado</NavLink>
+      </nav>
+      <Routes>
+        <Route path='' element={<ProdutoDescricao/>}/>
+        <Route path='avaliacao' element={<ProdutoAvaliacao/>}/>
+        <Route path='customizado' element={<ProdutoCustomizado/>}/>
+      </Routes>
+    </div>
+  )
+}
 ```
