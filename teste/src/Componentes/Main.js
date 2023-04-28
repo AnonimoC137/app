@@ -1,10 +1,12 @@
 import React from 'react'
 import styles from "./Main.module.css"
+import { BallTriangle } from 'react-loader-spinner'
 import foto1 from '../img/naruto-pequeno.jpg';
 import foto2 from '../img/sasuke-pequeno.webp';
 import punho from '../img/punho2.png';
 import raio from '../img/raio4.png';
 import escudo from '../img/escudo5.png';
+
 
 const personagens = [
   {
@@ -41,7 +43,8 @@ const Main = () => {
   function handleClick() {
     setAtiva(!true)
     if(ativa){
-      setMudar(mudar[0].img = '../img/naruto-transformado2.webp', mudar[1].img = '../img/escudo5.png' )
+      setMudar(mudar[0].img = '../img/naruto-transformado2.webp', mudar[1].img = '../img/sasuke-transformado.jpg' )
+      setMudar(mudar[0].forca = 100, mudar[1].forca = 110  )
     }
     
      
@@ -52,7 +55,19 @@ const Main = () => {
         {personagens.map(({nome, texto, img, id, punho, forca, raio,velocidade,escudo,defesa }) => (
             <div className={styles.content} key={id}>
               <h1 className={styles.nomePersonagem}>{nome}</h1>
-              <button  className={styles.buttonTransformar}onClick={handleClick}>Transformar Todos</button>
+              <button
+                className={styles.buttonTransformar}onClick=   {handleClick}>Transformar Todos 
+                <BallTriangle
+                          height={50}
+                          width={50}
+                          radius={2}
+                          color="#ec850e"
+                          ariaLabel="ball-triangle-loading"
+                          wrapperClass={{}}
+                          wrapperStyle=""
+                          visible={true}
+                        /> 
+                </button>
               <div className={styles.campoImg}>
                   <img className={styles.narutoPequeno} src={img} />
                   <p className={styles.texto}>{texto}</p>
