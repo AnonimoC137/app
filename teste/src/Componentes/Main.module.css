@@ -139,7 +139,7 @@
     position: absolute;
     top: 38%;
     right: 9%;
-    background: #d60d0d;
+    background: #ec850e;
     border: none;
     padding: .6rem;
     color: #fff;
@@ -151,6 +151,6 @@
 }
 
 .buttonTransformar:hover {
-    color: yellow;
+    color: #d60d0d;
     padding: 1rem;
 }
