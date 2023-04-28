@@ -144,4 +144,11 @@ const Header = () => {
     }, [location])
 }
 ```
+# Nested Routes #
 
+Utilizamos nested routes quando precisamos de rotas dentro de rotas. Como por exemplo: perfil/editar e perfil/certificados e etc... Utilie o \* para definir que existem outras rotas dentro.
+
+@exemplo - App.js
+```bash
+
+```
