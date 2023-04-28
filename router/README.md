@@ -156,7 +156,9 @@ Utilizamos nested routes quando precisamos de rotas dentro de rotas. Como por ex
 
 * IMPORTANTE lembrar que,  path="produto/:id/*"  precisa ser passado assim para que ele aceite outras rotas depois do nosso id, se não vai dar pagina não encontrada pois ele vai parar de capturar o caminho quando pegar o id.
 
-* Então em resumo, basicamente criamos rotas, e para acessar essas rotas utilizamos os links, que podem ser links normais e NavLink.
+* Então em resumo, basicamente criamos rotas, e para acessar essas rotas utilizamos os links, que podem ser links normais e NavLink. LEMBRANDO que no link da descrição que é o link que fica na propria pagina do produto o path='' fica vazio, no caminho da rota tambem.
+
+
 @exemplo - Produto.js
 ```bash
 import React from 'react'
