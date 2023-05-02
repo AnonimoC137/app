@@ -180,6 +180,7 @@
         right: 88%;
     }
     .spanForca {
+        display: flex;
         bottom: 20px;
         right: 80%;
         font-size: .5rem;
@@ -190,6 +191,7 @@
         right: 56%;
     }
     .spanRaio {
+        display: flex;
         bottom: 20px;
         right: 50%;
         font-size: .5rem;
@@ -201,6 +203,7 @@
         right: 22%;
     }
     .spanEscudo {
+        display: flex;
         bottom: 20px;
         right: 15%;
         font-size: .5rem;
