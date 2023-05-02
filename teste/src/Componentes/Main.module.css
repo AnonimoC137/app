@@ -54,7 +54,7 @@
     transform: rotateX(15deg);
 }
 
-.narutoPequeno {
+.imgPersonagem {
     max-width: 30%;
    padding: 1rem;
    
@@ -158,8 +158,51 @@
 @media (max-width: 425px) {
     .nomePersonagem {
         margin: 8rem 2rem 1rem 0;
+        width: 82%;
     }
     .buttonTransformar {    
         top: 46%;
+    }
+    .imgPersonagem {
+        max-width: 100%;
+    }
+    .campoImg {
+        display: block;
+        height: 560px;
+    }
+    .contentEmoji {
+        width: 100%;
+        height: 77px;
+        
+    }
+    .punho {
+        width: 14%;
+        right: 88%;
+    }
+    .spanForca {
+        bottom: 20px;
+        right: 80%;
+        font-size: .6rem;
+    }
+    .raio {
+        width: 14%;
+        bottom: 8px;
+        right: 56%;
+    }
+    .spanRaio {
+        bottom: 20px;
+        right: 50%;
+        font-size: .6rem;
+    }
+    .escudo {
+        width: 14%;
+        position: absolute;
+        bottom: 9px;
+        right: 22%;
+    }
+    .spanEscudo {
+        bottom: 20px;
+        right: 15%;
+        font-size: .6rem;
     }
 }

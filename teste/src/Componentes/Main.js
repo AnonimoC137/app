@@ -71,13 +71,13 @@ const Main = () => {
                         /> 
                 </button>
               <div className={styles.campoImg}>
-                  <img className={styles.narutoPequeno} src={img} />
+                  <img className={styles.imgPersonagem} src={img} />
                   <p className={styles.texto}>{texto}</p>
                   <div className={styles.contentEmoji}>
                     <img className={styles.punho} src={punho} alt="forca" title='forca' />
                     <span className={styles.spanForca}>Força:{forca} </span>
                     <img className={styles.raio} src={raio} alt="raio" title='raio' />
-                    <span className={styles.spanRaio}>Velocidade:{velocidade} </span>
+                    <span className={styles.spanRaio}>Veloc:{velocidade} </span>
                     <img className={styles.escudo} src={escudo} alt="raio" title='raio' />
                     <span className={styles.spanEscudo}>Defesa:{defesa} </span>
                   </div>
