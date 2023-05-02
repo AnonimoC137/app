@@ -38,5 +38,16 @@
     margin-right: .6rem;
 }
 
+@media (max-width: 425px) {
+    .content {
+        background-size: 100%;
+        background-position: 41% 77%;
+    }
+
+    .nomePersonagem {
+        margin: 8rem 2rem 1rem 0;
+    }
+}
+
 
 

@@ -154,3 +154,12 @@
     color: #d60d0d;
     padding: 1rem;
 }
+
+@media (max-width: 425px) {
+    .nomePersonagem {
+        margin: 8rem 2rem 1rem 0;
+    }
+    .buttonTransformar {    
+        top: 46%;
+    }
+}
