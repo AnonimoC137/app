@@ -182,7 +182,7 @@
     .spanForca {
         bottom: 20px;
         right: 80%;
-        font-size: .6rem;
+        font-size: .5rem;
     }
     .raio {
         width: 14%;
@@ -192,7 +192,7 @@
     .spanRaio {
         bottom: 20px;
         right: 50%;
-        font-size: .6rem;
+        font-size: .5rem;
     }
     .escudo {
         width: 14%;
@@ -203,7 +203,7 @@
     .spanEscudo {
         bottom: 20px;
         right: 15%;
-        font-size: .6rem;
+        font-size: .5rem;
     }
     .tituloPrincipal {
         text-align: center;

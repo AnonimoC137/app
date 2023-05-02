@@ -77,7 +77,7 @@ const Main = () => {
                     <img className={styles.punho} src={punho} alt="forca" title='forca' />
                     <span className={styles.spanForca}>Força:{forca} </span>
                     <img className={styles.raio} src={raio} alt="raio" title='raio' />
-                    <span className={styles.spanRaio}>Veloc:{velocidade} </span>
+                    <span className={styles.spanRaio}>rapidez:{velocidade} </span>
                     <img className={styles.escudo} src={escudo} alt="raio" title='raio' />
                     <span className={styles.spanEscudo}>Defesa:{defesa} </span>
                   </div>
