@@ -187,3 +187,22 @@ const Produto = () => {
   )
 }
 ```
+
+# Head # 
+No react não temos acesso direto as tags e informações do Head. Porem com o uso de rotas é essencial realizar a mudança do titulo e descrição para cada rota. Podemos fazer isso através de um componente ou custom hook.
+
+* Nesse exemplo estamos capturando a tag meta com name de description e colocando em seu conteudo o valor que vai vir do props.description que vamos passar lá no App.js
+
+@exemplo
+```bash
+const Head = (props) => {
+  React.useEffect(() => {
+    document.title = props.title;
+    document
+    .querySelector('meta[name='description']')
+    .setAttribute('content', props.description)
+  }, [props])
+
+  return <> </>
+}
+```
