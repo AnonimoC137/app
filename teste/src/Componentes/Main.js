@@ -85,19 +85,6 @@ const Main = () => {
         {personagens.map(({nome, texto, img, id, punho, forca, raio,velocidade,escudo,defesa }) => (
             <div className={styles.content} key={id}>
               <h1 className={styles.nomePersonagem}>{nome}</h1>
-              <button
-                className={styles.buttonTransformar}onClick=   {handleClick}>Transformar Todos 
-                <BallTriangle
-                          height={50}
-                          width={50}
-                          radius={2}
-                          color="#fff"
-                          ariaLabel="ball-triangle-loading"
-                          wrapperClass={{}}
-                          wrapperStyle=""
-                          visible={true}
-                        /> 
-                </button>
               <div className={styles.campoImg}>
                   <img className={styles.imgPersonagem} src={img} />
                   <p className={styles.texto}>{texto}</p>
@@ -108,6 +95,19 @@ const Main = () => {
                     <span className={styles.spanRaio}>rapidez:{velocidade} </span>
                     <img className={styles.escudo} src={escudo} alt="raio" title='raio' />
                     <span className={styles.spanEscudo}>Defesa:{defesa} </span>
+                    <button
+                      className={styles.buttonTransformar}onClick=   {handleClick}>Transformar Todos 
+                      <BallTriangle
+                                height={50}
+                                width={50}
+                                radius={2}
+                                color="#fff"
+                                ariaLabel="ball-triangle-loading"
+                                wrapperClass={{}}
+                                wrapperStyle=""
+                                visible={true}
+                              /> 
+                </button>
                   </div>
               </div>
               
