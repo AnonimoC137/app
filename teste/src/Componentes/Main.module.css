@@ -524,7 +524,7 @@
         padding: 0;
     }
     .imgPersonagem {
-        max-width: 100%;
+        max-width: 50%;
     }
     .campoImg {
         display: flex;
