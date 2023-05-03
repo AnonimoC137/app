@@ -573,3 +573,62 @@
         text-align: center;
     }
 }
+@media (min-width: 1440px) {
+    .nomePersonagem {
+        width: 50%;
+    }
+    .buttonTransformar {    
+        margin: auto;
+        width: auto;
+        padding: 0;
+    }
+    .imgPersonagem {
+        max-width: 100%;
+    }
+    .campoImg {
+        display: flex;
+        height: 550px;
+    }
+    
+    .contentEmoji {
+        width: 100%;
+        height: 77px;
+        
+    }
+    .punho {
+        width: 7%;
+        right: 88%;
+    }
+    .spanForca {
+        display: flex;
+        bottom: 20px;
+        right: 80%;
+        font-size: .6rem;
+    }
+    .raio {
+        width: 7%;
+        bottom: 8px;
+        right: 56%;
+    }
+    .spanRaio {
+        display: flex;
+        bottom: 20px;
+        right: 50%;
+        font-size: .6rem;
+    }
+    .escudo {
+        width: 7%;
+        position: absolute;
+        bottom: 9px;
+        right: 22%;
+    }
+    .spanEscudo {
+        display: flex;
+        bottom: 20px;
+        right: 15%;
+        font-size: .6rem;
+    }
+    .tituloPrincipal {
+        text-align: center;
+    }
+}
