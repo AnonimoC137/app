@@ -136,9 +136,6 @@
 
 .buttonTransformar {
     display: flex;
-    position: absolute;
-    top: 38%;
-    right: 9%;
     background: #ec850e;
     border: none;
     padding: .6rem;
@@ -148,6 +145,7 @@
     font-size: 2rem;
     cursor: pointer;
     align-items: center;
+    justify-content: center;
 }
 
 .buttonTransformar:hover {
@@ -157,11 +155,12 @@
 
 @media (max-width: 425px) {
     .nomePersonagem {
-        margin: 9rem 2rem 1rem 0;
+        /* margin: 9rem 2rem 1rem 0; */
         width: 85%;
     }
     .buttonTransformar {    
-        top: 46%;
+        width: 100%;
+        justify-content: center;
     }
     .imgPersonagem {
         max-width: 100%;
@@ -215,13 +214,15 @@
 
 @media (max-width: 375px) {
     .nomePersonagem {
-        margin: 9rem 2rem 1rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
         width: 85%;
     }
     .buttonTransformar {    
-        top: 49%;
-        width: 75%;
-        padding: 0;
+        width: 100%;
+        justify-content: center;
     }
     .imgPersonagem {
         max-width: 100%;
@@ -274,7 +275,7 @@
 }
 @media (min-width: 426px) {
     .nomePersonagem {
-        margin: 9rem 2rem 1rem 0;
+        
         width: 85%;
     }
     .buttonTransformar {    
@@ -333,7 +334,7 @@
 }
 @media (min-width: 631px) {
     .nomePersonagem {
-        margin: 9rem 2rem 1rem 0;
+        
         width: 85%;
     }
     .buttonTransformar {    

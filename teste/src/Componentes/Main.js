@@ -95,7 +95,11 @@ const Main = () => {
                     <span className={styles.spanRaio}>rapidez:{velocidade} </span>
                     <img className={styles.escudo} src={escudo} alt="raio" title='raio' />
                     <span className={styles.spanEscudo}>Defesa:{defesa} </span>
-                    <button
+                    
+                  </div>
+                  
+              </div>
+              <button
                       className={styles.buttonTransformar}onClick=   {handleClick}>Transformar Todos 
                       <BallTriangle
                                 height={50}
@@ -108,9 +112,6 @@ const Main = () => {
                                 visible={true}
                               /> 
                 </button>
-                  </div>
-              </div>
-              
             </div>
         ))}
          
