@@ -516,11 +516,10 @@
 }
 @media (min-width: 1024px) {
     .nomePersonagem {
-        margin: 9rem 2rem 1rem 0;
-        width: 85%;
+        width: 50%;
     }
     .buttonTransformar {    
-        top: 32%;
+        margin: auto;
         width: auto;
         padding: 0;
     }
