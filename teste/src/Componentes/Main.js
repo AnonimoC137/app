@@ -33,6 +33,19 @@ const personagens = [
     velocidade: 120,
     escudo: '../img/escudo5.png',
     defesa: 95,
+  },
+  {
+    nome: 'Kakashi Classico',
+    img: '../img/kakashi-classico2.jpg',
+    transformacao: '../img/kakashi-4.jpg',
+    texto: 'O sasuke é o ultimo sobrevivente do massacre ao clã uchiha além de seu irmão itachi.',
+    id: 2,
+    punho: '../img/punho2.png',
+    forca: 40,
+    raio: '../img/raio4.png',
+    velocidade: 120,
+    escudo: '../img/escudo5.png',
+    defesa: 95,
   }
   
 ]
@@ -44,7 +57,7 @@ const Main = () => {
   function handleClick() {
     setAtiva(!true)
     if(ativa){
-      setMudar(mudar[0].img = '../img/naruto-transformado2.webp', mudar[1].img = '../img/sasuke-transformado.jpg' )
+      setMudar(mudar[0].img = '../img/naruto-transformado2.webp', mudar[1].img = '../img/sasuke-transformado.jpg', mudar[2].img = mudar[2].transformacao  )
       setMudar(mudar[0].forca = 100, mudar[1].forca = 110  )
       setMudar(mudar[0].texto =  mudar[0].texto2)
     }
