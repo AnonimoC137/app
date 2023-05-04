@@ -577,6 +577,10 @@
     .nomePersonagem {
         width: 50%;
     }
+    .tituloPrincipal   {
+        display: flex;
+         justify-content: center;
+    }
     .buttonTransformar {    
         margin: auto;
         width: auto;

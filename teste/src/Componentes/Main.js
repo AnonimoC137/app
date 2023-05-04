@@ -6,7 +6,8 @@ import foto2 from '../img/sasuke-pequeno.webp';
 import punho from '../img/punho2.png';
 import raio from '../img/raio4.png';
 import escudo from '../img/escudo5.png';
-
+import Personagens from './Personagens';
+import Titulo from './Titulo';
 
 const personagens = [
   {
@@ -17,6 +18,8 @@ const personagens = [
     texto2: 'Naruto ganha um manto protetor da raposa de nove caudas, aumentando muito seu poder e sua velocidade',
     id: 1,
     id2: 'a',
+    v: true,
+    f: false,
     punho: '../img/punho2.png',
     forca: 50,
     raio: '../img/raio4.png',
@@ -32,6 +35,8 @@ const personagens = [
     texto2: 'Sasuke obtem essa transformação após ser amaldiçoado por Orochimaru',
     id: 2,
     id2: 'b',
+    v: true,
+    f: false,
     punho: '../img/punho2.png',
     forca: 40,
     raio: '../img/raio4.png',
@@ -59,85 +64,90 @@ const personagens = [
 
 const Main = () => {
   const [mudar, setMudar] = React.useState(personagens);
-  const [ativa, setAtiva] = React.useState(false)
+  const [mudar2, setMudar2] = React.useState(personagens);
+  const [ativa, setAtiva] = React.useState(true)
+  const [ativa2, setAtiva2 ] = React.useState(true)
   
-  function handleClick({id}) {
-    setAtiva(true)
-    if (ativa)
-    if(id === 1){
-      setAtiva(!true)
-      setMudar(
-        mudar[0].img = mudar[0].img2,
-        mudar[0].forca = 100,
-        mudar[0].texto =  mudar[0].texto2
-      )
-      setMudar(personagens)
+    function handleClick() {
       
-
-    } else if(id === 2){
-      setAtiva(!true)
-      setMudar(
-        mudar[1].img = mudar[1].img2,
-        mudar[1].forca = 100,
-        mudar[1].texto =  mudar[1].texto2
-      )
-      setMudar(personagens)
-      
-    } else if(id === 3) {
-      setAtiva(!true)
-      setMudar(
-        mudar[2].img = mudar[2].img2,
-        mudar[2].forca = 100,
-        mudar[2].texto =  mudar[2].texto2
-      )
-      setMudar(personagens)
-      
-      
+      if(ativa) {
+        setMudar(
+          mudar[0].img = mudar[0].img2,
+          mudar[0].forca = 100,
+          mudar[0].texto =  mudar[0].texto2,
+         
+        )
+        setAtiva(false)
+        
+      }
+      console.log(ativa)
+      return null
     }
 
-    console.log(personagens)
-    
-     
-  }
+    function handleClick2() {
+      
+      if(ativa2) {
+        setMudar2(
+          mudar2[1].img = mudar2[1].img2,
+          mudar2[1].forca = 100,
+          mudar2[1].texto =  mudar2[1].texto2,
+        )
+        setAtiva2(false)
+      } 
+      
+      return null
+    }
+
+  
   return (
-    <div className={styles.container}>
-        <h1 className={styles.tituloPrincipal}>A historia de cada personagem de Naruto</h1>
-        {personagens.map(({nome, texto, img, id, punho, forca, raio,velocidade,escudo,defesa, id2 }) => (
-            <div className={styles.content} key={id}>
-              <h1 className={styles.nomePersonagem}>{nome}</h1>
-              <div className={styles.campoImg}>
-                  <img className={styles.imgPersonagem} src={img} />
-                  <p className={styles.texto}>{texto}</p>
-                  <div className={styles.contentEmoji}>
-                    <img className={styles.punho} src={punho} alt="forca" title='forca' />
-                    <span className={styles.spanForca}>Força:{forca} </span>
-                    <img className={styles.raio} src={raio} alt="raio" title='raio' />
-                    <span className={styles.spanRaio}>rapidez:{velocidade} </span>
-                    <img className={styles.escudo} src={escudo} alt="raio" title='raio' />
-                    <span className={styles.spanEscudo}>Defesa:{defesa} </span>
-                    
-                  </div>
-                  
-              </div>
-              <button
-                      
-                      className={styles.buttonTransformar}onClick=   {() => handleClick({id})}>Transformar Todos 
-                      <BallTriangle
-                                height={50}
-                                width={50}
-                                radius={2}
-                                color="#fff"
-                                ariaLabel="ball-triangle-loading"
-                                wrapperClass={{}}
-                                wrapperStyle=""
-                                visible={true}
-                              /> 
-                </button>
-            </div>
-        ))}
-         
-        
+    <div>
+        <Titulo/>
+        <Personagens 
+          nome={personagens[0].nome} 
+          texto={personagens[0].texto}
+          img={personagens[0].img}
+          forca={personagens[0].forca}
+          velocidade={personagens[0].velocidade}
+          defesa={personagens[0].defesa}
+        />
+        <button
+            className={styles.buttonTransformar}
+            onClick={handleClick}>Transformar
+            <BallTriangle
+                  height={50}
+                  width={50}
+                  radius={2}
+                  color="#fff"
+                  ariaLabel="ball-triangle-loading"
+                  wrapperClass={{}}
+                  wrapperStyle=""
+                  visible={true}
+               /> 
+          </button>
+          <Personagens 
+              nome={personagens[1].nome} 
+              texto={personagens[1].texto}
+              img={personagens[1].img}
+              forca={personagens[1].forca}
+              velocidade={personagens[1].velocidade}
+              defesa={personagens[1].defesa}
+           />
+           <button
+            className={styles.buttonTransformar}
+            onClick={handleClick2}>Transformar
+            <BallTriangle
+                  height={50}
+                  width={50}
+                  radius={2}
+                  color="#fff"
+                  ariaLabel="ball-triangle-loading"
+                  wrapperClass={{}}
+                  wrapperStyle=""
+                  visible={true}
+               /> 
+          </button>    
     </div>
+   
   )
 }
 
