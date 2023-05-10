@@ -50,7 +50,7 @@ const personagens = [
     img2: '../img/kakashi-4.jpg',
     texto: 'Kakashi é um ninja de elite, possui o sharingan e tem mais de 1000 jutsus',
     texto2: 'quando Kakashi ativa seu mangekyo seus poderem aumentam muito, porem gasta seu chakra muito rapido',
-    id: 2,
+    id: 3,
     id2: 'c',
     punho: '../img/punho2.png',
     forca: 60,
@@ -65,8 +65,10 @@ const personagens = [
 const Main = () => {
   const [mudar, setMudar] = React.useState(personagens);
   const [mudar2, setMudar2] = React.useState(personagens);
+  const [mudar3, setMudar3] = React.useState(personagens);
   const [ativa, setAtiva] = React.useState(true)
-  const [ativa2, setAtiva2 ] = React.useState(true)
+  const [ativa2, setAtiva2] = React.useState(true)
+  const [ativa3, setAtiva3] = React.useState(true)
   
     function handleClick() {
       
@@ -93,6 +95,20 @@ const Main = () => {
           mudar2[1].texto =  mudar2[1].texto2,
         )
         setAtiva2(false)
+      } 
+      
+      return null
+    }
+
+    function handleClick3() {
+      
+      if(ativa3) {
+        setMudar3(
+          mudar3[2].img = mudar3[2].img2,
+          mudar3[2].forca = 100,
+          mudar3[2].texto =  mudar3[2].texto2,
+        )
+        setAtiva3(false)
       } 
       
       return null
@@ -145,7 +161,29 @@ const Main = () => {
                   wrapperStyle=""
                   visible={true}
                /> 
-          </button>    
+          </button>
+          <Personagens 
+              nome={personagens[2].nome} 
+              texto={personagens[2].texto}
+              img={personagens[2].img}
+              forca={personagens[2].forca}
+              velocidade={personagens[2].velocidade}
+              defesa={personagens[2].defesa}
+           />
+           <button
+            className={styles.buttonTransformar}
+            onClick={handleClick3}>Transformar
+            <BallTriangle
+                  height={50}
+                  width={50}
+                  radius={2}
+                  color="#fff"
+                  ariaLabel="ball-triangle-loading"
+                  wrapperClass={{}}
+                  wrapperStyle=""
+                  visible={true}
+               /> 
+          </button>     
     </div>
    
   )

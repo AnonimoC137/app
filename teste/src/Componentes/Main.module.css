@@ -38,7 +38,7 @@
 }
 
 .tituloPrincipal {
-    width: auto;
+    width: 50%;
     display: flex;
     margin: .5rem auto;
     font-size: 1.8rem;
@@ -278,7 +278,7 @@
 }
 @media (min-width: 425px) {
     .tituloPrincipal {
-        width: auto;
+        width: 50%;
     }
     .nomePersonagem {
         /* margin: 9rem 2rem 1rem 0; */
@@ -394,11 +394,11 @@
     }
     .tituloPrincipal {
         text-align: center;
+        width: 50%;
     }
 }
 @media (min-width: 631px) {
     .nomePersonagem {
-        
         width: 85%;
     }
     .buttonTransformar {    
@@ -453,6 +453,7 @@
     }
     .tituloPrincipal {
         text-align: center;
+        width: 50%;
     }
 }
 @media (min-width: 856px) {
@@ -512,6 +513,7 @@
     }
     .tituloPrincipal {
         text-align: center;
+        width: 50%;
     }
 }
 @media (min-width: 1024px) {
@@ -571,6 +573,7 @@
     }
     .tituloPrincipal {
         text-align: center;
+        width: 50%;
     }
 }
 @media (min-width: 1440px) {
@@ -579,7 +582,8 @@
     }
     .tituloPrincipal   {
         display: flex;
-         justify-content: center;
+        justify-content: center;
+        width: 50%;
     }
     .buttonTransformar {    
         margin: auto;
