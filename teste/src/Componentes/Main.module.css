@@ -277,8 +277,15 @@
     }
 }
 @media (min-width: 425px) {
+    .texto {
+        background: #ad0b0b;
+        border: 3px solid #080808; 
+        box-shadow: 3px 3px 3px black, 4px 4px 4px #fff ;
+        border-radius: 10px 20px;
+        text-align: center;
+    }
     .tituloPrincipal {
-        width: 50%;
+        width: 70%;
     }
     .nomePersonagem {
         /* margin: 9rem 2rem 1rem 0; */
@@ -293,7 +300,7 @@
     }
     .campoImg {
         display: block;
-        height: 600px;
+        min-height: 700px;
     }
     .contentEmoji {
         width: 100%;
@@ -301,36 +308,43 @@
         
     }
     .punho {
-        width: 14%;
-        right: 88%;
+        background: #ad0b0b;
+        border: 1px solid #fff;
+        width: 10%;
+        right: 80%;
+        bottom: 20%;
     }
     .spanForca {
         display: flex;
-        bottom: 20px;
-        right: 80%;
+        right: 65%;
+        bottom: 22%;
         font-size: .6rem;
     }
     .raio {
-        width: 14%;
-        bottom: 8px;
-        right: 56%;
+        background: #ad0b0b;
+        border: 1px solid #fff;
+        width: 10%;
+        right: 80%;
+        bottom: 12%;
     }
     .spanRaio {
         display: flex;
-        bottom: 20px;
-        right: 50%;
+        right: 65%;
+        bottom: 14%;
         font-size: .6rem;
     }
     .escudo {
-        width: 14%;
+        background: #ad0b0b;
+        border: 1px solid #fff;
         position: absolute;
-        bottom: 9px;
-        right: 22%;
+        width: 10%;
+        right: 80%;
+        bottom: 4%;
     }
     .spanEscudo {
         display: flex;
-        bottom: 20px;
-        right: 15%;
+        right: 65%;
+        bottom: 6%;
         font-size: .6rem;
     }
     .tituloPrincipal {
