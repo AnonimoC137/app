@@ -206,3 +206,17 @@ const Head = (props) => {
   return <> </>
 }
 ```
+
+# Mini projeto #
+
+OBS: Coloquei dentro da pasta router com o nome de router-desafio1.
+
+* Utilize a API  abaixo para puxar a lista de produtos
+
+* https://ranekapi.origamid.dev/json/api/produto
+
+* Cada produto possui o id, o mesmo pode ser passado na api
+
+* https://ranekapi.origamid.dev/json/api/produto/notebook
+
+
