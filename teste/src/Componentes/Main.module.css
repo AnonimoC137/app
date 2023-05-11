@@ -50,6 +50,8 @@
     font-family: 'Righteous', cursive;
 }
 
+
+
 .tituloPrincipal:hover {
     color: #fff;
     transform: rotateX(15deg);
@@ -81,7 +83,7 @@
 .punho {
     width: 5%;
     position: absolute;
-    bottom: 10px;
+    bottom: 2%;
     right: 62%;
     padding: 10px;
 }
@@ -634,6 +636,7 @@
         width: 6%;
         margin-right: 10px;
         right: 88%;
+        bottom: 2%;
     }
     .spanForca {
         display: flex;
