@@ -5,8 +5,8 @@ import foto from '../img/contato.jpg'
 const Contato = () => {
   
   return (
-    <section className={styles.contato}>
-      
+    <section classname="{styles.contato}">
+
       <h1>Contato</h1>
     </section>
   )
