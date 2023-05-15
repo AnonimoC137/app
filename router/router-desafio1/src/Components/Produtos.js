@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Produtos.module.css'
+import { Link } from 'react-router-dom'
 
 const Produtos = () => {
   const [produtos, setProdutos] = React.useState(null)
@@ -13,14 +14,14 @@ const Produtos = () => {
   if(produtos === null) return null
 
   return (
-    <div className={styles.produtos}>
+    <section className={`${styles.produtos} animeLeft`}>
       {produtos.map((produto) => (
-        <div key={produto.id}>
+        <Link to={`produto/${produto.id}`} key={produto.id}>
           <img src={produto.fotos[0].src} alt={produto.fotos[0].src} />
-          <h1>{produto.nome}</h1>
-        </div>
+          <h1 className={styles.nome}>{produto.nome}</h1>
+        </Link>
       ))}
-    </div>
+    </section>
   )
 }
 
