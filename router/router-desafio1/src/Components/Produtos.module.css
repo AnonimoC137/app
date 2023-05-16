@@ -7,3 +7,9 @@
 .nome {
     margin: 0.5rem 0;
 }
+
+@media(max-width: 425px) {
+    .produtos{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
