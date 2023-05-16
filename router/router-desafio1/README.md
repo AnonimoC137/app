@@ -87,3 +87,81 @@ const Produtos = () => {
 
 export default Produtos
 ```
+### Arquivo Produto ###
+
+* Já em produto vamos fazer um fetch mais robusto, vamos criar uma estrutura async e vamos passar dentro do "try", "catch" e "finally"
+
+* Criamos 3 estados reativos, uma para a resposta da api, uma para criar um efeito de carregando e outro para tratar o erro se existir.
+
+* Tambem vamos usar o metodo useParams, ele é responsavel por pegar o vaminho de nossa rota assim podemos usar o id passado por ele no fetch.
+
+* Vamos fazer um map tambem no estado "produto" para podemos acessar as duas fotos do produto disponiveis.
+
+* E por fim vamos passar o nome, preco e destrição do produto em uma div separada para poder configurar isso no css.
+
+IMPORTANTE caso tenha duvida no futuro de como fazer esse layout no grid, o estilo esta lá no css App.css na parte do .App lá foi colocado como max-width: 40rem mas antes passado o display: flex e flex-direction: columns, alem das configurações do grid no proprio css dos arquivos, essa explicação é somente para o tamanho final dos itens.
+
+@exemplo - Produto.js
+```bash
+import React from 'react'
+import styles from './Produto.module.css'
+import { useParams } from 'react-router-dom'
+import Head from './Head';
+import '../App.css'
+
+
+const Produto = () => {
+    const [produto, setProduto] = React.useState(null);
+    const [carregando, setCarregando] = React.useState(false);
+    const [error, setError] = React.useState(null);
+    const {id} = useParams()
+    console.log(id)
+
+    React.useEffect(() => {
+        async function fetchProduto(url) {
+            try {
+                setCarregando(true)
+                const response = await fetch(url)
+                const json = await response.json()
+                setProduto(json)
+            } catch(erro) {
+                setError('um erro ocorreu')
+            } finally {
+                setCarregando(false)
+            }
+            
+        }
+        fetchProduto(`https://ranekapi.origamid.dev/json/api/produto/${id}`)
+    }, [id])
+
+    if(error) <p>{error}</p>
+
+    if(carregando) return <div className="loading"></div>
+
+    if(produto === null) return null
+  return (
+    <section className={`${styles.produto} animeLeft`}>
+        
+        <Head 
+            title={`${produto.nome}`}
+            description={`${produto.descricao}`}
+        />
+        <div>
+            {produto.fotos.map((foto) => (
+            <img key={foto.src} src={foto.src} alt={foto.titulo} />
+            ))}
+        </div>
+
+        <div>
+            <h1>{produto.nome}</h1>
+            <span className={styles.preco}>R$ {produto.preco}</span>
+            <p className={styles.descricao}>{produto.descricao}</p>
+        </div>
+      
+    </section>
+  )
+}
+
+export default Produto
+
+```
