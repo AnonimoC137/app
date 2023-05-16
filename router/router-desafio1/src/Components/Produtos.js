@@ -16,7 +16,11 @@ const Produtos = () => {
 
   return (
     <section className={`${styles.produtos} animeLeft`}>
-      <Head title='Produtos' description='essa e a pagina de produtos'/>
+      <Head 
+        title='Produtos'
+        description='essa e a pagina de produtos'
+      />
+      
       {produtos.map((produto) => (
         <Link to={`produto/${produto.id}`} key={produto.id}>
           <img src={produto.fotos[0].src} alt={produto.fotos[0].src} />
