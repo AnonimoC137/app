@@ -73,5 +73,15 @@ Retorna um componente memorizado, evitando que o mesmo seja atualizado toda vez 
 
 @exemplo
 ```bash
+import React from 'react';
 
+const Header = () => {
+  return (
+    <div>
+      <h1>Header</h1>
+    </div>
+  );
+};
+
+export default React.memo(Header);
 ```
