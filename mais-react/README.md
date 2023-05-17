@@ -39,3 +39,28 @@ const App = () => {
 
 export default App;
 ```
+
+# Code Splitting # 
+
+Com o Lazy e Suspense podemos dividir o codigo da nossa aplicação. Assim o React só irá carregar certas partes do codigo quando as mesmas forem necessarias.
+
+@exemplo
+```bash
+import React from 'react'
+const Contato = React.lazy(() => import('./Contato))
+
+const App = () => {
+    const [ativar, setAtivar] = React.useState(false);
+
+    return (
+        <div>
+        {ativar &&(
+            <React.Sspense fallback={<div>Carregando...</div>}>
+                <Contato/>
+            </React.Sspense>
+        )}
+        <button onClick={() => setAtivo(true)}>Clique</button>
+        </div>
+    )
+}
+```
