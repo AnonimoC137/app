@@ -64,3 +64,14 @@ const App = () => {
     )
 }
 ```
+
+# React.memo #
+
+Retorna um componente memorizado, evitando que o mesmo seja atualizado toda vez que o estado de um elemento pai mudar. Use apenas para elementos que não dependam de estados diferentes.
+
+* Por exemplo o <Header/> de nossa pagina, vamos passar nele no final esse metodo para que ele não seja toda vez renderizado pelo App.js
+
+@exemplo
+```bash
+
+```
