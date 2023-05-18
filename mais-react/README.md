@@ -104,15 +104,25 @@ O useReducer serve para lidarmos com estados que possuam funções fixas respons
 import React from 'react'
 
 function reducer(state, action) {
-
+    switch (action) {
+        case 'aumentar':
+            return state +1;
+        case 'diminuir':
+            return state -1;
+        default: 
+            throw new Error();
+    }
 }
 
 const App = () => {
     const [state, dispatch] = React.useReducer(reducer, 0);
 
     return (
-        <button onClick={() => dispatch('aumentar')}>+</button>
-        <button onClick={() => dispatch('diminuir')}>+</button>
+        <div>
+            <button onClick={() => dispatch('aumentar')}>+</button>
+            <button onClick={() => dispatch('diminuir')}>+</button>
+        </div>
+        
     )
 }
 ```
