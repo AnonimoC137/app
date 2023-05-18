@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Exemplo from './Componentes/Exemplo';
 
 
 function reducer(state, action) {
@@ -20,6 +21,8 @@ const App = () => {
       <button onClick={() => dispatch('aumentar')}>+</button>
       <button onClick={() => dispatch('diminuir')}>+</button>
       <p>{state}</p>
+
+      <Exemplo />
     </div>
   );
 };
