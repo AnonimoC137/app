@@ -127,4 +127,59 @@ const App = () => {
 }
 ```
 
-* O proximo exemplo vai ser uma pouco mais
+* O proximo exemplo vai ser uma pouco mais complexo
+
+@exemplo 
+```bash
+import React from 'react';
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'remover':
+      return state.filter((item) => item !== action.content);
+    case 'adicionar':
+      return [...state, action.content];
+    default:
+      throw new Error();
+  }
+}
+
+const Exemplo = () => {
+  const [state, dispatch] = React.useReducer(reducer, ['Banana', 'Uva']);
+
+  return (
+    <div>
+      <button onClick={() => dispatch({ type: 'remover', content: 'Banana' })}>
+        Remover Banana
+      </button>
+      <button onClick={() => dispatch({ type: 'adicionar', content: 'Limão' })}>
+        adicionar Limão
+      </button>
+
+      {state}
+    </div>
+  );
+};
+
+export default Exemplo;
+```
+# Classes extends React.Component #
+
+Aqui vamos ver prevemente o uso das classes no react, pois até 2018-2019 era assim que era usado, e pode ser que encontremos no nosso dia-a-dia em uma empresa.
+
+* Antes dos hooks a unica forma de criarmos componentes com estados reativos, era atraves da extensão da classe React.Component. OJSX que é renderizado pelo componente de class deve estar dentro do retorno do metodo render( )
+
+@exemplo - Produtos.js
+```bash
+import React from 'react'
+
+class Produtos extends React.Component {
+  render() {
+    return(
+      <div>
+        <h1>Componente de classe</h1>
+      </div>
+    )
+  }
+}
+```
