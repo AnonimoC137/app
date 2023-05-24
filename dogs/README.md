@@ -84,6 +84,8 @@ Vamos criar um arquivo teste tambem para verificar se nosso conseguimos autentic
 
 * Em nosso "then" do json vamos colocar o setToken(json.token) para capturarmos o valor do token que a API nos mandou.
 
+* Por ultimo colocamos um style no nosso <p> para que o token seja quebrado por padrao, para ficar mais facil de visualizar.
+
 @exemplo
 ```bash
 import React from 'react';
@@ -138,5 +140,12 @@ const TokenPost = () => {
 };
 
 export default TokenPost;
+
+```
+
+## Teste API postando foto ##
+
+@exemplo
+```bash
 
 ```
