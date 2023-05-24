@@ -73,3 +73,14 @@ const UserPost = () => {
 
 export default UserPost;
 ```
+
+## Autenticando o usuario ##
+
+Vamos criar um arquivo teste tambem para verificar se nosso conseguimos autenticar o nosso usuario arrecem criado.
+
+*
+
+@exemplo
+```bash
+
+```
