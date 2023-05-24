@@ -1,9 +1,11 @@
 import React from 'react';
+import UserPost from './endpoints/UserPost';
 
 const Api = () => {
   return (
     <div>
-      <h1>Minha API</h1>
+      <h2>USER POST</h2>
+      <UserPost />
     </div>
   );
 };

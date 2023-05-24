@@ -1,21 +1,3 @@
-# Projeto final #
-
-Nessa etapa do projeto vou falar as principais coisas que eu entender, coisas que podem vir a ser uteis no futuro.
-
-## Teste da Api que usaremos ##
-
-* Criamos um arquivo chamado UsePost.js, ele vai servir como teste para ver se conseguimos enviar a nossa API um nome de usuario, email e senha.
-
-* Criamos 3 estados para o nome, email e senha
-
-* No retorno criamos um formulario com os 3 inputs e um button, e no form colocamos um onSubmit para criar uma função handleSubmit
-
-* No handleSubmit vamos fazer um fetch com a url da nossa API, porem precisamos passar além da url o metodo, e os headers, tambem o wque vai ir no corpo, todos os detalhes estão no exemplo abaixo.
-
-* Por ultimo vamos usar o "then" para visualizarmos a resposta que a API está nos fornecendo.
-
-@exemplo
-```bash
 import React from 'react';
 
 const UserPost = () => {
@@ -72,4 +54,3 @@ const UserPost = () => {
 };
 
 export default UserPost;
-```
