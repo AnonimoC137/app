@@ -275,6 +275,8 @@ Nessa etapa, quase tudo que vai ser implementado ao projeto já vimos em aula, e
 
 * Aria-label é algo para colocar um titulo e facilitar a acessibilidade.
 
+* Esse estilo de formatação da classe no nav serve para podermos colocar o estilo global que esta no App.css e o do .module
+
 @exemplo
 ```bash
 import React from 'react';
@@ -284,7 +286,7 @@ import { ReactComponent as Dogs } from '../Assets/dogs.svg';
 
 const Header = () => {
   return (
-    <div className={styles.header}>
+    <div className=className={`${styles.nav} container`}>
       <nav className="container">
         <Link to="/" aria-label='Dogs- Home'>
           <Dogs />
