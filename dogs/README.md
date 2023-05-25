@@ -151,6 +151,8 @@ Nesse exemplo vai conter semelhanças com os demais, vou explicar as diferenças
 
 * Criamos um objeto de formulario chamado formData, passando os valores da chave e o nosso estado, que é onde esta nosso conteudo. detalhe adicionamos esses valores invocando o formData e passando o append() com os valores da chave e o estado.
 
+* No headers de nosso fetch, vamos passar Authorization: 'Bearer' + token, isso serve para autorizar a postagem da foto com o token.
+
 * Com o formData vamos coloca-lo lá no body do nosso fetch.
 
 * Modificamos tambem nosso inputs, porem o ultimo mudou, colocamos tipo "file" e no setImg vai ser value.files[0] que é onde vai ficar armazenada nossa imagem.
@@ -180,9 +182,9 @@ const PhotoPost = () => {
     fetch('https://dogsapi.origamid.dev/json/api/user', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        Authorization: 'Bearer' + token
       },
-      body: {formData},
+      body: formData,
     })
       .then((response) => {
         console.log(response);

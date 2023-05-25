@@ -19,9 +19,9 @@ const PhotoPost = () => {
     fetch('https://dogsapi.origamid.dev/json/api/user', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        Authorization: 'Bearer' + token,
       },
-      body: { formData },
+      body: formData,
     })
       .then((response) => {
         console.log(response);
