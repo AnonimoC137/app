@@ -145,7 +145,86 @@ export default TokenPost;
 
 ## Teste API postando foto ##
 
+Nesse exemplo vai conter semelhanças com os demais, vou explicar as diferenças.
+
+* Criamos estados reativos para nome, idade, peso e img
+
+* Criamos um objeto de formulario chamado formData, passando os valores da chave e o nosso estado, que é onde esta nosso conteudo. detalhe adicionamos esses valores invocando o formData e passando o append() com os valores da chave e o estado.
+
+* Com o formData vamos coloca-lo lá no body do nosso fetch.
+
+* Modificamos tambem nosso inputs, porem o ultimo mudou, colocamos tipo "file" e no setImg vai ser value.files[0] que é onde vai ficar armazenada nossa imagem.
+
+
 @exemplo
 ```bash
+import React from 'react';
 
+const PhotoPost = () => {
+  const [token, setToken] = React.useState('');
+  const [nome, setNome] = React.useState('');
+  const [peso, setPeso] = React.useState('');
+  const [idade, setIdade] = React.useState('');
+  const [img, setImg] = React.useState('');
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append('nome', nome);
+    formData.append('peso', peso);
+    formData.append('idade', idade);
+    formData.append('img', img);
+    
+
+    fetch('https://dogsapi.origamid.dev/json/api/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: {formData},
+    })
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((json) => {
+        console.log(json);
+        return json;
+      });
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="token"
+        value={token}
+        onChange={({ target }) => setToken(target.value)}
+      />
+      <input
+        type="text"
+        placeholder="nome"
+        value={nome}
+        onChange={({ target }) => setNome(target.value)}
+      />
+      <input
+        type="text"
+        placeholder="peso"
+        value={peso}
+        onChange={({ target }) => setPeso(target.value)}
+      />
+      <input
+        type="text"
+        placeholder="idade"
+        value={idade}
+        onChange={({ target }) => setIdade(target.files[0])}
+      />
+      <input type="file" onChange={({ target }) => setImg(target.value)} />
+      <button>Enviar</button>
+    </form>
+  );
+};
+
+export default PhotoPost;
 ```
