@@ -239,6 +239,7 @@ Nesse exemplo nçao tem muito o que explicar e bem basico so para teste.
 
 * Nosso form vai servir para a function handleSubmit fazer um fetch, no final da url /photo a propria API vai mostrar as fotos postadas.
 
+
 @exemplo
 ```bash
 const PhotoGet = () => {
