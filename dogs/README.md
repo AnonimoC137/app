@@ -273,6 +273,8 @@ Nessa etapa, quase tudo que vai ser implementado ao projeto já vimos em aula, e
 
 * Criamos varios componentes, como Footer, Header, Login e as rotas, porem uma parte impontante que é bom relembrar é o uso de svg, fazemos o import como {ReactComponent as Dogs} from e o caminho onde esta o arquivo, ai podemos utilizar ele como um componente normalmente.
 
+* Aria-label é algo para colocar um titulo e facilitar a acessibilidade.
+
 @exemplo
 ```bash
 import React from 'react';
@@ -284,7 +286,7 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <nav className="container">
-        <Link to="/">
+        <Link to="/" aria-label='Dogs- Home'>
           <Dogs />
         </Link>
         <Link to="/login">Login / Criar</Link>

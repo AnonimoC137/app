@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <nav className="container">
-        <Link to="/">
+        <Link to="/" aria-label="Dogs- Home">
           <Dogs />
         </Link>
         <Link to="/login">Login / Criar</Link>
