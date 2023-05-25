@@ -16,7 +16,7 @@ const PhotoPost = () => {
     formData.append('idade', idade);
     formData.append('img', img);
 
-    fetch('https://dogsapi.origamid.dev/json/api/user', {
+    fetch('https://dogsapi.origamid.dev/json/api/photo', {
       method: 'POST',
       headers: {
         Authorization: 'Bearer' + token,
@@ -57,9 +57,9 @@ const PhotoPost = () => {
         type="text"
         placeholder="idade"
         value={idade}
-        onChange={({ target }) => setIdade(target.files[0])}
+        onChange={({ target }) => setIdade(target.value)}
       />
-      <input type="file" onChange={({ target }) => setImg(target.value)} />
+      <input type="file" onChange={({ target }) => setImg(target.files[0])} />
       <button>Enviar</button>
     </form>
   );

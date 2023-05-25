@@ -151,7 +151,7 @@ Nesse exemplo vai conter semelhanças com os demais, vou explicar as diferenças
 
 * Criamos um objeto de formulario chamado formData, passando os valores da chave e o nosso estado, que é onde esta nosso conteudo. detalhe adicionamos esses valores invocando o formData e passando o append() com os valores da chave e o estado.
 
-* No headers de nosso fetch, vamos passar Authorization: 'Bearer' + token, isso serve para autorizar a postagem da foto com o token.
+* No headers de nosso fetch, vamos passar Authorization: 'Bearer' + token, isso serve para autorizar a postagem da foto com o token, alem de nosso url ter final /photo.
 
 * Com o formData vamos coloca-lo lá no body do nosso fetch.
 
@@ -179,7 +179,7 @@ const PhotoPost = () => {
     formData.append('img', img);
     
 
-    fetch('https://dogsapi.origamid.dev/json/api/user', {
+    fetch('https://dogsapi.origamid.dev/json/api/photo', {
       method: 'POST',
       headers: {
         Authorization: 'Bearer' + token
@@ -220,13 +220,48 @@ const PhotoPost = () => {
         type="text"
         placeholder="idade"
         value={idade}
-        onChange={({ target }) => setIdade(target.files[0])}
+        onChange={({ target }) => setIdade(target.value)}
       />
-      <input type="file" onChange={({ target }) => setImg(target.value)} />
+      <input 
+        type="file" 
+        onChange={({ target }) => setImg(target.files[0])} 
+      />
       <button>Enviar</button>
     </form>
   );
 };
 
 export default PhotoPost;
+```
+## Teste API visualizando foto postada ##
+
+Nesse exemplo nçao tem muito o que explicar e bem basico so para teste.
+
+* Nosso form vai servir para a function handleSubmit fazer um fetch, no final da url /photo a propria API vai mostrar as fotos postadas.
+
+@exemplo
+```bash
+const PhotoGet = () => {
+  function handleSubmit(event) {
+    event.preventDefault();
+    fetch('https://dogsapi.origamid.dev/json/api/photo')
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((json) => {
+        console.log(json);
+        return json;
+      });
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" />
+      <button>Enviar</button>
+    </form>
+  );
+};
+
+export default PhotoGet;
 ```
