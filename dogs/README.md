@@ -266,3 +266,32 @@ const PhotoGet = () => {
 
 export default PhotoGet;
 ```
+
+# Estrutura inicial #
+
+Nessa etapa, quase tudo que vai ser implementado ao projeto já vimos em aula, então eu vou me limitar a explicar somente aquilo que eu considerar não ter absorvido muito bem, ou que eu considere importente para reutilizar no futuro.
+
+* Criamos varios componentes, como Footer, Header, Login e as rotas, porem uma parte impontante que é bom relembrar é o uso de svg, fazemos o import como {ReactComponent as Dogs} from e o caminho onde esta o arquivo, ai podemos utilizar ele como um componente normalmente.
+
+@exemplo
+```bash
+import React from 'react';
+import styles from './Header.module.css';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Dogs } from '../Assets/dogs.svg';
+
+const Header = () => {
+  return (
+    <div className={styles.header}>
+      <nav className="container">
+        <Link to="/">
+          <Dogs />
+        </Link>
+        <Link to="/login">Login / Criar</Link>
+      </nav>
+    </div>
+  );
+};
+
+export default Header;
+```
