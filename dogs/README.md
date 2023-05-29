@@ -328,6 +328,8 @@ const Login = () => {
 
 * Criamos um Link para uma de nossas rotas criadas lá em nosso arquivo Login.js, que vai servir para nos levar a pagina de cadastro.
 
+* Vou lembrar aqui e em outras partes que, lá no App.js precisamos colocar um * em nosso caminho de rota para ele saber que exite outras subrotas em login, <Route path="/login/*" element={<Login />} /> 
+
 @exemplo
 ```bash
 import React from 'react';
