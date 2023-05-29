@@ -377,3 +377,41 @@ const LoginForm = () => {
   );
 };
 ```
+# Form Component #
+
+* Criamos os seguintes componentes, Input e Button.
+
+* Sempre na hora de criar um componente vamos passar desestruturando algo para ele, nesse caso vamos passar o "label", "type" e "name".
+
+* Dentro dele vamos ter a area do label que vai receber o nome, tambem o input que recebe um id, nome e type para saber se é tipo texto ou senha.
+
+
+@exemplo - Input.js
+```bash
+const Input = ({ label, type, name }) => {
+  return (
+    <div className={styles.wrapper}>
+      <label className={styles.label} htmlFor={name}>
+        {label}
+      </label>
+      <input id={name} name={name} className={styles.input} type={type} />
+      <p className={styles.error}>Error</p>
+    </div>
+  );
+};
+```
+
+* Já no Button vamos ter as seguintes propriedades, passadas sendo desestruturadas, children e ...props.
+
+* Todo conteudo dentro das tags button é considerado um children, por isso passamos ele com esse parametro, o ...props está sendo passado para caso precisarmos passar alguma outra informação ele já cumpre o proprosito.
+
+@exemplo - Button.js
+```bash
+const Button = ({ children, ...props }) => {
+  return (
+    <button {...props} className={styles.button}>
+      {children}
+    </button>
+  );
+};
+```
