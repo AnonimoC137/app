@@ -299,3 +299,79 @@ const Header = () => {
 
 export default Header;
 ```
+
+# Rotas de login #
+
+* Criamos as principais rotas na pagina login, elas são muito importantes para usarmos em conjunto com os links.
+
+@exemplo
+```bash
+const Login = () => {
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<LoginForm />} />
+        <Route path="criar" element={<LoginCreate />} />
+        <Route path="perdeu" element={<LoginPasswordLost />} />
+        <Route path="resetar" element={<LoginPasswordReset />} />
+      </Routes>
+    </div>
+  );
+};
+
+```
+## LoginForm ##
+
+* Dentro dessa rota vai ser onde o usuario vai colocar seu login e senha para entrar, ainda vamos modificar algumas coisas, como criar componentes separados, porem já da para ter uma boa noção.
+
+* Criamos o formulario com os dois inputs de username e password, além de fazer um fetch enviando para nossa API, tambem usamos o "then" nessa primeira parte para visualizar a resposta recebida.
+
+* Criamos um Link para uma de nossas rotas criadas lá em nosso arquivo Login.js, que vai servir para nos levar a pagina de cadastro.
+
+@exemplo
+```bash
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const LoginForm = () => {
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    })
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((json) => {
+        console.log(json);
+      });
+  }
+  return (
+    <section>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={username}
+          onChange={({ target }) => setUsername(target.value)}
+        />
+        <input
+          type="text"
+          value={password}
+          onChange={({ target }) => setPassword(target.value)}
+        />
+        <button>Entrar</button>
+      </form>
+      <Link to="/login/criar">Cadastros</Link>
+    </section>
+  );
+};
+```
