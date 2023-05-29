@@ -20,6 +20,6 @@
 }
 
 .button:disabled {
-    opacity: .5rem;
+    opacity: 0.5;
     cursor: wait;
 }
