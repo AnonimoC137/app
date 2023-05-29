@@ -405,6 +405,8 @@ const Input = ({ label, type, name }) => {
 
 * Todo conteudo dentro das tags button é considerado um children, por isso passamos ele com esse parametro, o ...props está sendo passado para caso precisarmos passar alguma outra informação ele já cumpre o proprosito.
 
+* Com esses componentes podemos reutilizar eles tranquilamente.
+
 @exemplo - Button.js
 ```bash
 const Button = ({ children, ...props }) => {
