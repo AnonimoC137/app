@@ -385,6 +385,8 @@ const LoginForm = () => {
 
 * Dentro dele vamos ter a area do label que vai receber o nome, tambem o input que recebe um id, nome e type para saber se é tipo texto ou senha.
 
+* Por fim colocamos uma tag <p> para podermos tratar o erro mais para frente.
+
 
 @exemplo - Input.js
 ```bash
