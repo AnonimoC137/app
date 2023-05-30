@@ -419,3 +419,68 @@ const Button = ({ children, ...props }) => {
   );
 };
 ```
+# Hook useForm #
+
+* Criamos um hook useForm para nos auxiliar a validar os dados do username e password antes de fazer o fetch.
+
+* Criamos um objeto que servira como filtro de regex para validar um email, por exemplo, vamos acessas ele usando types[type], é a mesma coisa de types.email, porem não podemos passar assim.
+
+* Criamos dois estados reativos, uma para o value e outro para o error.
+
+* Criamos uma função validadora, primero ela verifica se passamos alguns type lá em nosso arquivo onde vamos usar o Hook, (nesse caso o Input.js).
+
+* Depois ela verifica se o valor digitado é igual a zero, caso seja vai ser setado no erro uma mensagem para mostrar na pela de "preencha um valor", depois temos outra condição que vai verificar se existe o types[type] e se esta dentro do padrao que passamos no regex, essa parte fica meio extensa porem da para entender que esta fazerndo um teste em nosso regex para validar, caso não passe no teste vai ser mostrado nossa message que esta no objeto types.
+
+* Caso não exista nunhum erro, vamos setar o setError como null e retornar true para seguir o codigo.
+
+* Criamos nossa função onChange que vai ser atualizada sempre que o usuario digitar, ela constantemente vai atualizar o estado value com o target do input, caso aconteca um erro o if dentro dela vai colocar o validate em ação e tambem vai atualizar a message caso o erro foi corrigido. (serve para tirar o erro se ele for corrigido para nao ficar mostrando uma mensagem desnecessariamente)
+
+
+
+@exemplo - useForm
+```bash
+import React from 'react';
+
+const types = {
+  email: {
+    regex:
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+    message: 'Preencha um email valido',
+  },
+};
+
+const useForm = (type) => {
+  const [value, setValue] = React.useState('');
+  const [error, setError] = React.useState(null);
+
+  function validate(value) {
+    if (type === false) return true;
+    if (value.length === 0) {
+      setError('Preencha um valor');
+      return false;
+    } else if (types[type] && !types[type].regex.test(value)) {
+      setError(types[type].message);
+      return false;
+    } else {
+      setError(null);
+      return true;
+    }
+  }
+
+  function onChange({ target }) {
+    if (error) validate(target.value);
+    setValue(target.value);
+  }
+  return {
+    value,
+    error,
+    setValue,
+    onChange,
+    validate: () => validate(value),
+    onBlur: () => validate(value),
+  };
+};
+
+export default useForm;
+
+```
