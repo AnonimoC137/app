@@ -435,6 +435,10 @@ const Button = ({ children, ...props }) => {
 
 * Criamos nossa função onChange que vai ser atualizada sempre que o usuario digitar, ela constantemente vai atualizar o estado value com o target do input, caso aconteca um erro o if dentro dela vai colocar o validate em ação e tambem vai atualizar a message caso o erro foi corrigido. (serve para tirar o erro se ele for corrigido para nao ficar mostrando uma mensagem desnecessariamente)
 
+* Por fim, vamos estar retornando os seguintes itens, value, setValue, error, validate, onBlur
+
+* Importante, passamos dois metodos já sendo ativados por padrao, o validate e o onBlur podem ser passados no retorno sendo ativados já, isso facilita muito na hora de usar eles.
+
 
 
 @exemplo - useForm
