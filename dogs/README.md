@@ -568,3 +568,43 @@ const Input = ({ label, type, name, value, onChange, error, onBlur }) => {
   );
 };
 ```
+# API fetch #
+
+Vamos criar um arquivo chamado api para colocar as configurações do fetch, como a url, metodos e por ai vai
+
+* Sempre exportando cada parte em nosso arquivo, vamos passar dentro da const API_URL a url geral que vamos usar para acessar a api do curso.
+
+* A função TOKEN_POST vai receber o body, que vai vir do LoginForm como username e password, ela vai retornar a url geral concatenada com o caminho para autenticar o token, nas options vai ter o metodo que é o POST, no headers o tipo de aplicação e por ultimo vai o body que esta sendo recebido na propria função.
+
+* A função USER_GET vai pegar o usuario utilizando o token de autenticação, para isso ela vai retornar a url concatenada ao caminho do user, nas options vai ter o metodo GET e nos headers vai ter a autorização com o token;
+
+@exemplo - api.js
+```bash
+export const API_URL = 'https://dogsapi.origamid.dev/json';
+
+export function TOKEN_POST(body) {
+  return {
+    url: API_URL + '/jwt-auth/v1/token',
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function USER_GET(token) {
+  return {
+    url: API_URL + '/api/user',
+    options: {
+      method: 'GET',
+      headers: {
+        authorization: 'Bearer ' + token,
+      },
+    },
+  };
+}
+
+```
