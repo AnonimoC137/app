@@ -488,3 +488,83 @@ const useForm = (type) => {
 export default useForm;
 
 ```
+## Hook useForm em nosso LoginForm ##
+
+* Vamos utilizar nosso hook da seguinte maneira em nosso LoginForm
+
+* Primeiro vamos criar duas const para username e password, passando nelas nosso hook
+
+* Vamos usar elas passando no Input sendo desestruturadas {...username} e {...password}, assim podemos utilizar as propriedades do hook em nosso Input.
+
+* Criamos um if geral tambem, nele vamos passar validando o username e password, só vamos fazer o fetch caso o if der true.
+
+@exemplo
+```bash
+const LoginForm = () => {
+  const username = useForm();
+  const password = useForm();
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    if (username.validate() && password.validate()) {
+      fetch('https://dogsapi.origamid.dev/json/jwt-auth/v1/token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(),
+      })
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        })
+        .then((json) => {
+          console.log(json);
+        });
+    }
+  }
+  return (
+    <section>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <Input label="usuario" type="text" name="username" {...username} />
+        <Input label="senha" type="password" name="password" {...password} />
+        <Button>Entrar</Button>
+      </form>
+      <Link to="/login/criar">Cadastros</Link>
+    </section>
+  );
+};
+```
+
+## Hook useForm no Input ##
+
+* Como eu disse passamos desestruturando o nosso hook useForm para o Input que recebe suas propriedades, entao passamos isso para dentro dele. (value, onChange, error, onBlur)
+
+* Ai setamos o value como value, significa que o valor dele é o valor digitado pelo usurario, o onChange esta sendo setado para nossa função onChange lá em nosso hook, a mesma coisa vale para o onBlur, que inclusiva esta sendo passado já ativado.
+
+* Por fim criamos uma condição para o erro, caso ele seja true, o <p> vai aparecer e mostrar o erro que é reativo.
+
+@exemplo
+```bash
+const Input = ({ label, type, name, value, onChange, error, onBlur }) => {
+  return (
+    <div className={styles.wrapper}>
+      <label className={styles.label} htmlFor={name}>
+        {label}
+      </label>
+      <input
+        className={styles.input}
+        id={name}
+        name={name}
+        type={type}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+      />
+      {error && <p className={styles.error}>{error}</p>}
+    </div>
+  );
+};
+```
