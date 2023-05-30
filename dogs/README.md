@@ -608,3 +608,59 @@ export function USER_GET(token) {
 }
 
 ```
+## API no LoginForm ##
+
+Agora que criamos nossa API podemos otimizar o nosso fetch em nosso documento LoginForm.
+
+* Criamos um useEffect para logo de começo verificar se existe salvo no local storage um token, caso exista já vamos colocar ele dentro do getUser que é nossa função responsavel por pegar o usuario e autenticar com o token.
+
+* Criada a função getUser, sendo passado o token de autenticação para ela, dentro dela vamos ter a url e as options desestruturadas do USER_GET que esta em nossa api.js, com isso vamos criar uma const response que vai fazer um fetch passando esses dois parametros que eu citei agora, e outra const chamada json que vai pegar a resposta e transformar ela em json, em resumo ela vai servir para pegar nosso user utilizando o token.
+
+* Dentro de nossa função handleSubmit já existente vamos otimizar o processo da seguijnte forma, desestruturando o url e o options do TOKEN_POST que tambem criamos em nossa api.js, vamos passar os valores de username e password para entçao ser gerado um token de autenticação, alem disso vamos salvar na memoriano localStorage o token e passar para o getUser esse token.
+
+@exemplo - LoginForm
+```bash
+const LoginForm = () => {
+  const username = useForm();
+  const password = useForm();
+
+  React.useEffect(() => {
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      getUser(token);
+    }
+  });
+
+  async function getUser(token) {
+    const { url, options } = USER_GET(token);
+    const response = await fetch(url, options);
+    const json = await response.json();
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    if (username.validate() && password.validate()) {
+      const { url, options } = TOKEN_POST({
+        username: username.value,
+        password: password.value,
+      });
+      const response = await fetch(url, options);
+      const json = await response.json();
+      window.localStorage.setItem('token', json.token);
+      getUser(json.token);
+    }
+  }
+  return (
+    <section>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <Input label="usuario" type="text" name="username" {...username} />
+        <Input label="senha" type="password" name="password" {...password} />
+        <Button>Entrar</Button>
+      </form>
+      <Link to="/login/criar">Cadastros</Link>
+    </section>
+  );
+};
+```
