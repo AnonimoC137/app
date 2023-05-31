@@ -786,3 +786,41 @@ const LoginForm = () => {
     }
   }
 ```
+# UserContext no Header #
+
+Agora precisamos passar as informações do "user" para o header da seguinte forma
+
+* Importamos o UserContext, e dentro da nossa função vamos desestruturar o "data" do UserContex.
+
+* Vamos criar uma condição para mostrar na tela somente quando "data" for true, com uma condição ternaria dois Links, uma mostrando o "data" dentro do link para quando for true e outra mantendo o padrao normal caso não consiga logar.
+
+@exemplo
+```bash
+import React from 'react';
+import styles from './Header.module.css';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Dogs } from '../Assets/dogs.svg';
+import { UserContext } from '../UserContext';
+
+const Header = () => {
+  const { data } = React.useContext(UserContext);
+  return (
+    <header className={styles.header}>
+      <nav className={`${styles.nav} container`}>
+        <Link className={styles.logo} to="/" aria-label="Dogs- Home">
+          <Dogs />
+        </Link>
+        {data ? (
+          <Link className={styles.login} to="/conta">
+            {data.nome}
+          </Link>
+        ) : (
+          <Link className={styles.login} to="/login">
+            Login / Criar
+          </Link>
+        )}
+      </nav>
+    </header>
+  );
+};
+```
