@@ -670,11 +670,19 @@ o userContext vai servir para compartilhar as informações de login do usuario 
 
 * Começamos criando a const UserContext, para criar o contexto.
 
-* Dentro do UserStorage vai ter todas as configurações que vão ser atribuidas no global depois no retorno.
+* Dentro do "UserStorage" vai ter todas as configurações que vão ser atribuidas no global depois no retorno, nela vai ser passado o children que vai ser todos os elementos que estaram dentro da nossa tag.
 
 * Criamos 4 estados reativos "data"(para as informações do usuario), "login"(para status de logado ou não), loading (status de carregando ou nao), e o "error" para tratar o erro.
 
-*
+* Criamos a função assincrona "getUser"(para puxar o usuario), nela vamos passar o token de autenticação, desestruturar a "url" e "options" lá do nosso USER_GET, passando para ele o token para poder puxar os dados do usuario.
+
+* Fazemos o fetch com a "url" e "options" e atribuimos a const "response", depois atribuimos para a const "json" e atualizamos nosso estado "data" com esse json, e o estado de login passa a ser true.
+
+* Criamos a função assincrona "userLogin" ela vai ser responsabel por logar o usuario sendo passado nela como parametro o "username" e "password".
+
+* Nela vamos fazer o mesmo modelo de fetch da função anterior, o que muda é que vamos já desestruturar o token que vamos receber da resposta do json, ai guardar essa informação lá no local storage, por fim mandar esse token para nossa primeira função "getUser"
+
+* OBS: já fizemos algo parecido lá no "LoginForm", porem vamos retirar de lá para deixar aquela parte mais otimizada.
 
 @exemplo - UserContext.js
 ```bash
@@ -697,7 +705,7 @@ export const UserStorage = ({ children }) => {
     setData(json);
     setLogin(true);
   }
-  /*metodo que vsai logar o usuario*/
+  /*metodo que vai logar o usuario*/
   async function userLogin(username, password) {
     const { url, options } = TOKEN_POST({ username, password });
     const tokenRes = await fetch(url, options);
