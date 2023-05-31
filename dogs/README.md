@@ -684,6 +684,8 @@ o userContext vai servir para compartilhar as informações de login do usuario 
 
 * OBS: já fizemos algo parecido lá no "LoginForm", porem vamos retirar de lá para deixar aquela parte mais otimizada.
 
+* Por fim nesse momento vamos esta retornando o nosso "userLogin" e "data" no retorno que vão ser passados no global para as demais partes do app.
+
 @exemplo - UserContext.js
 ```bash
 import React from 'react';
@@ -720,4 +722,67 @@ export const UserStorage = ({ children }) => {
     </UserContext.Provider>
   );
 };
+```
+
+# Passando o UserContext para o global #
+
+Agora que criamos o contexto e hora de passar ele para o global para isso vamos fazer da seguinte forma.
+
+* Apos importar nosso "UserContext", no retorno vamos criar a tag de abertura e fechamento chamada <UserStorage> e fazer ela inglobar nosso "Header", "Footer" e nossas "Routes", assim vamos poder compartilhar as informações contidas no nosso contexto.
+
+@exemplo - App.js
+```bash
+import Footer from './Components/Footer';
+import Home from './Components/Home';
+import Login from './Components/Login/Login';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { UserStorage } from './UserContext';
+
+const App = () => {
+  return (
+    <div>
+      <BrowserRouter>
+        <UserStorage>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login/*" element={<Login />} />
+          </Routes>
+          <Footer />
+        </UserStorage>
+      </BrowserRouter>
+    </div>
+  );
+};
+```
+
+# Otimizando nosso LoginForm #
+
+Como criamos um contexto que faz o login do usuario e puxa o usuario, podemos tirar essa parte do nosso LoginForm para deixar ele mais otimizado e organizado além das seguintes alterações
+
+* Passamos importando nosso "UserContext"(muito importante para funcionar), só lembrando que passei só a parte do codigo que foi alterada.
+
+* Agora dentro de nosso "handleSubmit", em nosso "if" que contem a condição para validar o username e password vamos colocar nosso "userLogin" e passar para ele os parametros que definimos como "username" e "password", poderem temos que passar com o ".value" para pegar corretamente
+
+@exemplo
+```bash
+import React from 'react';
+import styles from './Header.module.css';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Dogs } from '../Assets/dogs.svg';
+import { UserContext } from '../../UserContext';
+
+const LoginForm = () => {
+  const username = useForm();
+  const password = useForm();
+
+  const { userLogin } = React.useContext(UserContext);
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    if (username.validate() && password.validate()) {
+      userLogin(username.value, password.value);
+    }
+  }
 ```
