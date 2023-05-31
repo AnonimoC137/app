@@ -664,3 +664,52 @@ const LoginForm = () => {
   );
 };
 ```
+# userContext #
+
+o userContext vai servir para compartilhar as informações de login do usuario com as demais partes do nosso app.
+
+* Começamos criando a const UserContext, para criar o contexto.
+
+* Dentro do UserStorage vai ter todas as configurações que vão ser atribuidas no global depois no retorno.
+
+* Criamos 4 estados reativos "data"(para as informações do usuario), "login"(para status de logado ou não), loading (status de carregando ou nao), e o "error" para tratar o erro.
+
+*
+
+@exemplo - UserContext.js
+```bash
+import React from 'react';
+import { TOKEN_POST, USER_GET } from './api';
+
+export const UserContext = React.createContext();
+
+export const UserStorage = ({ children }) => {
+  const [data, setData] = React.useState(null);
+  const [login, setLogin] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
+
+  /*para puxar o usuario*/
+  async function getUser(token) {
+    const { url, options } = USER_GET(token);
+    const response = await fetch(url, options);
+    const json = response.json();
+    setData(json);
+    setLogin(true);
+  }
+  /*metodo que vsai logar o usuario*/
+  async function userLogin(username, password) {
+    const { url, options } = TOKEN_POST({ username, password });
+    const tokenRes = await fetch(url, options);
+    const { token } = await tokenRes.json();
+    window.localStorage.getItem('token', token);
+    getUser(token);
+  }
+
+  return (
+    <UserContext.Provider value={{ userLogin, data }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+```
