@@ -24,7 +24,12 @@ const LoginForm = () => {
       <form onSubmit={handleSubmit}>
         <Input label="usuario" type="text" name="username" {...username} />
         <Input label="senha" type="password" name="password" {...password} />
-        <Button>Entrar</Button>
+        {loading ? (
+          <Button disabled>Carregando...</Button>
+        ) : (
+          <Button>Entrar</Button>
+        )}
+
         {error && <p>{error}</p>}
       </form>
       <Link to="/login/criar">Cadastros</Link>
