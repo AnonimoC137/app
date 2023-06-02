@@ -894,11 +894,12 @@ React.useEffect(() => {
 
 * Ela vai servir para fazer um reset em todos os nossos estado, além de zerar o token em nosso localStorage.
 
-* Ela precisa assim como o useEffect uma array de dependencia, pois estamos usando um metodo do routes, o "navigate", precisamos importar ele no inicio do codigo e ele basicamente serve para assim que entrar em logout o usuario ser jogado para o local d=que definirmos, nesse caso a pagina de login.
+* Ela precisa assim como o useEffect uma array de dependencia, pois estamos usando um metodo do routes, o "navigate",entao criamos uma const chamada natigate passando para ele o metodo "useNavigate()" precisamos importar ele no inicio do codigo e ele basicamente serve para assim que entrar em logout o usuario ser jogado para o local que definirmos, nesse caso a pagina de login.
 
 @exemplo- UserContext.js
 ```bash
 import { useNavigate } from 'react-router-dom';
+const navigate = useNavigate();
 
 const userLogout = React.useCallback(
     async function () {
