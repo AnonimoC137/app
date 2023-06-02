@@ -825,7 +825,7 @@ const Header = () => {
 };
 ```
 
-# Validate token #
+# Validate token na API #
 
 Vamos criar um processo via fetch lá em nossa api.js para validar o token do usuario.
 
@@ -961,4 +961,22 @@ async function userLogin(username, password) {
       {children}
     </UserContext.Provider>
   );
+```
+
+## LoginForm tratando button e erro ##
+
+* Agora com as ultimas otimizados que fizemos em nosso UserContext, já podemos fazer a manipulação de nosso button quando ao carregamente dele quando for fazer login a mesma coisa vale para o error.
+
+* Para o button vamos criar uma condição ternaria, se estiver carregando, vai mostrar na tela nosso button com a propriedade disabled que fizemos a estilização com CSS, caso contrario fica nosso button padrao.
+
+* Logo abaixo, vamos colocar uma condição com && para mostrar o erro na tela caso ele seja true.
+
+@exemplo - LoginForm.js
+```bash
+{loading ? (
+          <Button disabled>Carregando...</Button>
+        ) : (
+          <Button>Entrar</Button>
+        )}
+        {error && <p>{error}</p>}
 ```
