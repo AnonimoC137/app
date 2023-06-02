@@ -980,3 +980,37 @@ async function userLogin(username, password) {
         )}
         {error && <p>{error}</p>}
 ```
+## Button para deslogar ##
+
+* Dentro do ternario que criamos anteriormente para mostrar o nome de usuario quando estiver logado, vamos colocar um button, com um onCLick nele que ativa nossa função de logout, então se for clicado o usuaraio vai perder o acesso e ser destinado para a pagina de login novemente.
+
+@exemplo - Header.js
+```bash
+{data ? (
+          <Link className={styles.login} to="/conta">
+            {data.nome}
+            <button onClick={userLogout}>Sair</button>
+          </Link>
+        ) : (
+          <Link className={styles.login} to="/login">
+            Login / Criar
+          </Link>
+        )}
+```
+
+# Já estou logado #
+
+* Vamos criar um if lá em nosso Login.js onde esta nossas rotas para que se o usuario já esta logado ele idenficique isso assim que entrar em nosso site e ele seja direcionado para a pagina /conta.
+
+* Para isso vamos utilizar um metodo parecido com o useNavigate, que é do react-rotes-dom, só que dessa vez ele vai ser um elemento, ele é parecido tambem com o Link e o NavLink que já usamos.
+
+* Lembrando que precisamos sempre importar esses medotos no inicio para não dar erro, além de usar da forma correta nosso useContext, pois ele que esta compartilhando as informações com as demais partes de nosso codigo.
+
+@exemplo - Login.js 
+```bash
+import { Route, Routes, Navigate } from 'react-router';
+
+const { login } = React.useContext(UserContext);
+
+  if (login === true) return <Navigate to="/conta" />;
+```
