@@ -912,4 +912,53 @@ const userLogout = React.useCallback(
     },
     [navigate]
   );
+  return (
+    <UserContext.Provider
+      value={{ userLogin, data, userLogout, error, loading, login }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
+```
+## userLogin otimizado tratando erros ##
+
+* Como fizemos com nosso autoLogin vamos utilizar o try, catch e finally para tratar essa parte do codigo.
+
+* Lembrando que essa função recebe os parametro de username e password.
+
+* Aqui as partes que mudam são as seguintes, apos fazer o fetch vamos desestruturar somente o token da resposta que foi transformada em json e passar isso lá para nosso localSotarage.
+
+* Tambem vamos passar isso la para o nosdso getUser o token, nosso metodo navigate vai ser utilizado aqui para sempre que o user fazer o login dele ele ser destinado para a pagina conta.
+
+* Em nosso catch vamos setar o setError com a mensagem do proprio erro, mas tambem vamos atualizar nosso status de login para false, pois vamos usar isso depois lá no app.js para criar uma logica.
+
+* IMPORTANTE, vamos passar no retorno do nosso UserContext os seguintes itens: userLogin, data, userLogout, error, loading, login
+
+@exemplo
+```bash
+async function userLogin(username, password) {
+    try {
+      setError(null);
+      setLoading(true);
+      const { url, options } = TOKEN_POST({ username, password });
+      const tokenRes = await fetch(url, options);
+      if (!tokenRes.ok) throw new Error(`Error: ${tokenRes.statusText}`);
+      const { token } = await tokenRes.json();
+      window.localStorage.getItem('token', token);
+      await getUser(token);
+      navigate('/conta');
+    } catch (error) {
+      setError(error.message);
+      setLogin(false);
+    } finally {
+      setLoading(false);
+    }
+  }
+  return (
+    <UserContext.Provider
+      value={{ userLogin, data, userLogout, error, loading, login }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
 ```
