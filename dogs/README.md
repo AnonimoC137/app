@@ -824,3 +824,65 @@ const Header = () => {
   );
 };
 ```
+
+# Validate token #
+
+Vamos criar um processo via fetch lá em nossa api.js para validar o token do usuario.
+
+* Passando como parametro o token e seguindo o mesmo padrao utilizado nos anteriores somente musando o caminho final /validate.
+
+
+@exemplo- api.js
+```bash
+export function TOKEN_VALIDATE_POST(token) {
+  return {
+    url: API_URL + '/jwt-auth/v1/token/validate',
+    options: {
+      method: 'POST',
+      headers: {
+        authorization: 'Bearer ' + token,
+      },
+    },
+  };
+}
+```
+
+## Contexto otimizado para validar o token e tratar erro##
+
+* Criamos um useEffect que vai pegar o token guardado no localStorage.
+
+* Criamos uma função assincrona que vai ser a autoLogin para fazer o login automaticamente quando existir um token no localStorage.
+
+* Quando true vamos entrar em nosso "try", setar o error para null novamente, e setar o setLoading para true, que significa que ele vai estar em carregamento nesse momento.
+
+* Após desestruturar a url e as options vamos fazer um fetch, criamos tambem um if para ver se a response vai ser diferente de "ok", caso seja não vamos seguir com o codigo e vamos apresentar um erro.
+
+* Caso "ok", mandamos o token para nossa função getUser, que vai puxar nosso usuario, IMPORTANTE por se tratar de uma função async precisamos passar para o getUser com await tbm.
+
+* Em nosso catch, que seria nosso erro, vamos passar nossa função userLogout, que vai setar os estados para null e false novamente, e no finally vamos passar o setLoading novamente para false, pois vai ter terminado o carregamento.
+
+@exemplo- UserContext.js
+```bash
+React.useEffect(() => {
+    async function autoLogin() {
+      const token = window.localStorage.getItem('token');
+      if (token) {
+        try {
+          setError(null);
+          setLoading(true);
+          const { url, options } = TOKEN_VALIDATE_POST(token);
+          const response = await fetch(url, options);
+          if (!response.ok) throw new Error('Token invalido');
+          await getUser(token);
+          const json = response.json();
+          console.log(json);
+        } catch (error) {
+          userLogout();
+        } finally {
+          setLoading(false);
+        }
+      }
+    }
+    autoLogin();
+  }, [userLogout]);
+```
