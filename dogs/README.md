@@ -861,6 +861,8 @@ export function TOKEN_VALIDATE_POST(token) {
 
 * Em nosso catch, que seria nosso erro, vamos passar nossa função userLogout, que vai setar os estados para null e false novamente, e no finally vamos passar o setLoading novamente para false, pois vai ter terminado o carregamento.
 
+* Por fim não entendi direito por que esta apontando que precisamos passar na array de dependencias do useEffect nossa função useLogout, porem tive que criar ele com um useCallback.
+
 @exemplo- UserContext.js
 ```bash
 React.useEffect(() => {
@@ -885,4 +887,28 @@ React.useEffect(() => {
     }
     autoLogin();
   }, [userLogout]);
+```
+## userLogout ##
+
+* Criamos essa função assincrona utilizando o Hook useCallback para podermos colocar ela lá em nosso autoLogin.
+
+* Ela vai servir para fazer um reset em todos os nossos estado, além de zerar o token em nosso localStorage.
+
+* Ela precisa assim como o useEffect uma array de dependencia, pois estamos usando um metodo do routes, o "navigate", precisamos importar ele no inicio do codigo e ele basicamente serve para assim que entrar em logout o usuario ser jogado para o local d=que definirmos, nesse caso a pagina de login.
+
+@exemplo- UserContext.js
+```bash
+import { useNavigate } from 'react-router-dom';
+
+const userLogout = React.useCallback(
+    async function () {
+      setData(null);
+      setError(null);
+      setLoading(false);
+      setLogin(false);
+      window.localStorage.removeItem('token');
+      navigate('/login');
+    },
+    [navigate]
+  );
 ```
