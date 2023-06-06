@@ -6,6 +6,7 @@ import useForm from '../../Hooks/useForm';
 import { UserContext } from '../../UserContext';
 import Error from '../Helper/Error';
 import styles from './LoginForm.module.css';
+import stylesBtn from '../Forms/Button.module.css';
 
 const LoginForm = () => {
   const username = useForm();
@@ -36,7 +37,14 @@ const LoginForm = () => {
       <Link className={styles.perdeu} to="/login/perdeu">
         Perdeu a senha?
       </Link>
-      <Link to="/login/criar">Cadastros</Link>
+
+      <div className={styles.cadastro}>
+        <h2 className={styles.subTitle}>Cadastre-se</h2>
+        <p>Ainda não possui conta? então cadastre-se no site.</p>
+        <Link className={stylesBtn.button} to="/login/criar">
+          Cadastro
+        </Link>
+      </div>
     </section>
   );
 };
