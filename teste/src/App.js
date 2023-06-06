@@ -8,11 +8,9 @@ import  Section  from './Componentes/Section';
 function App() {
   return (
     <div>
-        
-        <Header/>
-        <Section/>
-        <Main/>
-        
+      <Header />
+
+      <Main />
     </div>
   );
 }
