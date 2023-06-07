@@ -1014,3 +1014,18 @@ const { login } = React.useContext(UserContext);
 
   if (login === true) return <Navigate to="/conta" />;
 ```
+## Conponente para o Error ##
+
+* Criamos um componente que vai receber o erro e mostrar na tela caso ele ocorra, passamos um style local nele tambem.
+
+@exemplo - pasta Helper - Error.js
+```bash
+import React from 'react';
+
+const Error = ({ error }) => {
+  if (!error) return null;
+  return <p style={{ color: '#f31', margin: '1rem 0' }}>{error}</p>;
+};
+
+export default Error;
+```
