@@ -8,7 +8,7 @@
 .login::before {
     display: block;
     content: '';
-    background: url('../../Assets/login.jpg') no-repeat center center;
+    background: url('../../../public/Assets/login.jpg') no-repeat center center;
     /*serve para pegar a img inteira na tela*/
     background-size: cover;
 }
@@ -32,6 +32,6 @@
     
     .forms {
         max-width: 100%;
-        
+
     }
 }
