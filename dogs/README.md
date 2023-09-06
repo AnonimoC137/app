@@ -829,7 +829,7 @@ const Header = () => {
 
 Vamos criar um processo via fetch lá em nossa api.js para validar o token do usuario.
 
-* Passando como parametro o token e seguindo o mesmo padrao utilizado nos anteriores somente musando o caminho final /validate.
+* Passando como parametro o token e seguindo o mesmo padrao utilizado nos anteriores somente mudando o caminho final /validate.
 
 
 @exemplo- api.js
