@@ -928,7 +928,7 @@ const userLogout = React.useCallback(
 
 * Aqui as partes que mudam são as seguintes, apos fazer o fetch vamos desestruturar somente o token da resposta que foi transformada em json e passar isso lá para nosso localSotarage.
 
-* Tambem vamos passar isso la para o nosdso getUser o token, nosso metodo navigate vai ser utilizado aqui para sempre que o user fazer o login dele ele ser destinado para a pagina conta.
+* Tambem vamos passar isso la para o nosso getUser o token, nosso metodo navigate vai ser utilizado aqui para sempre que o user fazer o login dele ele ser destinado para a pagina conta.
 
 * Em nosso catch vamos setar o setError com a mensagem do proprio erro, mas tambem vamos atualizar nosso status de login para false, pois vamos usar isso depois lá no app.js para criar uma logica.
 
