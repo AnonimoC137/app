@@ -286,7 +286,7 @@ import { ReactComponent as Dogs } from '../Assets/dogs.svg';
 
 const Header = () => {
   return (
-    <div className=className={`${styles.nav} container`}>
+    <div className={`${styles.nav} container`}>
       <nav className="container">
         <Link to="/" aria-label='Dogs- Home'>
           <Dogs />
@@ -429,7 +429,7 @@ const Button = ({ children, ...props }) => {
 
 * Criamos uma função validadora, primero ela verifica se passamos alguns type lá em nosso arquivo onde vamos usar o Hook, (nesse caso o Input.js).
 
-* Depois ela verifica se o valor digitado é igual a zero, caso seja vai ser setado no erro uma mensagem para mostrar na pela de "preencha um valor", depois temos outra condição que vai verificar se existe o types[type] e se esta dentro do padrao que passamos no regex, essa parte fica meio extensa porem da para entender que esta fazerndo um teste em nosso regex para validar, caso não passe no teste vai ser mostrado nossa message que esta no objeto types.
+* Depois ela verifica se o valor digitado é igual a zero, caso seja vai ser setado no erro uma mensagem para mostrar na tela de "preencha um valor", depois temos outra condição que vai verificar se existe o types[type] e se esta dentro do padrao que passamos no regex, essa parte fica meio extensa porem da para entender que esta fazerndo um teste em nosso regex para validar, caso não passe no teste vai ser mostrado nossa message que esta no objeto types.
 
 * Caso não exista nunhum erro, vamos setar o setError como null e retornar true para seguir o codigo.
 
@@ -542,7 +542,7 @@ const LoginForm = () => {
 
 * Como eu disse passamos desestruturando o nosso hook useForm para o Input que recebe suas propriedades, entao passamos isso para dentro dele. (value, onChange, error, onBlur)
 
-* Ai setamos o value como value, significa que o valor dele é o valor digitado pelo usurario, o onChange esta sendo setado para nossa função onChange lá em nosso hook, a mesma coisa vale para o onBlur, que inclusiva esta sendo passado já ativado.
+* Ai setamos o value como value, significa que o valor dele é o valor digitado pelo usurario, o onChange esta sendo setado para nossa função onChange lá em nosso hook, a mesma coisa vale para o onBlur, que inclusive esta sendo passado já ativado.
 
 * Por fim criamos uma condição para o erro, caso ele seja true, o <p> vai aparecer e mostrar o erro que é reativo.
 
@@ -616,7 +616,7 @@ Agora que criamos nossa API podemos otimizar o nosso fetch em nosso documento Lo
 
 * Criada a função getUser, sendo passado o token de autenticação para ela, dentro dela vamos ter a url e as options desestruturadas do USER_GET que esta em nossa api.js, com isso vamos criar uma const response que vai fazer um fetch passando esses dois parametros que eu citei agora, e outra const chamada json que vai pegar a resposta e transformar ela em json, em resumo ela vai servir para pegar nosso user utilizando o token.
 
-* Dentro de nossa função handleSubmit já existente vamos otimizar o processo da seguijnte forma, desestruturando o url e o options do TOKEN_POST que tambem criamos em nossa api.js, vamos passar os valores de username e password para entçao ser gerado um token de autenticação, alem disso vamos salvar na memoriano localStorage o token e passar para o getUser esse token.
+* Dentro de nossa função handleSubmit já existente vamos otimizar o processo da seguinte forma, desestruturando o url e o options do TOKEN_POST que tambem criamos em nossa api.js, vamos passar os valores de username e password para entao ser gerado um token de autenticação, alem disso vamos salvar na memoria no localStorage o token e passar para o getUser esse token.
 
 @exemplo - LoginForm
 ```bash
