@@ -12,15 +12,40 @@ const UserHeaderNav = () => {
   const { userLogout } = React.useContext(UserContext);
   return (
     <nav className={styles.nav}>
-      <NavLink to="/conta" end activeClassName={styles.active}>
+      <NavLink
+        to="/conta"
+        end
+        style={({ isActive }) => ({
+          background: isActive ? 'white' : '',
+          boxShadow: isActive ? '0 0 0 3px #fea' : '',
+          borderColor: isActive ? '#fb1' : '',
+          color: isActive ? '#fb1' : 'black',
+        })}
+      >
         <MinhasFotos />
         {mobile && 'Minhas Fotos'}
       </NavLink>
-      <NavLink to="/conta/estatisticas" activeClassName={styles.active}>
+      <NavLink
+        to="/conta/estatisticas"
+        style={({ isActive }) => ({
+          background: isActive ? 'white' : '',
+          boxShadow: isActive ? '0 0 0 3px #fea' : '',
+          borderColor: isActive ? '#fb1' : '',
+          color: isActive ? '#fb1' : 'black',
+        })}
+      >
         <Estatisticas />
         {mobile && 'Estatisticas'}
       </NavLink>
-      <NavLink to="/conta/postar" activeClassName={styles.active}>
+      <NavLink
+        to="/conta/postar"
+        style={({ isActive }) => ({
+          background: isActive ? 'white' : '',
+          boxShadow: isActive ? '0 0 0 3px #fea' : '',
+          borderColor: isActive ? '#fb1' : '',
+          color: isActive ? '#fb1' : 'black',
+        })}
+      >
         <AdicionarFoto />
         {mobile && 'Adicionar Foto'}
       </NavLink>
