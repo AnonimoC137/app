@@ -18,7 +18,6 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="login/*" element={<Login />} />
-            {/* <ProtectedRoute path="conta/*" element={<User />} /> */}
             <Route
               exact
               path="conta/*"
