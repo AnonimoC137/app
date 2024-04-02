@@ -19,7 +19,7 @@ export function TOKEN_VALIDATE_POST(token) {
     options: {
       method: 'POST',
       headers: {
-        authorization: 'Bearer ' + token,
+        Authorization: 'Bearer ' + token,
       },
     },
   };
@@ -31,7 +31,7 @@ export function USER_GET(token) {
     options: {
       method: 'GET',
       headers: {
-        authorization: 'Bearer ' + token,
+        Authorization: 'Bearer ' + token,
       },
     },
   };

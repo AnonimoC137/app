@@ -30,7 +30,7 @@ export const UserStorage = ({ children }) => {
         throw new Error(`Error: algo não esta certo,
        verifique a "Senha" ou o "Email"`);
       const { token } = await tokenRes.json();
-      window.localStorage.getItem('token', token);
+      window.localStorage.setItem('token', token);
       await getUser(token);
       navigate('/conta');
     } catch (error) {
@@ -38,7 +38,7 @@ export const UserStorage = ({ children }) => {
       setLogin(false);
     } finally {
       setLoading(false);
-    }
+    } 
   }
 
   const userLogout = React.useCallback(
@@ -69,6 +69,8 @@ export const UserStorage = ({ children }) => {
         } finally {
           setLoading(false);
         }
+      } else {
+        setLogin(false);
       }
     }
     autoLogin();
