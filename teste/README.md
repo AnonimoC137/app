@@ -118,3 +118,33 @@ QUANDO USAR?
 
 ```
 
+# Bridge #
+
+Bridge é um padrão de projeto estrutural que tem a intenção de desacoplar uma abstração da sua implementação, de modo que as duas possam variar e evoluir independentemente.
+
+```bash
+
+ABSTRAÇÃO E IMPLMENTAÇÃO
+
+* ABSTRAÇÃO é um codigo de alto nivel que geralmente delega ações para outro objeto.
+
+* IMPLEMENTAÇÃO é o codigo que realmente faz o trabalho.
+
+DIFERENÇA ENTRE BRIDGE E ADPTER
+
+* A diferença chave entre esses padrões está nas suas intenções, O padrão Adapter faz as coisas funcionarem APÓS elas terem sido projetadas. O Bridge as faz funcionar ANTES QUE existam...
+
+QUANDO USAR?
+
+* Voce souber que sua estrutura terá abstrações (codigo de alto nivel) e implementações dessa abstração (detalhes) que possam variar de maneira independente
+
+* Voce souber que o Adapter poderia ser aplicado naquela estrutura (voce já conhece a estrutura)
+
+* Voce quiser dividir uma classe que possa ter varias variantes (como em produtos e suas variações de cores: CanetaAzul, canetaVermelha, camisetaAzul, etc...)
+
+* Voce quer trocar as implementações em tempo de execução.
+
+```
+
+# Decorator # 
+
