@@ -1,70 +1,120 @@
-# Getting Started with Create React App
+# Prototype # 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Especificar os tipos de objetos a serem criados usando uma instancia - prototipo e criar novos objetos pela copia desse prototipo
 
-## Available Scripts
+```bash
+Quando usar?
 
-In the project directory, you can run:
+1. use o padrão prototype quando precisar que seu codigo não dependa de classes concretas para a criação de novos objetos.
 
-### `npm start`
+2. use o padrão
+ao prototype quando quiser ??? explosão de subclasse para objtos muito similares
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Factory Method #
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Definir uma interface para criar um objeto mas deixar as subclasses decidirem que classe instanciar. o factory method permite adiar a instanciação para as subclasses
 
-### `npm test`
+```bash
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* É um padrão de projeto de criação (lida com a criação de objetos)
 
-### `npm run build`
+* Oculta a logica de instanciação do codigo cliente. Ometodo fabrica será responsavel por instanciar as classes desejadas.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* É obtido através de herança. O metodo fabrica pode ser criado ou sobrescrito por subclasses.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Dá flexibilidade ao codigo cliente permitindo a criação de novas factories sem a necessidade de alterar codigo já escrito
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Pode usar parametros para determinar o tipo dos objetos a serem criados ou os parametros a serem enviados aos objetos sendo criados.
 
-### `npm run eject`
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Builder #
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Separar a construção de um objeto complexo da sua representação de modo que o mesmo processo de construção possa criar diferentes representações.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* O padrão sugere a separação do codigo que cria e o codigo que usa o objeto
+* Trata da criação de objetos complexos
+    * Construtores muito complexos
+    * Composição de varios objetos(composite)
+    * Algoritmo de criação do objeto complexo
+* Permite a criação de um objeto em etapas
+* Permite method chaining
+* O objeto final pode variar de acordo com a necessidade
+* É um objeto complexo
+```
 
-## Learn More
+# Abstract Factory #
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Fornece uma interface para criação de familias de objetos relacionados ou dependentes sem especificar suas classes concretas.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
 
-### Code Splitting
+* É um padrão de criação, portanto lida com criação de objetos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* É uma fabrica, assim como o Factory Method e geralmente é composto por multiplos Factory Methods
 
-### Analyzing the Bundle Size
+* Visa agrupar familias de produtos compativeis criando uma fabrica concreta por grupo de objetos compativeis
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* Separa o codigo que cria do codigo que usa os objetos 
 
-### Making a Progressive Web App
+* Permite facil implementação de novas familias de objetos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* Toda a programação dica focada nas interfaces e não em implementações
 
-### Advanced Configuration
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Singleton #
 
-### Deployment
+Garante que uma classe tenha somente uma instancia no programa e fornece um ponto de acesso global para a mesma
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
 
-### `npm run build` fails to minify
+SOMENTE UMA INSTANCIA?
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Geralmente usado para acesso a recursos compartilhados, como acesso á base de dados, interfaces graficas, sistema de arquivos, servidores de impressão e mais.
+
+* Tambem usado para substituir variaveis globais, como em casos de uso de objetos de configuração do sistema como um todo.
+
+PONTO DE ACESSO GLOBAL? 
+
+* Voce pode permitir acesso globla ao Singleton em toda sua aplicação, assim como faziamos (ou fazemos) com variaveis globais.
+
+* Uma vantagem do singleton é que podemos proteger a instancia com encapsulamento, evitando que outro codigo sobrescreva seu valor.
+
+
+QUANDO USAR? 
+
+* Use o singleton quando uma classe precisa ter somente uma instancia disponivel em todo o seu programa.
+
+* Use o singleton quando perceber que está usando variaveis globais para mater partes importantes do programa, como variaveis de configuração que são usadas por toda a aplicação.
+
+```
+
+# Adapter #
+
+Converter a interface de uma classe em outra interface esperada pelos clientes. O Adapter permite que certas classes trabalhem em conjunto, pois de outra forma seria impossivel por causa de suas interfaces incompativeis.
+
+```bash
+
+* É um padrão da categoria estrutural (structural)
+
+* Faz exatamente o que um adaptador da vida real faz (pense em um adaptador de tomadas de um formato para outro)
+
+* É muito usado para definir limites dentro de camadas da aplicação
+
+* Tambem pode ser usado para adptar interfaces de codigo legado para um novo codigo
+
+
+QUANDO USAR?
+
+* Voce não quiser que seu codigo dependa diretamente do codigo de terceiros ou legado
+
+* Voce quiser usar uma classe existente mas sua interface for incompativel com a interface que seu codigo ou dominio precisam
+
+* Voce quiser reutilizar varias subclasses que não possuam determinada funcionabilidade mas for impraticavel estender o codigo de cada uma apenas para adicionar a funcionabilidade desejada (o Decorator tambem faz isso).
+
+```
+
