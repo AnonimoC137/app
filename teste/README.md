@@ -1,3 +1,5 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Padrões Gof Criação @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 # Prototype # 
 
 Especificar os tipos de objetos a serem criados usando uma instancia - prototipo e criar novos objetos pela copia desse prototipo
@@ -19,7 +21,7 @@ Definir uma interface para criar um objeto mas deixar as subclasses decidirem qu
 
 * É um padrão de projeto de criação (lida com a criação de objetos)
 
-* Oculta a logica de instanciação do codigo cliente. Ometodo fabrica será responsavel por instanciar as classes desejadas.
+* Oculta a logica de instanciação do codigo cliente. O metodo fabrica será responsavel por instanciar as classes desejadas.
 
 * É obtido através de herança. O metodo fabrica pode ser criado ou sobrescrito por subclasses.
 
@@ -62,7 +64,7 @@ Fornece uma interface para criação de familias de objetos relacionados ou depe
 
 * Permite facil implementação de novas familias de objetos
 
-* Toda a programação dica focada nas interfaces e não em implementações
+* Toda a programação fica focada nas interfaces e não em implementações
 
 ```
 
@@ -93,6 +95,8 @@ QUANDO USAR?
 
 ```
 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Padrões Gof Estruturais @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 # Adapter #
 
 Converter a interface de uma classe em outra interface esperada pelos clientes. O Adapter permite que certas classes trabalhem em conjunto, pois de outra forma seria impossivel por causa de suas interfaces incompativeis.
@@ -115,6 +119,8 @@ QUANDO USAR?
 * Voce quiser usar uma classe existente mas sua interface for incompativel com a interface que seu codigo ou dominio precisam
 
 * Voce quiser reutilizar varias subclasses que não possuam determinada funcionabilidade mas for impraticavel estender o codigo de cada uma apenas para adicionar a funcionabilidade desejada (o Decorator tambem faz isso).
+
+PALAVRAS CHAVE {Converter a interface}, {adptar interfaces}, {interação entre interfaceis incompativeis}
 
 ```
 
@@ -144,7 +150,245 @@ QUANDO USAR?
 
 * Voce quer trocar as implementações em tempo de execução.
 
+PALAVRAS CHAVE {abstração da sua implementação}, {intenção de desacoplar}, {evoluir independentemente}
+
 ```
 
 # Decorator # 
 
+Agregar responsabilidades adicionais a um objeto dinamicamente. Os Decorators fornecem uma alternativa flexivel ao uso de subclasses para extensão de funcionalidades.
+
+```bash
+
+SOBRE O DECORATOR
+
+* Usa a composição ao inves da herança (sempre prefira composição ao inves de herança)
+* É muito parecido com o "Composite" porém tem a intenção diferente
+* É usado para adicionar funcionabilidades a objetos em tempo de execução
+* Finge ser o objeto sendo decorado, porém repassa chamadas de métodos para o mesmo
+* Pode executar ações antes e depois das chamadas dos métodos do objeto decorado
+* Pode manipular dados antes do retorno
+
++ SOBRE DECORATOR
+
+* Decorator serve como interface para o ConcreteDecorator
+* Decoradores concretos podem adicionar funcionalidades ao seu componente. Eles podem se basear nas funcionalidades atuais do componente
+
+QUANDO USAR?
+
+* Voce precisa adicionar funcionalidades em objetos sem quebrar ou alterar o codigo existente
+* Voce quiser usar composição ao inves de herança
+* Voce percebe que pode ocorrer uma explosão de subclasses em determinada estrutura
+
+PALAVRAS CHAVE {extensão de funcionalidades}, {responsabilidades adicionais}, {alternativa flexivel}
+
+```
+
+# Composite #
+
+Compor objetos em estruturas de arvore para representar hierarquias partes/todo. Composite permite aos clientes tratarem de maneira uniforme objetos individuais e composições de objetos.
+
+```bash
+SOBRE O COMPOSITE
+
+* É um padrão da categoria estrutural
+* Faz mais sentido em estruturas que podem ser tratadas hierarquicamente(como arvore, filho do filho, etc...)
+* Pode ser uma solução para estruturas complexas que podem ser tratadas de maneira uniforme
+* Prioriza composição ao inves de herança
+
+* Exemplo: produto solto com preço e caixa com varios do mesmo produto tambem com preço
+
+* O filho do composite que não tem filho se chama "Leaf"
+* Objetos "Leaf" são objetos que realmente fazem o trabalho
+* Objetos "Composite" são objetos que tem filhos e não fazem o trabalho real, mas delegam para seus filhos.
+
+QUANDO USAR?
+
+* Sua estrutura de objetos possa ser representada hierarquicamente, como por exemplo, estrutura do tipo arvore.
+* Voce quiser que o codigo cliente trate objetos compostos e objetos simples da mesma maneira.
+
+PALAVRAS CHAVE {hierarquias}, {arvore}, {Leaf}
+
+```
+
+# façade #
+
+É um padrão de projeto estrutural, que tem a intenção de fornecer uma interface unificada para um conjunto de interfaces em um subsistema. Façade define uma interface de nivel mais alto que torna o subsistema mais facil de ser usado
+
+```bash
+
+SOBRE O FAÇADE
+
+* O façade é o padrão mais simples de todos. Ele tem a intenção de facilitar a vida do codigo cliente ao criar um objeto de fachada para o sistema mais complexo.
+
+* Reduz a complexidade de uma api, liberando acesso a metodos de alto nivel encapsulando os demais
+* Produz uma interface comum e simplificada
+* Pode encapsular uma ou mais interfaceis mal projetadas em uma mais concisa
+* Reduz drasticamente o acoplamento entre as camadas do projeto
+
+QUANDO USAR?
+
+* Voce quer disponibilizar uma interface mais simples para um sistema complexo
+* Voce quer criar pontos de entrada para determinadas partes do sitema, como serviços externos, camadas de aplicação e objetos complexos dentro de determinadas partes do codigo.
+
+PALAVRAS CHAVE {subsistema}, {interface de nivel mais alto}
+
+```
+
+# FLYWEIGHT #
+
+É um padrão estrutural que tem a intenção de usar compartilhamento para suportar eficientemente grandes quantidades de objetos de forma granular.
+
+OUTRA TRADUÇÃO:
+
+O proposito do padrão flyweight é permitir a utilização de diversos pequenos objetos de forma eficiente por meio de uma solução baseada em compartilhamento de objetos.
+
+```bash
+
+SOBRE O FLYWEIGHT
+
+* É um padrão de otimização
+* Visa economizar memoria RAM devido ao grande número de objetos na aplicação
+* Resolve o problema de desenpenho dividindo o estado de um objeto em "intrinseco" e "extrinseco"
+    * Estado "intrinseco" é o que geralmente não muda ou que muda muito pouco
+    * Estado "extrinseco" é o estado que pode ser movido para fora do objeto por mudar frequentemente
+* Só deve ser usado se sua aplicação estiver com problemas de alto consumo de memoria RAM
+
+QUANDO USAR?
+
+se todas as condições a seguir forem verdadeiras:
+
+* Sua aplicação utiliza uma grande quandtidade de objetos.
+* Os custos de armazenamento são altos por causa da grande quantidade de objetos.
+* A maioria dos estados de objetos podem se tornar extrinsecos
+* Muitos objetos podem ser substituidos por poucos objetos compartilhados
+* A aplicação não depende da identidade dos objetos.
+
+PALAVRAS CHAVE {memoria}, {compartilhamento}
+
+
+```
+
+# PROXY #
+
+Proxy é um padrão de projeto que tem a intenção de fornecer um substituto ou marcador de localização para outro objeto para controlar o acesso a esse objeto.
+
+OUTRA DEFINIÇÃO:
+
+O proposito do padrão proxy é fornecer aos clientes um objeto proxy, com a mesma interface do objeto destino real, que delega as requisições dos clientes para o objetos real.
+
+```bash
+
+SOBRE O PROXY
+
+* Usa composição, portanto tem a estrutura muito semelhante ao composite e Decorator (as inteções são diferentes)
+* Usa um objeto "proxy" que finge ser o objeto real
+* É usado para controle de acesso, logs, cache, lazy instantiation, distribuição de serviços
+* Pode escolher como e quando repassar chamadas de metodos para o objeto real
+* Pode executar ações antes e depois das chamadas dos metodos do objeto real
+* Tem varias variações: proxy virtual, proxy remoto, proxuy de proteção, proxy inteligente
+
+QUANDO USAR?
+
+* Voce tem um objeto caro para ser criado e não quer permitir acesso direto a esse objeto (proxy virtual)
+* Voce quer restringir acesso a partes da sua aplicação (proxy de proteção)
+* Voce quer uma ligação entre seu sistema e um sistema remoto(proxy remoto)
+* Voce quer fazer cache de chamadas já realizadas (inteligente ou proxy cache)
+* Voce quer interceptar quaisquer chamadas de metodos no objeto real por qualquer motivo (exemplo:criar logs)
+
+
+PALAVRAS CHAVE {controlar o acesso}, {interface do objeto destino real}, {marcador de localização}
+
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Padrões Gof Comportamentais @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+# Chain of Responsibility #
+
+INTEÇÃO VISÃO ESTACIO
+
+Chain of Responsibility é um padrão que permite o envio de uma requisição para o primeiro elemento de uma cadeia de objtos que podem realizar algum processamento relacionado a essa requisição, fazendo com que o objeto requisitante não precise ficar acoplado a todos os objetos da cadeia, mas apenas ao objeto para o qual ele envia a requisição.
+
+INTENÇÃO OUTRA VERSÃO
+
+Evita o acoplamento do remetente de uma solicitação ao seu destinatário, dando a mais de um objeto a chance de tratar a solicitação. Encadeia os objetos receptores e passa a solicitação ao longo da cadeia até que um objeto a trate.
+
+```bash
+SOBRE
+
+* É usado quando uma requisição precisa passar por sequencia de operações até ser totalmente tratada.
+* Desacopla quem envia de quem trata a requisição.
+* É muito usado com requisições HTTP
+* cada objeto da cadeia pode tratar uma parte da requisição e passar para o proximo da cadeia.
+
+QUANDO USAR?
+
+* Seu sistema precisa processar uma requisição em varias etapas diferentes e voce não quer criar uma ordem rigida para o processamento. o chain of responsibility permite que voce altere a ordem dos objetos na cadeia facilmente.
+* Voce quer aplicar o principio da responsabilidade unica para tratamento de dados da requisição. Cada objeto fica responsavel por tratar apenas a parte que lhe couber.
+* Voce quer permitir que os objetos responsaveis pelo tratamento de requisição possam variar em tempo de execução
+
+
+
+PALAVRAS CHAVE {encadeia os objetos}, {Cadeia de responsabilidade} {evita o acoplamento em todos objetos da cadeia}
+```
+
+# Command #
+
+INTEÇÃO VISÃO ESTACIO
+
+Command é um padrão que encapsula uma requisição em um objeto. Em projeto que não utilizam esse padrão, uma requisição é normalmente realizada por meio de uma simples chamada de operação. O encapsulamento de requisições em objetos desacopla o requisitante e o objeto executor, o que possibilita, Parametrizar as requisições disparadas pelos clientes, Criar filias de requisições, Registrar o historico de requisições, implementar operações para desfazer ou refazer o processamento realizado para atender uma requisição.
+
+OUTRA VISÃO
+
+Encapsula uma solicitação como um objeto, desta forma permitindo que voce parametrize clientes com diferentes solicitações, enfilere oi registre (log) solicitações e suporte operações que podem ser desfeitas
+
+```bash
+
+SOBRE
+
+* Transforma uma solicitação (um comando) em um objeto com toda a informação necessaria para sua execução
+* É a versão orientada a objetos para funções de callback
+* Permite que comandos possam ser enfileirados
+* Permite registro de alterações para que possam ser replicadas quando necessario
+* Permite que voce crie comandos compostos
+* Desacopla o codigo do objeto que faz a solicitação com o objeto que recebe a solici
+
+
+QUANDO USAR?
+
+* Voce quer desacoplar o objeto que envia a solicitação do objeto que a receberá
+* Voce quer tratar um comando como um objeto(com a possibilidade de armazenar, agendar, enfileirar, fazer log, agendar execusões, ou qualquer coisa que pode ser feita com um objeto)
+* Voce quer permitir que a solicitações possam ser feitas e desfeitas
+
+
+PALAVRAS CHAVE {comandos enfileirados}, {Transforma solicitação/comando em objeto} {solicitações possam ser feitas e desfeitas}
+
+```
+# Iterator #
+
+INTEÇÃO VISÃO ESTACIO
+
+O objeto do padrão Iterator é permitir o acesso sequencial aos objetos de uma coleção, sem expor sua representação interna
+
+OUTRA VISÃO
+
+Fornece uma maneira de acessar sequencialmente os elementos de um objeto agregado sem expor sua representação subjacente
+
+```bash
+
+SOBRE
+
+* Desacopla a intenção principal do objeto do modo como sua interação é realizada (delega a iteração para outro objeto)
+* Permite varios tipos de iterators, facilitando a implementação de novos modos de travessia da mesma coleção
+* Encapsula os detalhes e monitora a travessia
+* Permite que a coleção troque de iterador em tempo de execução
+
+QUANDO USAR?
+
+* Voce precisa remover a complexidade da travessia de dentro da coleção principal. isso permite que sua coleção foque apenas em armazenar dados de maneira eficiente
+* Sua coleção pode ter varios modos de travessia, como crescente, pelo menor numero de saltos, pulando de dois em dois, ou como preferir.
+* Voce quer disponibilizar protocolos de travessia para diferentes tipos de coleções
+
+
+PALAVRAS CHAVE {acessar sequencialmente os elementos}, {remover a complexidade da travessia principal} {protocolos de travessia para coleções}
+```
