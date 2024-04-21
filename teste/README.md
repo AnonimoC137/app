@@ -392,3 +392,184 @@ QUANDO USAR?
 
 PALAVRAS CHAVE {acessar sequencialmente os elementos}, {remover a complexidade da travessia principal} {protocolos de travessia para coleções}
 ```
+# Mediator #
+
+INTENÇÃO ESTÁCIO
+
+O padrão Mediator encapsula a forma de interação entre um conjunto de objetos, com o objetivo de evitar que eles tenham que referenciar uns aos outros explicitamente.
+
+OUTRA VISÃO INTENÇÃO
+
+Define um objeto que encapsula como um conjunto de objetos interage. O mediator promove o acoplamento fraco ao evitar que os objetos se refiram explicitamente uns aos outros, permitindo que voce varie suas interações.
+
+```bash
+SOBRE O MEDIATOR
+
+* Visa encapsular a comunicação direta entre objetos
+* Desacopla objetos que estariam intimamente ligados
+* Centraliza toda a comunicação em apenas um objeto
+
+* Basicamente ele serve como um objeto que vai ter ligação direta com todos os outros para que não precise todos estarem ligados uns com os outros
+
+QUANDO USAR?
+
+* Voce quer diminuir ou extinguir o acoplamento direto entre as classes que poderiam estar diretamente acopladas
+* Voce quer simplificar comunicações de muitos-para-muitos para comunicações de um-para-muitos
+
+
+PALAVRAS CHAVE {centralizador}, {comunicação de um para muitos} {evita ligação direta}, {interação entre um conjunto de objetos}
+```
+
+# Memento #
+
+INTENÇÃO VISÃO ESTÁCIO
+
+Memento é um padrão que permite capturar o estado interno de um objeto, sem quebrar o encapsulamento de forma que esse estado possa ser restaurado posteriormente.
+
+OUTRA VISÃO
+
+Sem violar o encapsulamento, captura e externaliza um estado interno de um objeto, de modo que o mesmo possa posteriormente ser restaurado para este estado.
+
+```bash
+SOBRE O MEMENTO
+
+* Praticamente todas as aplicações o implementam com a função "desfazer" (CTRL + Z)
+* Desacopla a responsabilidade da classe originadora de tomar conta dos deus backups
+* Garante o encapsulamento e consistencia nos backups
+
+QUANDO USAR?
+
+* Voce quer ter a possibilidade de salvar e restaurar o estado atual de um objeto sem violar o encapsulamento
+* Voce deseja implementar a função "desfazer" no seu sistema
+* Voce deseja fazer backups de estado de determinada classe no seu sistema
+
+PALAVRAS CHAVE {capturar o estado}, {função "desfazer"} {salvar e restaurar o estado atual}, {backups de estado}
+```
+
+# Strategy #
+
+INTENÇÃO VISÃO ESTACIO
+
+O padrão Stratregy define uma familia de algoritmos, encapsulando-os em objetos e permitindo que eles possam ser utilizados de forma intercambiavel, ou seja, o algoritmo especifico pode ser trocado sem que o modulo usuario desse algoritmo precise ser alterado.
+
+OUTRA VISÃO
+
+Definir uma familia de algoritmos, encapsular cada um deles e faze-los intercambiaveis. O strategy permite que o algoritmo varie independentemente dos clientes que o utilizam.
+
+```bash
+SOBRE O STRATEGY
+
+* Separa a regra de negocio de variações de algoritmos que possam existir
+* Define uma familia de algoritmos cada uma com uma variação diferente
+* Permite a criação de varios algoritmos sem a necessidade de condicionais
+
+QUANDO USAR?
+
+* Voce tiver variantes de um mesmo algoritmo e precisa trocar esses algoritmos em tempo de execução
+* Voce precisar isolar a regra de negocio do algoritmo que deve ser aplicado (aplicando o principio da responsabilidade unica)
+* Voce perceber que está usando condicionais apenas para trocar o resultado final de um algoritmo
+
+PALAVRAS CHAVE {familia de algoritmos}, {intercambiaveis} {criação algoritmo sem condicional}
+
+```
+
+# Observer #
+
+INTENÇÃO VISÃO ESTÁCIO
+
+O padrão Observer define uma relação de dependencia entre objetos, de modo a garantir que, quando alguma modificação no estado de determinado objeto ocorrer, todos os objetos dependentes sejam notificados e atualizados automaticamente.
+
+OUTRA VISÃO
+
+Define uma dependencia uma para muitos entre objetos, de modo que, quando um objeto muda de estado, todos os seus dependentes são automaticamente notificados e atualizados.
+
+```bash
+SOBRE O OBSERVER
+
+* Implementado com dois tipos de objetos: objetos observaveis (observable) e objetos observadores (observer)
+* Objetos observaveis tem uma referencia para todos os seus observadores. Isso torna possivel adicionar, remover e notificar todos observadores quando seu estado muda
+
+* Objetos observadores devem ter meios de receber notificação de seus observaveis. Geralmente isso e feito com apenas um metodo.
+
+QUANDO USAR?
+
+* Voce precisa notificar objetos sobre a mundaça de estado de outros objetos.
+
+PALAVRAS CHAVE {objetos dependentes notificados atualizados}, {notificar objetos} {estado muda}
+```
+
+# Visitor #
+
+INTENÇÃO VISÃO ESTÁCIO
+
+O padrão Visitor permite a definição de novas operações em uma hierarquia de objetos sem que haja a necessidade de moficar as classes dessa hierarquia.
+
+OUTRA VISÃO
+
+Representa uma operação a ser executada sobre os elementos da estrutura de um objeto. O visitor permite que voce separe um algoritmo dos elementos sobre os quais opera.
+
+```bash
+SOBRE O VISITOR
+
+* O padrão visitor permite adicionar novas operações a uma estrutura de objeto existente sem modificar essa estrutura
+
+QUANDO USAR?
+
+* Voce precisa executar um algoritmo em todos os elementos de uma estrutura mais complexa (como uma estrutura criada com o padrão composite)
+* Voce quer separar uma logica complexa em objetos auxiliares
+
+PALAVRAS CHAVE {visitar elementos}, {adicionar novas funcionalidades} {hierarquia de objetos}, {não modifica estrutura}
+```
+
+# State #
+
+INTENÇÃO VISÃO ESTACIO
+
+O padrão State permite que um objeto modifique o seu comportamento quando o seu estado mudar, como se o objeto tivesse mudado de classe. Em vez de uma unica classes tratar os estados dos seus objetos em operações com diversas expressões condicionais, cada estado é representado em uma classe separada.
+
+INTENÇÃO OUTRA VISÃO
+
+Permite que um objeto altere seu comportamento quando seu estado interno muda. O objeto parecerá ter mudado de classe.
+
+```bash
+SOBRE O STATE
+
+* Evita condicionais quando um objeto contexto de comportamento dependendo do seu estado
+* Desacopla o estado de um objeto contexto e seus metodos em objetos de estado separados
+* Fcilita a adição de novos estados sem a necessidade de alterar estados anteriores
+
+
+QUANDO USAR?
+
+* O seu objeto pode se comportar de maneira diferente dependendo do seu estado atual
+* Voce quer evitar o uso de condicionais que alteram o comportamento da classe de acordo com valores dos seus campos
+
+PALAVRAS CHAVE {estado presentado classe separada}, {parecerá ter mudado de classe} {evitar o uso de condicionais}, {comportamento dependendo do seu estado}
+
+```
+
+# interpreter #
+
+INTENÇÃO VISÃO ESTÁCIO
+
+O proposito do padrão interpreter é definir uma representação para a gramática de uma linguagem e um módulo capaz de interpretar sentenças nessa linguagem.
+
+OUTRA VISÃO
+
+```bash
+SOBRE O INTERPRETER
+
+* Padrão que define a gramatica de uma linguagem e interpreta sentenças dessa linguagem
+* Permite avaliar expressoes ou sentenças em uma linguagem especifica
+* Define regras para interpretação de expressoes na linguagem
+
+QUANDO USAR?
+
+* Quando voce tem uma linguagem simples que precisa ser interpretada
+* Quando voce precisa definir uma gramatica para uma linguagem e avaliar expressoes nessa linguagem
+* Quando voce precisa interpretar expressoes matematicas, linguagens de consulta ou linguagens de script
+
+
+PALAVRAS CHAVE {interpretar}, {representação para a gramática}, {avaliar expressoes}, {sentenças nessa linguagem}
+```
+
