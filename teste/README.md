@@ -572,4 +572,83 @@ QUANDO USAR?
 
 PALAVRAS CHAVE {interpretar}, {representação para a gramática}, {avaliar expressoes}, {sentenças nessa linguagem}
 ```
+# Template Method #
+
+INTENÇÃO VISÃO ESTÁCIO
+
+O proposito do padrão template method é definir o esqueleto de um algoritmo em uma superclasse, em que os passos comuns podem ser implementados na propria superclasse e os passos especificos nas subclasses
+
+OUTRA VISÃO
+
+Define o esqueleto de um altoritmo em uma operção, postergando a definição de alguns passos para subclasse. O template method permite que as subclasses redefinam certos passos de um algoritmo sem mudar sua estrutura.
+
+```bash
+SOBRE O TEMPLATE METHOD
+
+* Mantem a ordem de chamada de metodos no algoritmo
+* Evita a duplicação de codigo dentro da classe base
+* Substitui condicionais por polimorfismo
+* Permite que as subclasses alterem apenas os passos necessarios para concluir o algoritmo
+* Permite a adição de hooks para que as subclasses utilizem em pontos estrategicos do algoritmo.
+
+
+QUANDO USAR?
+
+* Voce precisa de variações de um mesmo algoritmo sem mudar a ordem de execução dos metodos
+* Voce percebe que está usando herança para alterar apenas pequenos trechos de codigo de um algoritmo.
+* Inversão do controle: A classe base controla a ordem de execução do algoritmo, mas delega a implementação de partes específicas para as subclasses.
+
+PALAVRAS CHAVE {definir o esqueleto}, {implementados na propria superclasse} {Inversão do controle},
+
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Padrões Grasp @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+# Padrão Especialista na informação #
+
+SOBRE
+
+Esse padrão sugere que a responsabilidade por uma determinada tarefa deve ser atribuida á classe que possui a maior quantidade de informações necessarias para executar essa tarefa com sucesso.
+
+RESUMO
+
+* Propoem que uma classe deve ser designada para realizar uma determinadaoperação se ela já possui as informações necessarias para executa-la de maneira eficaz. Isso promove a coesão, onde as responsabilidades são agrupadas de forma lógica e coesa em classes especificas.
+
+* Normalmente a rtealização de uma funcionalidade do sistema envolve a presença de diversos especialistas, pois cada classe possui uma parte das informações necessarias para resolver o problema, será necessario estabelecer um mecanismo de colaboração entre os objetos- por intermedio de troca de mensagens.
+
+DEFINIÇÃO DO PADRÃO VISÃO QUESTÃO ESTACIO
+
+Padrão que recomenda alocar as operações pelas classes do sistema de acordo com o conhecimento que cada classe possui, sendo ele dado pelos seus atributos e relacionamentos
+
+# Criador #
+
+SOBRE
+
+* Padrão que sugere a delegação da responsabilidade de criação de objetos para uma classe separada, em vez de instanciar os objetos diretamente. Esse padrão é util quando a criação pe complexa ou quando existe a possibilidade de multiplas maneiras de criar o bojeto.
+
+* Propoe que a responsabilidade de criar objetos seja delegada a uma classe dedicada, conhecida como "fabrica" ou "criador". Esta classe pode conter metodos que instanciam e inicializam os objetos de acordo com determinados criterios.
+
+* O padrão Criador é especialmente indicado para a criação de instâncias que formam parte de um agregado, pois o elemento que controla o ciclo de vida das suas partes é o próprio agregado, o qual, aliás, naturalmente já está relacionado com as suas partes. Esse padrão não é apropriado em algumas situações especiais, como é o caso da criação condicional de uma instância de uma família de classes similares.
+
+RESUMO
+
+* Dessa forma , o padrão Criador promove um codigo mais modular e flexivel, facilitando a manutenção e a escalabilidade do sistema. Além disso ele ajuda a reduzir o acoplamento entre as classes, já que a criação de objetos é centralizada em uma unica classe.
+
+DEFINIÇÃO DO PADRÃO VISÃO QUESTÃO ESTACIO
+
+O padrão criador oferece uma heurisca para resolver problemas simples de instanciação de objetos, recomendando que um agregado seja responsavel pela criação dos objetos que o compoem
+
+# Coesão alta #
+
+SOBRE
+
+Refere ao grau em que os elementos de um modulo então relacionados entre si. Em outras palavras, quanto mais relacionadas são as responsabilidaders dos elementos dentro de um modulo, maior é a coesão desse modulo.
+
+* A complexidade está distribuída por vários módulos, cada um contribuindo para resolver um pedaço específico do problema.
+
+RESUMO
+
+Coesão é um conceito que nos permite avaliar se as responsabilidades de um módulo estão fortemente relacionadas e possuem o mesmo propósito. O objetivo é criar módulos com coesão alta, ou seja, módulos que tenham um propósito bem definido.
+
+A principal intenção da coesão alta é criar módulos de software que sejam coesos, ou seja, que tenham suas responsabilidades bem definidas e relacionadas
+
 
