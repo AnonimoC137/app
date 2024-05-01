@@ -9,8 +9,15 @@ Quando usar?
 
 1. use o padrão prototype quando precisar que seu codigo não dependa de classes concretas para a criação de novos objetos.
 
-2. use o padrão
-ao prototype quando quiser ??? explosão de subclasse para objtos muito similares
+2. use o padrão prototype quando quiser que não ocorra uma explosão de subclasse para objtos muito similares
+
+QUESTÕES ESTACIO
+
+"Implementar uma operação clone em cada produto concreto a ser instanciado, permitindo que um módulo cliente crie uma nova instância por meio da criação de uma réplica de um objeto já existente".Assinale a alternativa com o nome do padrão que define essa estratégia:
+
+Resposta: Prototype
+
+PALAVRAS CHAVE {novos objetos pela copia}, {evita explosão de subclasses}
 ```
 
 # Factory Method #
@@ -29,6 +36,22 @@ Definir uma interface para criar um objeto mas deixar as subclasses decidirem qu
 
 * Pode usar parametros para determinar o tipo dos objetos a serem criados ou os parametros a serem enviados aos objetos sendo criados.
 
+QUESTÕES ESTACIO
+
+1. Um aplicativo de reserva de hotéis utiliza o padrão Factory Method para criar diferentes tipos de reservas, como quartos standard e suítes. Este padrão permite que subclasses decidam que classe de objetos será instanciada, baseado nas preferências do usuário.Qual é o benefício do padrão Factory Method neste aplicativo?
+
+Resposta: Permite que subclasses decidam sobre a criação de objetos
+
+2. "Definir um participante Creator com uma operação abstrata que é implementada em cada subclasse Concrete Creator, sendo cada implementação concreta dessa operação responsável pela instanciação de um produto específico". Assinale a alternativa com o nome do padrão que define essa estratégia:
+
+Resposta: Factory Method
+
+3. "Implementar a instanciação de objetos utilizando uma estrutura de herança, em que a superclasse define uma operação de criação de um produto genérico, e cada subclasse define a implementação dessa operação, criando um produto específico derivado do produto genérico definido na superclasse".
+
+Resposta: Factory Method
+
+PALAVRAS CHAVE {subclasses decidirem que classe instanciar}, {É uma fabrica}
+
 ```
 
 # Builder #
@@ -46,6 +69,18 @@ Separar a construção de um objeto complexo da sua representação de modo que 
 * Permite method chaining
 * O objeto final pode variar de acordo com a necessidade
 * É um objeto complexo
+
+QUESTÕES ESTACIO
+
+1. Ao desenvolver um editor de texto, a equipe optou pelo padrão Builder para facilitar a construção de um conjunto complexo de objetos, como a formatação de texto. Este padrão ajuda a separar a construção do objeto de sua representação Qual é a vantagem principal do padrão Builder neste cenário?
+
+Resposta: Construção passo a passo de um objeto complexo.
+
+2. Você precisa implementar um módulo que leia um arquivo RTF (Rich Text Format) e converta seu conteúdo em diferentes formatos (ASCII, TeX, HTML etc.). Sabendo que o arquivo é composto por diferentes partes (texto, formatação, figuras etc.), qual dos padrões seria mais indicado para isolar o conversor das diferentes formas de representação do conteúdo gerado?
+
+Resposta: Builder
+
+PALAVRAS CHAVE {Trata objetos complexos}, {criar diferentes representações}, {criação de um objeto em etapas}
 ```
 
 # Abstract Factory #
@@ -66,6 +101,17 @@ Fornece uma interface para criação de familias de objetos relacionados ou depe
 
 * Toda a programação fica focada nas interfaces e não em implementações
 
+QUESTOES ESTACIO
+
+1 "Permitir a criação de uma família de objetos relacionados ou dependentes, de forma que o módulo cliente não precise conhecer os objetos específicos das diferentes famílias, lidando apenas com as interfaces genéricas dos produtos dessas famílias".Assinale a alternativa com o nome do padrão que possui esse propósito:
+
+Resposta: Abstract Factory
+
+2 Para um sistema de automação residencial, o padrão Abstract Factory é usado para criar diferentes tipos de dispositivos inteligentes, como lâmpadas e termostatos, sem depender de implementações específicas. Isso permite a fácil integração de novos dispositivos no sistema. Qual é a principal funcionalidade do padrão Abstract Factory neste sistema de automação?
+
+Resposta: Cria familias de objetos sem especificar suas classes concretas
+
+PALAVRAS CHAVE { grupo de objetos compativeis}, {composto por multiplos Factory Methods}, {Fornece interface criação}
 ```
 
 # Singleton #
@@ -93,6 +139,18 @@ QUANDO USAR?
 
 * Use o singleton quando perceber que está usando variaveis globais para mater partes importantes do programa, como variaveis de configuração que são usadas por toda a aplicação.
 
+QUESTÕES ESTACIO
+
+1. "Garantir que uma classe somente tenha uma instância em um processo de execução, fornecendo uma forma de acesso a essa única instância e impedindo que outros módulos possam ter acesso a seu construtor". Assinale a alternativa com o nome do padrão que possui esse propósito:
+
+Resposta: Singleton
+
+2. Em um projeto de software para gestão de bibliotecas, o padrão Singleton é utilizado para garantir uma única instância do sistema de gerenciamento de usuários. Este padrão assegura que todas as operações de empréstimo e devolução de livros sejam gerenciadas de forma centralizada. Qual é a principal característica do padrão Singleton utilizada neste contexto?
+
+Resposta: Garante uma unica instancia de uma classe em toda a aplicação
+
+PALAVRAS CHAVE {fornece um ponto de acesso global}, {acesso a recursos compartilhados}, {somente uma instancia disponivel}
+
 ```
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Padrões Gof Estruturais @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -119,6 +177,16 @@ QUANDO USAR?
 * Voce quiser usar uma classe existente mas sua interface for incompativel com a interface que seu codigo ou dominio precisam
 
 * Voce quiser reutilizar varias subclasses que não possuam determinada funcionabilidade mas for impraticavel estender o codigo de cada uma apenas para adicionar a funcionabilidade desejada (o Decorator tambem faz isso).
+
+QUESTÕES ESTACIO
+
+1. Conseguir adicionar um novo fornecedor externo de um serviço já utilizado por um sistema, apenas adicionando um módulo que seja capaz de converter uma requisição de uma interface conhecida pelo sistema para a interface proprietária fornecida pelo componente externo é um dos efeitos obtidos com a aplicação de qual padrão?
+
+Resposta: Adapter
+
+2. Implementar um componente para cada fornecedor de um determinado serviço, supondo que possamos ter diferentes fornecedores com APIs proprietárias para esse serviço utilizado pelo nosso sistema, de modo que esse componente converta uma requisição genérica do serviço utilizado pelos módulos clientes do sistema em chamadas específicas da API do fornecedor externo. Essa descrição corresponde à estrutura de solução de qual padrão?
+
+Resposta: Adapter
 
 PALAVRAS CHAVE {Converter a interface}, {adptar interfaces}, {interação entre interfaceis incompativeis}
 
@@ -150,6 +218,16 @@ QUANDO USAR?
 
 * Voce quer trocar as implementações em tempo de execução.
 
+QUESTÕES ESTACIO
+
+1. Você está implementando um conjunto de componentes de interface gráfica com o usuário que precisa rodar em diferentes plataformas (ex.: Windows, Linux). Você quer poder evoluir a estrutura dos componentes gráficos de forma independente das implementações específicas dos componentes para cada plataforma. Portanto, você quer poder especializar os componentes gráficos de forma independente das plataformas onde esses componentes rodarão. Assinale a alternativa com o nome do padrão mais indicado para ser aplicado nesse contexto:
+
+Resposta: Bridge
+
+2. Permitir que uma abstração que tenha diferentes representações possa variar de forma independente das suas representações, como, por exemplo, no caso de uma abstração implementada em diferentes plataformas (Windows, Linux, etc.). Assinale a alternativa com o nome do padrão que possui esse propósito:
+
+Resposta: Bridge
+
 PALAVRAS CHAVE {abstração da sua implementação}, {intenção de desacoplar}, {evoluir independentemente}
 
 ```
@@ -180,6 +258,12 @@ QUANDO USAR?
 * Voce quiser usar composição ao inves de herança
 * Voce percebe que pode ocorrer uma explosão de subclasses em determinada estrutura
 
+QUESTÕES ESTACIO
+
+Assinale a alternativa com dois padrões que possuem uma estrutura de solução muito parecida, porém, com propósitos distintos.
+
+Resposta: Composote e Decorator
+
 PALAVRAS CHAVE {extensão de funcionalidades}, {responsabilidades adicionais}, {alternativa flexivel}
 
 ```
@@ -207,6 +291,20 @@ QUANDO USAR?
 * Sua estrutura de objetos possa ser representada hierarquicamente, como por exemplo, estrutura do tipo arvore.
 * Voce quiser que o codigo cliente trate objetos compostos e objetos simples da mesma maneira.
 
+QUESTÕES ESTACIO
+
+1. Que padrão pode ser utilizado na implementação de uma estrutura hierárquica de diretório, em que existam pastas que podem conter pastas ou arquivos, sendo que algumas operações com as pastas devem ser aplicadas de forma recursiva aos elementos que fazem parte dela, isto é, outras pastas e arquivos?
+
+Resposta: Composite
+
+2. Possibilitar a manipulação de objetos individuais e de agregados de uma estrutura hierárquica (árvore) de objetos por meio do mesmo conjunto de operações, sem que o módulo cliente precise fazer a distinção entre o tipo do objeto manipulado (individual ou agregado). Assinale a alternativa com o nome do padrão que possui esse propósito:
+
+Resposta: Composite
+
+3. Sobre o padrão Composite, assinale a alternativa correta:
+
+Resposta: Esse padrão permite manipular agregados e seus elementos com uma interface uniforme, isto é, com as mesmas operações
+
 PALAVRAS CHAVE {hierarquias}, {arvore}, {Leaf}
 
 ```
@@ -229,7 +327,7 @@ SOBRE O FAÇADE
 QUANDO USAR?
 
 * Voce quer disponibilizar uma interface mais simples para um sistema complexo
-* Voce quer criar pontos de entrada para determinadas partes do sitema, como serviços externos, camadas de aplicação e objetos complexos dentro de determinadas partes do codigo.
+* Voce quer criar pontos de entrada para determinadas partes do sistema, como serviços externos, camadas de aplicação e objetos complexos dentro de determinadas partes do codigo.
 
 PALAVRAS CHAVE {subsistema}, {interface de nivel mais alto}
 
@@ -258,13 +356,19 @@ QUANDO USAR?
 
 se todas as condições a seguir forem verdadeiras:
 
-* Sua aplicação utiliza uma grande quandtidade de objetos.
+* Sua aplicação utiliza uma grande quantidade de objetos.
 * Os custos de armazenamento são altos por causa da grande quantidade de objetos.
 * A maioria dos estados de objetos podem se tornar extrinsecos
 * Muitos objetos podem ser substituidos por poucos objetos compartilhados
 * A aplicação não depende da identidade dos objetos.
 
-PALAVRAS CHAVE {memoria}, {compartilhamento}
+QUESTÕES ESTACIO
+
+Você está desenvolvendo um sistema e percebe que está instanciando uma grande quantidade de objetos cujos atributos não mudam de valor durante toda a execução do programa. Muitos desses objetos instanciados são réplicas, o que gera uma utilização muito ineficiente da memória. Assinale a alternativa com o nome do padrão que poderia ser aplicado nesse cenário:
+
+Resposta: Flyweight
+
+PALAVRAS CHAVE {memoria}, {compartilhamento de objetos}
 
 
 ```
@@ -295,6 +399,12 @@ QUANDO USAR?
 * Voce quer uma ligação entre seu sistema e um sistema remoto(proxy remoto)
 * Voce quer fazer cache de chamadas já realizadas (inteligente ou proxy cache)
 * Voce quer interceptar quaisquer chamadas de metodos no objeto real por qualquer motivo (exemplo:criar logs)
+
+QUESTÕES ESTACIO
+
+Você está definindo uma classe e deseja que todas as chamadas de operações para objetos dessa classe possam ser interceptadas, para que algum procedimento de verificação ou autorização seja realizado antes da operação destino ser executada. Para isso, você define uma classe intermediária que oferece as mesmas operações da classe destino, porém, executando esses procedimentos adicionais para, em seguida, delegar a execução para o objeto destino. Assinale a alternativa com o nome do padrão que define essa estrutura de solução:
+
+Resposta: Proxy
 
 
 PALAVRAS CHAVE {controlar o acesso}, {interface do objeto destino real}, {marcador de localização}
