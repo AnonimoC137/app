@@ -651,4 +651,86 @@ Coesão é um conceito que nos permite avaliar se as responsabilidades de um mó
 
 A principal intenção da coesão alta é criar módulos de software que sejam coesos, ou seja, que tenham suas responsabilidades bem definidas e relacionadas
 
+# Controlador #
+
+SOBRE
+
+A intenção do padrão controller é atribuir a responsabilidade de receber e gerenciar solicitações do usuario a um objeto controlador, DEsacopla o sistema dos detalhes de como as solicitações são atendidas e processadas.
+
+O controller atua como um intermediario entre o usuario e o sistema, recebendo solicitações do usuario e coordenando as ações apropriadas. Ele não executa as operações diretamente, mas delega as responsabilidades para outros objetos.
+
+
+RESUMO
+
+Ao receber um requisição, um modulo controlador normalmente coordena e controla os elementos responsaveis pela produção da resposta.
+
+ RESPOSTA QUESTÃO ESTACIO
+
+ O controlador é um elemento de logica de negocio responsavel por coordenar a produção da resposta aos eventos logicos gerada por componentes de interface do sistema com elementos externos.
+
+# Acoplamento baixo #
+
+SOBRE
+
+Visa reduzir as dependencias entre os diferentes modulos, classes ou componentes de um sistema. principais caracteristicas são : Reduzir as dependencias entre diferentes componentes do sistema, minimizar o impacto de mudanças em uma parte do sistema sobre as outras partes, promover a reutilização de codigo. Ou seja as mudanças geram um impacto em poucas classes.
+
+RESUMO
+
+Esse padrão consiste em distribuir as responsabilidades a fim de gerar um acoplamento baixo entre os modulos.
+
+RESPOSTA QUESTÃO ESTACIO
+
+Buscamos produzir modulos com acoplamento baixo, minimizando o grau de dependencia entre eles.
+
+# Polimorfismo #
+SOBRE
+
+As principais caracteristicas do polimorfismo são: permitir que objetos de diferentes classes sejam tratados de maneira uniforme (igual), possibilitando que um mesmo metodo seja chamado em objetos de classes diferentes, produzindo comportamentos diferentes de acordo com a classe do objeto.
+
+
+RESUMO
+
+por meio do polimorfismo consigo definir um metodo em uma interface e quando eu extendo essa interface em uma classe ou varias classes consigo usar esse metodo em diferentes objetos.
+
+RESPOSTA QUESTÃO ESTACIO
+
+O polimorfismo permite que um objeto referenciado em uma chamada de operação possa assumir diferentes formas em momentos distintos de execução dessa chamada.
+
+# Pure Fabrication / Invenção pura
+
+SOBRE 
+
+Atribuir responsalididades que não correspondem a nenhum conceito do dominio do problema a classes ficticias ou de utilidade, manter a coesão alta e o acoplamento baixo, evitando sobrecarregar classes existentes com resposabilidades que não lhes pertencem.
+
+* Propoem criar classes ficticias quie não representam entidades do mundo real, mas tem a responsabilidade de realizar uma determinada tarefa.
+* Essa classes são utilizadas para manter a coesão alta e o baixo acoplamento no sistema, evitando que outras classes acumulem responsabilidades que não são de sua competencia.
+
+
+RESUMO
+
+Cria classes ficticias para lidar com situações variadas para que as classes existentes não fiquem sobrecarregadas.
+
+QUESTÃO ESTACIO
+
+O padrão invenção pura, diz respeito a criação de classes que nao representam um concceito do dominio do problema com o objetivo de gerar soluções com maior coesão e menor acoplamento daquilo que seria obtido pela aplicação do padrão Especialista na informação.
+
+# Indireção #
+
+SOBRE
+
+Intenção do padrão consiste em substituir a conexão direta entre dois ou mais objetos por uma estrutura de comunicação mediada por um objeto intermediario. Assim se um objeto A enviar mensagem diretamente para B, ele passará a manda-la para um objeto intermediario X,o qual, por sua vez, fica responsavel pela comunicação com B.
+
+* Essa camada intermediaria pode ser uma interface ou uma classes de adaptação, que recebe solicitações de uma classe e as encaminha para outra classe, sem que a primeira classes precise conhecer diretamente a segunda.
+
+QUESTÃO ESTACIO
+
+Padrão que recomenda introduzir um objeto entre um módulo cliente e um fornecedor de um serviço com o propósito de reduzir o acoplamento entre eles.
+
+# Variações Protegidas #
+
+A intenção desse padrão é identificar pontos sujeitos a variação e isolar variações com a criação de interfaceis estaveis no seu entorno.
+
+* Principais pontos: Proteger o sistema  de variações ou instabilidades externas, isolando as partes do sistema que podem variar, Encapsular as variações em classes ou interfaces, para que mudanças nessas variações não afetem outras partes do sistema.
+
+
 
