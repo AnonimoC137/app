@@ -111,7 +111,7 @@ Resposta: Abstract Factory
 
 Resposta: Cria familias de objetos sem especificar suas classes concretas
 
-PALAVRAS CHAVE { grupo de objetos compativeis}, {composto por multiplos Factory Methods}, {Fornece interface criação}
+PALAVRAS CHAVE {objetos relacionados ou dependentes}, {composto por multiplos Factory Methods}, {sem especificar suas classes concretas}
 ```
 
 # Singleton #
@@ -262,7 +262,7 @@ QUESTÕES ESTACIO
 
 Assinale a alternativa com dois padrões que possuem uma estrutura de solução muito parecida, porém, com propósitos distintos.
 
-Resposta: Composote e Decorator
+Resposta: Composite e Decorator
 
 PALAVRAS CHAVE {extensão de funcionalidades}, {responsabilidades adicionais}, {alternativa flexivel}
 
@@ -329,7 +329,7 @@ QUANDO USAR?
 * Voce quer disponibilizar uma interface mais simples para um sistema complexo
 * Voce quer criar pontos de entrada para determinadas partes do sistema, como serviços externos, camadas de aplicação e objetos complexos dentro de determinadas partes do codigo.
 
-PALAVRAS CHAVE {subsistema}, {interface de nivel mais alto}
+PALAVRAS CHAVE {interface fachada/generica}, {interface de nivel mais alto}
 
 ```
 
@@ -368,7 +368,7 @@ Você está desenvolvendo um sistema e percebe que está instanciando uma grande
 
 Resposta: Flyweight
 
-PALAVRAS CHAVE {memoria}, {compartilhamento de objetos}
+PALAVRAS CHAVE {memoria}, {compartilhamento de objetos}{grande quantidade de objetos}
 
 
 ```
@@ -407,7 +407,7 @@ Você está definindo uma classe e deseja que todas as chamadas de operações p
 Resposta: Proxy
 
 
-PALAVRAS CHAVE {controlar o acesso}, {interface do objeto destino real}, {marcador de localização}
+PALAVRAS CHAVE {controlar o acesso}, {interface do objeto destino real}, {interceptar operações}
 
 ```
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Padrões Gof Comportamentais @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -437,7 +437,11 @@ QUANDO USAR?
 * Voce quer aplicar o principio da responsabilidade unica para tratamento de dados da requisição. Cada objeto fica responsavel por tratar apenas a parte que lhe couber.
 * Voce quer permitir que os objetos responsaveis pelo tratamento de requisição possam variar em tempo de execução
 
+QUESTÕES ESTACIO
 
+"Seja um cenário em que existem vários objetos capazes de realizar o processamento associado a uma requisição. Esses objetos são organizados em uma lista encadeada de modo que a requisição vai sendo passada do primeiro objeto receptor da requisição para o próximo da lista, e assim sucessivamente, até que o resultado desejado seja atingido". Assinale a alternativa com o nome do padrão com esse propósito:
+
+Resposta: Chain of Responsibility
 
 PALAVRAS CHAVE {encadeia os objetos}, {Cadeia de responsabilidade} {evita o acoplamento em todos objetos da cadeia}
 ```
@@ -470,6 +474,15 @@ QUANDO USAR?
 * Voce quer tratar um comando como um objeto(com a possibilidade de armazenar, agendar, enfileirar, fazer log, agendar execusões, ou qualquer coisa que pode ser feita com um objeto)
 * Voce quer permitir que a solicitações possam ser feitas e desfeitas
 
+QUESTÕES ESTACIO
+
+1. "Esse padrão encapsula uma requisição em um objeto, desacoplando o requisitante e o objeto executor. Esse encapsulamento permite registrar o histórico de requisições, reproduzir essas requisições em outro ambiente, bem como implementar operações de desfazer ou refazer o processamento associado à requisição". Assinale a alternativa com o nome do padrão que possui esse propósito:
+
+Resposta: Command
+
+2. Você está implementando um sistema e quer guardar o histórico de todas as requisições efetuadas pelo usuário via interface gráfica, de forma a poder realizar operações, como desfazer (undo) e refazer (redo) requisições. Assinale a alternativa com o nome do padrão mais indicado para ser aplicado nesse contexto:
+
+Resposta: Command
 
 PALAVRAS CHAVE {comandos enfileirados}, {Transforma solicitação/comando em objeto} {solicitações possam ser feitas e desfeitas}
 
@@ -499,6 +512,7 @@ QUANDO USAR?
 * Sua coleção pode ter varios modos de travessia, como crescente, pelo menor numero de saltos, pulando de dois em dois, ou como preferir.
 * Voce quer disponibilizar protocolos de travessia para diferentes tipos de coleções
 
+QUESTÕES ESTACIO
 
 PALAVRAS CHAVE {acessar sequencialmente os elementos}, {remover a complexidade da travessia principal} {protocolos de travessia para coleções}
 ```
@@ -526,6 +540,15 @@ QUANDO USAR?
 * Voce quer diminuir ou extinguir o acoplamento direto entre as classes que poderiam estar diretamente acopladas
 * Voce quer simplificar comunicações de muitos-para-muitos para comunicações de um-para-muitos
 
+QUESTÕES ESTACIO
+
+1. Sobre o padrão Mediator, assinale a alternativa correta:
+
+Resposta: Pode ser aplicado em conjunto com o padrão Observer
+
+2. "Na implementação de um processo complexo, um módulo A chama operações de um módulo B e de um módulo C. B, por sua vez, chama operações de C e de D. O módulo C chama operações de A e de E. O módulo D chama operações dos módulos B e C".Esse cenário ilustra uma interação entre objetos no estilo muitos para muitos. Para simplificar esse processo, define-se um objeto que centraliza todas as interações entre esses objetos, de modo que eles passam a se comunicar apenas com esse elemento central. Dessa forma, o elemento central X passa a receber uma notificação de A, para então chamar operações de B e C. Da mesma maneira, a partir de uma notificação enviada por B, X chama operações de C e de D. Essa descrição corresponde à estrutura de solução de qual padrão?
+
+Resposta: Mediator
 
 PALAVRAS CHAVE {centralizador}, {comunicação de um para muitos} {evita ligação direta}, {interação entre um conjunto de objetos}
 ```
@@ -553,6 +576,12 @@ QUANDO USAR?
 * Voce deseja implementar a função "desfazer" no seu sistema
 * Voce deseja fazer backups de estado de determinada classe no seu sistema
 
+QUESTÕES ESTACIO
+
+Você está desenvolvendo um sistema que produz informações guardadas em um ou mais objetos que só devem ser armazenados em um banco de dados após o processamento ser concluído. Entretanto, esses dados estão vinculados a uma sessão de usuário, que pode ser interrompida em função de problemas de conexão. Esse padrão oferece uma solução que permite que um objeto A capture e salve todo o estado de um objeto B da sessão, sem que A tenha que quebrar o encapsulamento de B, tornando possível a restauração do estado do objeto B, a partir de um estado capturado anteriormente por A.
+
+Resposta: Memento
+
 PALAVRAS CHAVE {capturar o estado}, {função "desfazer"} {salvar e restaurar o estado atual}, {backups de estado}
 ```
 
@@ -578,6 +607,8 @@ QUANDO USAR?
 * Voce tiver variantes de um mesmo algoritmo e precisa trocar esses algoritmos em tempo de execução
 * Voce precisar isolar a regra de negocio do algoritmo que deve ser aplicado (aplicando o principio da responsabilidade unica)
 * Voce perceber que está usando condicionais apenas para trocar o resultado final de um algoritmo
+
+QUESTÕES ESTACIO
 
 PALAVRAS CHAVE {familia de algoritmos}, {intercambiaveis} {criação algoritmo sem condicional}
 
@@ -605,6 +636,16 @@ QUANDO USAR?
 
 * Voce precisa notificar objetos sobre a mundaça de estado de outros objetos.
 
+QUESTÕES ESTACIO
+
+1. Esse padrão define uma estrutura similar à de um esquema Publisher-Subscriber, pois existe um Publisher detentor de um conjunto de informações e registra um conjunto de objetos interessados em receber notificações de modificação desse conjunto de informações, ou seja, do estado do Publisher. Ao ter o seu estado interno modificado, o Publisher notifica os Subscribers que, por sua vez, executam algum procedimento específico de tratamento dessa modificação. Assinale a opção com o padrão correspondente à descrição acima:
+
+Resposta: Observer
+
+2. Você está desenvolvendo um sistema para acompanhar as cotações da bolsa de valores. As cotações podem ser acompanhadas na interface com usuário na forma textual (ticker da ação e o seu valor) e na forma de um gráfico de candlesticks, apresentando o histórico das cotações em um período do tempo. As duas formas de visualização devem estar em sincronia com as variações que ocorrem com o valor da cotação das ações. Assinale a alternativa com o nome do padrão que pode ser aplicado para resolver esse problema de sincronização de visualizações de um conjunto de informações com a sua fonte.
+
+Resposta: Observer
+
 PALAVRAS CHAVE {objetos dependentes notificados atualizados}, {notificar objetos} {estado muda}
 ```
 
@@ -627,6 +668,8 @@ QUANDO USAR?
 
 * Voce precisa executar um algoritmo em todos os elementos de uma estrutura mais complexa (como uma estrutura criada com o padrão composite)
 * Voce quer separar uma logica complexa em objetos auxiliares
+
+QUESTÕES ESTACIO
 
 PALAVRAS CHAVE {visitar elementos}, {adicionar novas funcionalidades} {hierarquia de objetos}, {não modifica estrutura}
 ```
@@ -654,7 +697,13 @@ QUANDO USAR?
 * O seu objeto pode se comportar de maneira diferente dependendo do seu estado atual
 * Voce quer evitar o uso de condicionais que alteram o comportamento da classe de acordo com valores dos seus campos
 
-PALAVRAS CHAVE {estado presentado classe separada}, {parecerá ter mudado de classe} {evitar o uso de condicionais}, {comportamento dependendo do seu estado}
+QUESTÕES ESTACIO
+
+Você está desenvolvendo um módulo correspondente a uma classe X que possui um ciclo de vida composto por estados e não quer escrever o código dessa classe utilizando estruturas condicionais complexas. Para isso, você separa o processamento de cada parte desse ciclo de vida em uma classe à parte. A classe X apenas guarda a referência para a situação corrente do processamento e repassa as requisições para o objeto correspondente a essa situação corrente. Assinale o padrão a que esse texto se refere:
+
+Resposta: State
+
+PALAVRAS CHAVE {estado representado classe separada}, {parecerá ter mudado de classe} {evitar o uso de condicionais}, {comportamento dependendo do seu estado}
 
 ```
 
@@ -707,6 +756,12 @@ QUANDO USAR?
 * Voce precisa de variações de um mesmo algoritmo sem mudar a ordem de execução dos metodos
 * Voce percebe que está usando herança para alterar apenas pequenos trechos de codigo de um algoritmo.
 * Inversão do controle: A classe base controla a ordem de execução do algoritmo, mas delega a implementação de partes específicas para as subclasses.
+
+QUESTÕES ESTACIO
+
+Assinale a alternativa que expressa a intenção do padrão de projeto Template Method:
+
+Resposta: implementar a estrutura de um algoritmo generico em uma superclasse, considera que os passos comuns são implementados na própria superclasse, enquanto os passos especificos são implementados nas suas subclasses.
 
 PALAVRAS CHAVE {definir o esqueleto}, {implementados na propria superclasse} {Inversão do controle},
 
