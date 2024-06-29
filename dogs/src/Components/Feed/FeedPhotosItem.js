@@ -5,7 +5,7 @@ const FeedPhotosItem = ({ photo }) => {
   return (
     <li className={styles.photo} key={photo.id}>
       <img src={photo.src} title={photo.title} />
-      <span>{photo.acessos}</span>
+      <span className={styles.visualizacao}>{photo.acessos}</span>
     </li>
   );
 };
