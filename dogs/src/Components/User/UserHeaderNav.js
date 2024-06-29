@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { UserContext } from '../../UserContext';
 import { ReactComponent as MinhasFotos } from '../../Assets/feed.svg';
 import { ReactComponent as Estatisticas } from '../../Assets/estatisticas.svg';
@@ -12,6 +12,12 @@ const UserHeaderNav = () => {
   const { userLogout } = React.useContext(UserContext);
   const mobile = useMedia('( max-width: 40rem )');
   const [mobileMenu, setMobileMenu] = React.useState(false);
+
+  const { pathname } = useLocation();
+
+  React.useEffect(() => {
+    setMobileMenu(false);
+  }, [pathname]);
 
   return (
     <>
@@ -34,10 +40,10 @@ const UserHeaderNav = () => {
           to="/conta"
           end
           style={({ isActive }) => ({
-            background: isActive ? 'white' : '',
-            boxShadow: isActive ? '0 0 0 3px #fea' : '',
-            borderColor: isActive ? '#fb1' : '',
-            color: isActive ? '#fb1' : 'black',
+            background: isActive && !mobile ? 'white' : '',
+            boxShadow: isActive && !mobile ? '0 0 0 3px #fea' : '',
+            borderColor: isActive && !mobile ? '#fb1' : '',
+            color: isActive && !mobile ? '#fb1' : 'black',
           })}
         >
           <MinhasFotos />
@@ -46,10 +52,10 @@ const UserHeaderNav = () => {
         <NavLink
           to="/conta/estatisticas"
           style={({ isActive }) => ({
-            background: isActive ? 'white' : '',
-            boxShadow: isActive ? '0 0 0 3px #fea' : '',
-            borderColor: isActive ? '#fb1' : '',
-            color: isActive ? '#fb1' : 'black',
+            background: isActive && !mobile ? 'white' : '',
+            boxShadow: isActive && !mobile ? '0 0 0 3px #fea' : '',
+            borderColor: isActive && !mobile ? '#fb1' : '',
+            color: isActive && !mobile ? '#fb1' : 'black',
           })}
         >
           <Estatisticas />
@@ -58,10 +64,10 @@ const UserHeaderNav = () => {
         <NavLink
           to="/conta/postar"
           style={({ isActive }) => ({
-            background: isActive ? 'white' : '',
-            boxShadow: isActive ? '0 0 0 3px #fea' : '',
-            borderColor: isActive ? '#fb1' : '',
-            color: isActive ? '#fb1' : 'black',
+            background: isActive && !mobile ? 'white' : '',
+            boxShadow: isActive && !mobile ? '0 0 0 3px #fea' : '',
+            borderColor: isActive && !mobile ? '#fb1' : '',
+            color: isActive && !mobile ? '#fb1' : 'black',
           })}
         >
           <AdicionarFoto />
