@@ -7,8 +7,10 @@ const Feed = () => {
 
   return (
     <div>
-      {modalPhoto && <FeedModal photo={modalPhoto} />}
-      <FeedPhotos setModalPhoto={setModalPhoto} />  
+      {modalPhoto && (
+        <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />
+      )}
+      <FeedPhotos setModalPhoto={setModalPhoto} />
     </div>
   );
 };
