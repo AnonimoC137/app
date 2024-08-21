@@ -21,11 +21,7 @@ const Slide = ({slides}) => {
 
   return (
     <section className={styles.container}>
-      <div
-        ref={contentRef}
-        className={styles.content}
-        style={{ transform: `translateX(${{ position }}px)` }}
-      >
+      <div ref={contentRef} className={styles.content}>
         {slides.map((slide) => (
           <div key={slide.id} className={styles.item}>
             {slide.texto}
