@@ -21,21 +21,20 @@ const Slide = ({slides}) => {
 
   return (
     <section className={styles.container}>
-        <div
+      {/* <div
         ref={contentRef} 
         className={styles.content} 
         style={{transform: `translateX(${position}px)`}}>
                 {slides.map((slide) => (
                 <div key={slide.id} className={styles.item}>{slide.texto}</div>
             ))}
-        </div>
-        <nav className={styles.nav}>
-            <button onClick={slidePrev}>Anterior</button>
-            <button onClick={slideNext}>Proximo</button>
-        </nav>
-      
+        </div> */}
+      <nav className={styles.nav}>
+        <button onClick={slidePrev}>Anterior</button>
+        <button onClick={slideNext}>Proximo</button>
+      </nav>
     </section>
-  )
+  );
 }
 
 export default Slide
