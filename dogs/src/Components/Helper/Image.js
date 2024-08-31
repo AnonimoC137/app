@@ -14,7 +14,8 @@ const Image = ({ alt, ...props }) => {
   return (
     <div className={styles.wrapper}>
       {skeleton && <div className={styles.skeleton}></div>}
-      <img onLoad={handleLoad} className={styles.img} alt={alt} {...props} />
+      <img onLoad={handleLoad} src={props.src} className={styles.img} alt={alt} {...props} />
+      
     </div>
   );
 };
