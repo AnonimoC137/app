@@ -1,8 +1,8 @@
 # React
 ### IMPORTANTE ###
 
-* Aqui é meu local favorito para anotar tudo que eu aprendo em react, vocês vão reparar que em cada parte dos meus treinos vão haver arquivos README contendo todas as descrições do que foi visto em aula.
+Dentro desse repositório você vai encontrar diversas atividades práticas sobre React, como métodos únicos, a sintaxe do JSX, estruturas e boas práticas de código.
 
-* Fiz detalhadamente para que eu e vocês que buscam algo no react possamos entender bem no futuro quando formos ler esses arquivos.
+Na pasta dogs, você vai encontrar um projeto de uma rede social para cães, onde utilizei diversas técnicas avançadas de React para desenvolver desde as páginas até mesmo os vários níveis de autenticação dos usuários.
 
-### tudo foi escrito de forma manual caso tenha alguns erros peço perdão ###
+Dentro de cada pasta deixei um arquivo com uma documentação rica em detalhes.
